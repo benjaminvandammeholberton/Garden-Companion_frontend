@@ -52,9 +52,15 @@ renderRemoveForm();
 // Function to fetch vegetable names from the API
 function fetchVegetableNames() {
   // Replace with the URL of your API endpoint that provides vegetable names
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const apiUrl = 'http://127.0.0.1:8000/api/v1/vegetable_manager';
 
-  fetch(apiUrl)
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       // Get the select element for vegetable names
@@ -63,7 +69,13 @@ function fetchVegetableNames() {
       const gardenAreaData = {};
 
       // Fetch garden areas data
-      return fetch('https://walrus-app-jbfmz.ondigitalocean.app/areas')
+      return fetch('http://127.0.0.1:8000/api/v1/area', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          Accept: 'application/json',
+        },
+      })
         .then((response) => response.json())
         .then((areasData) => {
           // Create a lookup object for garden area names
@@ -72,11 +84,14 @@ function fetchVegetableNames() {
           });
 
           // Filter out vegetables with a remove_date
-          const filteredVegetables = data.filter((vegetable) => !vegetable.remove_date);
+          const filteredVegetables = data.filter(
+            (vegetable) => !vegetable.remove_date
+          );
 
           // Loop through the filtered vegetable data and create options
           filteredVegetables.forEach((vegetable) => {
-            const areaName = gardenAreaData[vegetable.area_id] || 'Unknown Area';
+            const areaName =
+              gardenAreaData[vegetable.area_id] || 'Unknown Area';
 
             // Create an option with the vegetable name and area name
             const option = document.createElement('option');
@@ -84,7 +99,7 @@ function fetchVegetableNames() {
             option.textContent = `${vegetable.name} (${areaName})`; // Set the text content to the vegetable name and area name
             nameSelect.appendChild(option);
           });
-      });
+        });
     })
     .catch((error) => {
       console.error('Error fetching vegetable names:', error);
@@ -95,19 +110,24 @@ fetchVegetableNames();
 
 // Function to remove a vegetable (set remove_date)
 function removeVegetable() {
-  const selectedVegetable = document.querySelector('#vegetable_to_remove').value;
+  const selectedVegetable = document.querySelector(
+    '#vegetable_to_remove'
+  ).value;
   const removeDate = document.querySelector('#remove-date').value;
 
   // Rest of your code to send a PUT request for removing the vegetable
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager/' + selectedVegetable;
+  const serverUrl =
+    'http://127.0.0.1:8000/api/v1/vegetable_manager/' + selectedVegetable;
 
   // Define the request options
   const requestOptions = {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json', // Set the content type as JSON
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
     },
-    body: JSON.stringify({ remove_date: removeDate }) // Replace with your logic to set the remove date
+    body: JSON.stringify({ remove_date: removeDate }), // Replace with your logic to set the remove date
   };
 
   // Send the PUT request
@@ -132,7 +152,6 @@ function getCurrentDate() {
 }
 
 document.getElementById('remove-date').value = getCurrentDate();
-
 
 function showSuccessMessageRemoveVegetable() {
   const popup = document.getElementById('custom-popup7');

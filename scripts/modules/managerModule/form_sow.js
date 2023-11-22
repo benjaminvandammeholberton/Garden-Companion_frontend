@@ -47,19 +47,23 @@ function renderSowForm() {
 // Call the renderForm function to render the form
 renderSowForm();
 
-const sowGardenAreaId = '64722a61-55a2-47ef-af3c-f05634b2b862';
+const sowGardenAreaId = '3e01d962-43c3-42fe-8dd8-f1cca6f4977f';
 // Add a change event listener to the checkbox
-const specificGardenAreaCheckbox = document.querySelector('#specific-garden-area');
+const specificGardenAreaCheckbox = document.querySelector(
+  '#specific-garden-area'
+);
 const gardenAreaSelect = document.querySelector('#garden_area_sow');
-  // Add an empty default option
-  const defaultOption = document.createElement('option');
-  defaultOption.value = sowGardenAreaId; // Use the ID for "Sow_gardenArea"
-  defaultOption.textContent = 'Sow_gardenArea';
+// Add an empty default option
+const defaultOption = document.createElement('option');
+defaultOption.value = sowGardenAreaId; // Use the ID for "Sow_gardenArea"
+defaultOption.textContent = 'Sow_gardenArea';
 
 specificGardenAreaCheckbox.addEventListener('change', function () {
-  const gardenAreaLabel = document.querySelector('label[for="garden_area_sow"]');
+  const gardenAreaLabel = document.querySelector(
+    'label[for="garden_area_sow"]'
+  );
   gardenAreaSelect.appendChild(defaultOption);
-  
+
   // Show/hide the "Garden Area" label and select based on the checkbox state
   if (specificGardenAreaCheckbox.checked) {
     gardenAreaLabel.style.display = 'block';
@@ -72,34 +76,34 @@ specificGardenAreaCheckbox.addEventListener('change', function () {
   }
 });
 
-  // Get the "Add Vegetable" button by its ID
+// Get the "Add Vegetable" button by its ID
 const addButtonSow = document.querySelector('#add-vegetable-button-sow');
 
 // Add a click event listener to the button
 addButtonSow.addEventListener('click', function (event) {
   event.preventDefault(); // Prevent the default form submission
 
-// Retrieve the quantity value within the event handler
-const quantity = document.querySelector('#quantity_sow').value;
-const selectedNameOption = document.querySelector('#name_sow option:checked');
-const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
-const sowingDate = document.querySelector('#sowing_date').value;
-const isSpecificGardenArea = specificGardenAreaCheckbox.checked;
+  // Retrieve the quantity value within the event handler
+  const quantity = document.querySelector('#quantity_sow').value;
+  const selectedNameOption = document.querySelector('#name_sow option:checked');
+  const selectedName = selectedNameOption ? selectedNameOption.textContent : '';
+  const sowingDate = document.querySelector('#sowing_date').value;
+  const isSpecificGardenArea = specificGardenAreaCheckbox.checked;
 
-// Rest of your code to construct formData
-const formData = {
-  'name': selectedName,
-  'quantity': quantity,
-  // 'area_id': document.querySelector('#garden_area_sow').value,
-  'sowed': true,
-  'planted': false,
-  'sowing_date': sowingDate,
-};
+  // Rest of your code to construct formData
+  const formData = {
+    name: selectedName,
+    quantity: quantity,
+    area_id: document.querySelector('#garden_area_sow').value,
+    sowed: true,
+    planted: false,
+    sowing_date: sowingDate,
+  };
 
-// Include the selected garden area if the checkbox is checked; otherwise, use the ID of "Sow_gardenArea"
-formData['area_id'] = isSpecificGardenArea
-? document.querySelector('#garden_area_sow').value
-: sowGardenAreaId; // Set to the ID of "Sow_gardenArea"
+  // Include the selected garden area if the checkbox is checked; otherwise, use the ID of "Sow_gardenArea"
+  formData['area_id'] = isSpecificGardenArea
+    ? document.querySelector('#garden_area_sow').value
+    : sowGardenAreaId; // Set to the ID of "Sow_gardenArea"
 
   console.log('Form data:', formData);
   // Send a POST request to your server
@@ -107,26 +111,28 @@ formData['area_id'] = isSpecificGardenArea
 });
 
 // Function to get the current date in YYYY-MM-DD format
-  function getCurrentDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  }
+function getCurrentDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
-  document.getElementById('sowing_date').value = getCurrentDate();
+document.getElementById('sowing_date').value = getCurrentDate();
 
 // Function to send a POST request
 function sendPostRequestSow(formData) {
   // Define your server URL
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const serverUrl = 'http://127.0.0.1:8000/api/v1/vegetable_manager/create';
 
   // Define the request options
   const requestOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json', // Set the content type as JSON
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
     },
     body: JSON.stringify(formData), // Convert the form data to JSON
   };
@@ -134,7 +140,7 @@ function sendPostRequestSow(formData) {
   fetch(serverUrl, requestOptions)
     .then((response) => response.json())
     .then((data) => {
-      console.log('data:', data)
+      console.log('data:', data);
       // Handle the response from the server here (e.g., show a success message)
       showSuccessMessage1(data);
       // console.log('Response from server:', data);
@@ -158,9 +164,15 @@ function clearFormSow() {
 // Function to fetch and populate all garden areas
 function fetchAllGardenAreas() {
   // Fetch garden areas from your API
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
+  const apiUrl = 'http://127.0.0.1:8000/api/v1/area';
 
-  fetch(apiUrl)
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       // Clear existing options
@@ -168,15 +180,17 @@ function fetchAllGardenAreas() {
 
       // Loop through the garden area data and create options
       data.forEach((gardenArea) => {
-        if (gardenArea.id !== sowGardenAreaId) {
+        if (gardenArea.area_id !== sowGardenAreaId) {
           const option = document.createElement('option');
-          option.value = gardenArea.id;
+          option.value = gardenArea.area_id;
           option.textContent = gardenArea.name;
           gardenAreaSelect.appendChild(option);
         }
       });
       if (specificGardenAreaCheckbox.checked) {
-        const sowGardenAreaOption = gardenAreaSelect.querySelector(`[value="${sowGardenAreaId}"]`);
+        const sowGardenAreaOption = gardenAreaSelect.querySelector(
+          `[value="${sowGardenAreaId}"]`
+        );
         if (sowGardenAreaOption) {
           gardenAreaSelect.removeChild(sowGardenAreaOption);
         }
@@ -193,13 +207,18 @@ function resetGardenAreaSelect() {
   gardenAreaSelect.appendChild(defaultOption); // Re-add the default option
 }
 
-
 // Function to fetch vegetable names from the API
 function fetchVegetableNames() {
   // Replace with the URL of your API endpoint that provides vegetable names
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos';
+  const apiUrl = 'http://127.0.0.1:8000/api/v1/vegetable_info';
 
-  fetch(apiUrl)
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       // Get the select element for vegetable names

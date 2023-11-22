@@ -2,8 +2,8 @@
 .dashbord__module--assistant {
   grid-area: todolist;
   grid-column: span 1;
-  grid-row: span 1;
-  border-radius: 0 0 0 0;
+  grid-row: span 2;
+  border-radius: 5px 5px 100px 5px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -22,7 +22,7 @@
     border-radius: 30px 30px 30px 30px;
   }
 }
-.dashbord__module__title--assistant{
+.dashbord__module__title--assistant {
   /* display: none; */
 }
 .dashbord__module__content--assistant {
@@ -75,7 +75,7 @@
 
 #placeholder-message {
   max-width: 100%;
-left: 5%;
+  left: 5%;
   bottom: 45%;
   height: 40px;
   padding: 10px;
@@ -92,7 +92,7 @@ left: 5%;
 }
 
 #placeholder-message:before {
-  content: "";
+  content: '';
   position: absolute;
   z-index: 0;
   bottom: -5px;
@@ -106,7 +106,7 @@ left: 5%;
 }
 
 #user-input {
-  display : flex;
+  display: flex;
   position: absolute;
   width: 70%;
   height: 40px;
@@ -164,7 +164,7 @@ left: 5%;
 }
 
 .user-message::after {
-  content: "";
+  content: '';
   position: absolute;
   z-index: 0;
   right: 1px;
@@ -192,7 +192,7 @@ left: 5%;
 }
 
 .assistant-message::after {
-  content: "";
+  content: '';
   position: absolute;
   z-index: 0;
   left: 1px;
@@ -218,12 +218,24 @@ left: 5%;
 }
 
 @keyframes dots {
-  0% { content: " ."; }
-  20% { content: " .."; }
-  40% { content: " ..."; }
-  60% { content: " ."; }
-  80% { content: " .."; }
-  100% { content: " ..."; }
+  0% {
+    content: ' .';
+  }
+  20% {
+    content: ' ..';
+  }
+  40% {
+    content: ' ...';
+  }
+  60% {
+    content: ' .';
+  }
+  80% {
+    content: ' ..';
+  }
+  100% {
+    content: ' ...';
+  }
 }
 
 .typing-dots {
@@ -232,6 +244,6 @@ left: 5%;
   font-family: Roboto;
 }
 .typing-dots::before {
-  content: " ...";
+  content: ' ...';
   animation: dots 3s infinite;
 }

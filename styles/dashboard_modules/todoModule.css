@@ -3,7 +3,7 @@
   grid-area: todolist;
   grid-column: span 1;
   grid-row: span 2;
-  border-radius: 5px 5px 100px 5px;
+  border-radius: 5px 5px 5px 5px;
   display: flex;
   flex-direction: column;
   position: relative;

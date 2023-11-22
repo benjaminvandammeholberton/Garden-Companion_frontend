@@ -52,14 +52,20 @@ function renderDeleteForm() {
   // Append the form to the container
   formContainer.appendChild(form);
 
-  const deleteGardenAreaForm = document.querySelector('#delete-garden-area-form');
+  const deleteGardenAreaForm = document.querySelector(
+    '#delete-garden-area-form'
+  );
   deleteGardenAreaForm.style.display = 'none';
   // Get the elements related to the "Delete Vegetable" form and "Delete Garden Area" form
   const deleteVegetableForm = document.querySelector('#delete-vegetable-form');
 
   // Get the elements related to the radio buttons for selecting the delete option
-  const deleteVegetableOption = document.querySelector('#delete-vegetable-option');
-  const deleteGardenAreaOption = document.querySelector('#delete-garden-area-option');
+  const deleteVegetableOption = document.querySelector(
+    '#delete-vegetable-option'
+  );
+  const deleteGardenAreaOption = document.querySelector(
+    '#delete-garden-area-option'
+  );
 
   // Get the "Delete" button
   const deleteButton = document.querySelector('#delete-button');
@@ -88,7 +94,9 @@ function renderDeleteForm() {
 renderDeleteForm();
 
 // Get the "Delete Vegetable" button by its ID
-const deleteVegetableButton = document.querySelector('#delete-vegetable-button');
+const deleteVegetableButton = document.querySelector(
+  '#delete-vegetable-button'
+);
 
 // Add a click event listener to the button
 deleteVegetableButton.addEventListener('click', function (event) {
@@ -97,7 +105,9 @@ deleteVegetableButton.addEventListener('click', function (event) {
 });
 
 // Get the "Delete Garden Area" button by its ID
-const deleteGardenAreaButton = document.querySelector('#delete-garden-area-button');
+const deleteGardenAreaButton = document.querySelector(
+  '#delete-garden-area-button'
+);
 
 // Add a click event listener to the button
 deleteGardenAreaButton.addEventListener('click', function (event) {
@@ -108,12 +118,20 @@ deleteGardenAreaButton.addEventListener('click', function (event) {
 // Function to fetch existing garden areas
 function fetchExistingGardenAreas() {
   // Define the URL to fetch existing garden areas
-  const existingGardenAreasUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas';
+  const existingGardenAreasUrl = 'http://127.0.0.1:8000/api/v1/area';
 
-  fetch(existingGardenAreasUrl)
+  fetch(existingGardenAreasUrl, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
-      const updateGardenAreaSelect = document.querySelector('#garden_area_to_delete');
+      const updateGardenAreaSelect = document.querySelector(
+        '#garden_area_to_delete'
+      );
 
       // Clear existing options in the select element
       updateGardenAreaSelect.innerHTML = '';
@@ -121,7 +139,7 @@ function fetchExistingGardenAreas() {
       // Loop through the existing garden areas and create options
       data.forEach((gardenArea) => {
         const option = document.createElement('option');
-        option.value = gardenArea.id;
+        option.value = gardenArea.area_id;
         option.textContent = gardenArea.name;
         updateGardenAreaSelect.appendChild(option);
       });
@@ -137,9 +155,15 @@ fetchExistingGardenAreas();
 // Function to fetch vegetable names from the API
 function fetchVegetableNames() {
   // Replace with the URL of your API endpoint that provides vegetable names
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const apiUrl = 'http://127.0.0.1:8000/api/v1/vegetable_manager';
 
-  fetch(apiUrl)
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
       // Get the select element for vegetable names
@@ -148,25 +172,32 @@ function fetchVegetableNames() {
       const gardenAreaData = {};
 
       // Fetch garden areas data
-      return fetch('https://walrus-app-jbfmz.ondigitalocean.app/areas')
+      return fetch('http://127.0.0.1:8000/api/v1/area', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          Accept: 'application/json',
+        },
+      })
         .then((response) => response.json())
         .then((areasData) => {
           // Create a lookup object for garden area names
           areasData.forEach((gardenArea) => {
-            gardenAreaData[gardenArea.id] = gardenArea.name;
+            gardenAreaData[gardenArea.area_id] = gardenArea.name;
           });
 
           // Loop through the vegetable data and create options
           data.forEach((vegetable) => {
-            const areaName = gardenAreaData[vegetable.area_id] || 'Unknown Area';
+            const areaName =
+              gardenAreaData[vegetable.area.area_id] || 'Unknown Area';
 
             // Create an option with the vegetable name and area name
             const option = document.createElement('option');
-            option.value = vegetable.id; // Set the value to the vegetable ID
+            option.value = vegetable.vegetable_manager_id; // Set the value to the vegetable ID
             option.textContent = `${vegetable.name} (${areaName})`; // Set the text content to the vegetable name and area name
             nameSelect.appendChild(option);
           });
-      });
+        });
     })
     .catch((error) => {
       console.error('Error fetching vegetable names:', error);
@@ -175,10 +206,11 @@ function fetchVegetableNames() {
 
 fetchVegetableNames();
 
-
 // Function to handle the delete action based on the selected radio button
 function handleDeleteAction() {
-  const selectedOption = document.querySelector('input[name="delete-option"]:checked');
+  const selectedOption = document.querySelector(
+    'input[name="delete-option"]:checked'
+  );
 
   if (selectedOption) {
     if (selectedOption.value === 'vegetable') {
@@ -196,16 +228,20 @@ function handleDeleteAction() {
 
 // Function to delete a vegetable
 function deleteVegetable() {
-  const selectedVegetable = document.querySelector('#vegetable_to_delete').value;
+  const selectedVegetable = document.querySelector(
+    '#vegetable_to_delete'
+  ).value;
 
   // Rest of your code to send a DELETE request for deleting the vegetable
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager/' + selectedVegetable;
+  const serverUrl =
+    'http://127.0.0.1:8000/api/v1/vegetable_manager/' + selectedVegetable;
 
   // Define the request options
   const requestOptions = {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json', // Set the content type as JSON
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
     },
   };
 
@@ -224,16 +260,19 @@ function deleteVegetable() {
 
 // Function to delete a garden area
 function deleteGardenArea() {
-  const selectedGardenArea = document.querySelector('#garden_area_to_delete').value;
+  const selectedGardenArea = document.querySelector(
+    '#garden_area_to_delete'
+  ).value;
 
   // Rest of your code to send a DELETE request for deleting the garden area
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas' + selectedGardenArea;
+  const serverUrl = 'http://127.0.0.1:8000/api/v1/area/' + selectedGardenArea;
 
   // Define the request options
   const requestOptions = {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json', // Set the content type as JSON
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
     },
   };
 

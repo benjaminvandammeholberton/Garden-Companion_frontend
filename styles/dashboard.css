@@ -1,14 +1,7 @@
 .dashboard {
   display: grid;
-  /* grid-template-areas:
-    'plant-manager . recommandations'
-    'air-sensors . todolist'
-    'automation forecast todolist'; */
-  width: 100%;
-  gap: 15px;
   grid-template-columns: repeat(3, 370px);
-  grid-auto-rows: 210px;
-  justify-content: center;
+  grid-auto-rows: 200px;
 }
 
 @media only screen and (max-width: 950px) {

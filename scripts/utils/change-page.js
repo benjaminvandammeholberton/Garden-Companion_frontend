@@ -1,9 +1,15 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const pages = ['dashboard', 'vegetable101', 'production', 'charts'];
+export function changePage() {
+  const pages = [
+    'dashboard',
+    'vegetable101',
+    'production',
+    'charts',
+    'settings',
+  ];
 
   for (const page of pages) {
     const button = document.getElementById(`${page}_page`);
-    const container = document.getElementById(`container_${page}`);
+    // const container = document.getElementById(`container_${page}`);
 
     button.addEventListener('click', function () {
       for (const otherPage of pages) {
@@ -14,4 +20,4 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
-});
+}

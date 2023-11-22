@@ -1,0 +1,103 @@
+nav {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(250, 250, 250, 0.5);
+  border-radius: 20px;
+  overflow: visible;
+}
+@media only screen and (max-width: 950px) {
+  nav {
+    display: none;
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+}
+@media only screen and (min-width: 950px) and (max-width: 1400px) {
+  nav {
+    width: 400px;
+    height: auto;
+    padding: 10px;
+  }
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-weight: bold;
+  overflow: visible;
+}
+
+nav li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+  background-color: rgba(250, 250, 250, 0.7);
+  background-repeat: no-repeat;
+  background-size: 45px 45px;
+  background-position: center;
+}
+nav .icon_dashboard {
+  background-image: url(./assets/icon_dashboard.png);
+}
+nav .icon_chart {
+  background-image: url(./assets/icon_chart.png);
+}
+nav .icon_production {
+  background-image: url(./assets/icon_production.png);
+}
+nav .icon_vegetable101 {
+  background-image: url(./assets/icon_vegetable101.png);
+}
+nav .icon_settings {
+  background-image: url(./assets/icon_settings.png);
+}
+
+.icon-nav {
+  width: 65px;
+  height: 65px;
+  position: relative;
+  overflow: visible;
+}
+
+.icon-nav:hover {
+  border-bottom: 4px solid #131212;
+  border-right: 3px solid #131212;
+  cursor: pointer;
+  transition: border 0.2s ease;
+}
+
+.icon-nav::after {
+  content: attr(data-label);
+  display: inline-block;
+  position: absolute;
+  left: 0px;
+  background-color: white;
+  padding: 4px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  z-index: -1;
+  cursor: text;
+  opacity: 0;
+  transition: left 0.35s ease, opacity 0.35s ease;
+}
+
+.icon-nav:hover::after {
+  left: 70px;
+  opacity: 1;
+  z-index: 1;
+}
+
+.icon-nav:not(:hover)::after {
+  opacity: 0;
+}

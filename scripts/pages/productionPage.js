@@ -23,7 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const productionContent = document.getElementById('productionContent');
 
   // Fetch the vegetables data
-  fetch('https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager')
+  fetch('http://127.0.0.1:8000/api/v1/vegetable_manager/', {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
+    },
+  })
     .then((response) => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -32,7 +38,13 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then((vegetablesData) => {
       // Fetch the areas data
-      return fetch('https://walrus-app-jbfmz.ondigitalocean.app/areas')
+      return fetch('http://127.0.0.1:8000/api/v1/area', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          Accept: 'application/json',
+        },
+      })
         .then((response) => {
           if (!response.ok) {
             throw new Error('Network response was not ok');

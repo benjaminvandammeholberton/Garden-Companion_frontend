@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+export function initializeVegetableInfoDetails() {
   const all_vegetables = document.getElementById('container_allVegetables');
   const detail_page = document.getElementById('container_vegetableInfos');
 
@@ -196,4 +196,4 @@ document.addEventListener('DOMContentLoaded', () => {
       quickInfosEnd.appendChild(quickInfosEndContent);
     }
   });
-});
+}

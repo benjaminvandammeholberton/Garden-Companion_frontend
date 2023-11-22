@@ -54,7 +54,9 @@ function renderGardenAreaForm() {
   formContainer.appendChild(form);
 
   // Get the elements related to the "Update Garden Area" form
-  const updateGardenAreaForm = document.querySelector('#update-garden-area-form');
+  const updateGardenAreaForm = document.querySelector(
+    '#update-garden-area-form'
+  );
 
   // Hide the "Update Garden Area" form initially
   updateGardenAreaForm.style.display = 'none';
@@ -63,11 +65,15 @@ function renderGardenAreaForm() {
   const addGardenAreaForm = document.querySelector('#add-garden-area-form');
 
   // Get the checkbox element
-  const addOrUpdateGardenAreaCheckbox = document.querySelector('#add_or_update_garden_area');
+  const addOrUpdateGardenAreaCheckbox = document.querySelector(
+    '#add_or_update_garden_area'
+  );
 
   // Add an event listener to the checkbox
   addOrUpdateGardenAreaCheckbox.addEventListener('change', function () {
-    const labelForAddOrUpdate = document.querySelector('label[for="add_or_update_garden_area"]');
+    const labelForAddOrUpdate = document.querySelector(
+      'label[for="add_or_update_garden_area"]'
+    );
 
     if (addOrUpdateGardenAreaCheckbox.checked) {
       // Checked, show the "Update Garden Area" form and hide the "Add Garden Area" form
@@ -83,13 +89,14 @@ function renderGardenAreaForm() {
 
     // Update the button label based on the checkbox state
     const submitButton = document.querySelector('#add-garden-area-button');
-    submitButton.textContent = addOrUpdateGardenAreaCheckbox.checked ? 'Update Garden Area' : 'Add Garden Area';
+    submitButton.textContent = addOrUpdateGardenAreaCheckbox.checked
+      ? 'Update Garden Area'
+      : 'Add Garden Area';
   });
 }
 
 // Call the renderGardenAreaForm function to render the garden area form
 renderGardenAreaForm();
-
 
 // Get the "Submit" button by its ID
 const submitButton = document.querySelector('#add-garden-area-button');
@@ -98,7 +105,9 @@ const submitButton = document.querySelector('#add-garden-area-button');
 submitButton.addEventListener('click', function (event) {
   event.preventDefault(); // Prevent the default form submission
 
-  const addOrUpdateGardenAreaCheckbox = document.querySelector('#add_or_update_garden_area');
+  const addOrUpdateGardenAreaCheckbox = document.querySelector(
+    '#add_or_update_garden_area'
+  );
 
   if (addOrUpdateGardenAreaCheckbox.checked) {
     // Handle the update logic
@@ -112,12 +121,14 @@ submitButton.addEventListener('click', function (event) {
 // Function to add a new garden area
 function addGardenArea() {
   const gardenAreaName = document.querySelector('#garden_area_name').value;
-  const gardenAreaSurface = document.querySelector('#garden_area_surface').value;
+  const gardenAreaSurface = document.querySelector(
+    '#garden_area_surface'
+  ).value;
 
   // Rest of your code to construct formData for the new garden area
   const formData = {
-    'name': gardenAreaName,
-    'surface': parseFloat(gardenAreaSurface),
+    name: gardenAreaName,
+    surface: parseFloat(gardenAreaSurface),
   };
 
   console.log(formData);
@@ -127,14 +138,18 @@ function addGardenArea() {
 
 // Function to update an existing garden area
 function updateGardenArea() {
-  const selectedGardenArea = document.querySelector('#update_garden_area').value;
+  const selectedGardenArea = document.querySelector(
+    '#update_garden_area'
+  ).value;
   const updatedName = document.querySelector('#update_garden_area_name').value;
-  const updatedSurface = document.querySelector('#update_garden_area_surface').value;
+  const updatedSurface = document.querySelector(
+    '#update_garden_area_surface'
+  ).value;
 
   // Rest of your code to construct formData for updating the garden area
   const formData = {
-    'name': updatedName,
-    'surface': parseFloat(updatedSurface),
+    name: updatedName,
+    surface: parseFloat(updatedSurface),
   };
 
   console.log(formData);
@@ -145,22 +160,31 @@ function updateGardenArea() {
 // Function to fetch existing garden areas
 function fetchExistingGardenAreas() {
   // Define the URL to fetch existing garden areas
-  const existingGardenAreasUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas'; // Replace with your server URL
-  const sowGardenAreaId = '64722a61-55a2-47ef-af3c-f05634b2b862';
+  const existingGardenAreasUrl = 'http://127.0.0.1:8000/api/v1/area/'; // Replace with your server URL
+  const sowGardenAreaId = '3e01d962-43c3-42fe-8dd8-f1cca6f4977f';
 
-  fetch(existingGardenAreasUrl)
+  fetch(existingGardenAreasUrl, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json', // Set the content type as JSON
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
+    },
+  })
     .then((response) => response.json())
     .then((data) => {
-      const updateGardenAreaSelect = document.querySelector('#update_garden_area');
+      const updateGardenAreaSelect = document.querySelector(
+        '#update_garden_area'
+      );
 
       // Clear existing options in the select element
       updateGardenAreaSelect.innerHTML = '';
 
       // Loop through the existing garden areas and create options
       data.forEach((gardenArea) => {
-        if (gardenArea.id !== sowGardenAreaId) {
+        if (gardenArea.area_id !== sowGardenAreaId) {
           const option = document.createElement('option');
-          option.value = gardenArea.id;
+          option.value = gardenArea.area_id;
           option.textContent = gardenArea.name;
           updateGardenAreaSelect.appendChild(option);
         }
@@ -174,16 +198,17 @@ function fetchExistingGardenAreas() {
 // Call the fetchExistingGardenAreas function to populate the select with existing garden areas
 fetchExistingGardenAreas();
 
-
 // Function to send a POST request for adding a new garden area
 function sendPostRequestAddGardenArea(formData) {
   // Define your server URL for adding a garden area
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas'; // Replace with the correct URL
+  const serverUrl = 'http://127.0.0.1:8000/api/v1/area/create/'; // Replace with the correct URL
   // Define the request options
   const requestOptions = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json', // Set the content type as JSON
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
     },
     body: JSON.stringify(formData), // Convert the form data to JSON
   };
@@ -204,19 +229,18 @@ function sendPostRequestAddGardenArea(formData) {
     });
 }
 
-
 // Function to send a PUT request for updating a garden area
 function sendPutRequestUpdateGardenArea(selectedGardenArea, formData) {
-
   // Define your server URL for updating a garden area with the selected ID
-  const serverUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/areas/' + selectedGardenArea;
-
+  const serverUrl = 'http://127.0.0.1:8000/api/v1/area/' + selectedGardenArea;
 
   // Define the request options
   const requestOptions = {
     method: 'PUT', // Use the PUT method for updates
     headers: {
       'Content-Type': 'application/json', // Set the content type as JSON
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
     },
     body: JSON.stringify(formData), // Convert the form data to JSON
   };
@@ -252,7 +276,8 @@ function showSuccessMessageGardenArea(data) {
   }
 
   if (data.surface <= 0) {
-    messageElementbis.textContent = 'Error ! Surface needs to be a positive number.';
+    messageElementbis.textContent =
+      'Error ! Surface needs to be a positive number.';
     okButton.style.backgroundColor = 'red';
   }
 
@@ -279,7 +304,8 @@ function showSuccessMessageGardenAreaUpdate(data) {
   }
 
   if (data.surface <= 0) {
-    messageElement.textContent = 'Error ! Surface needs to be a positive number.';
+    messageElement.textContent =
+      'Error ! Surface needs to be a positive number.';
     okButton.style.backgroundColor = 'red';
   }
 

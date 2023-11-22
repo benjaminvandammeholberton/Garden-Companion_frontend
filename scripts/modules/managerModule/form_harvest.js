@@ -40,17 +40,26 @@ function renderHarvestForm() {
 renderHarvestForm();
 
 // Get the "Harvest Vegetable" button by its ID
-const addButtonHarvest = document.querySelector('#add-vegetable-button-harvest');
+const addButtonHarvest = document.querySelector(
+  '#add-vegetable-button-harvest'
+);
 
 addButtonHarvest.addEventListener('click', function (event) {
   event.preventDefault(); // Prevent the default form submission
 
   const quantity = document.querySelector('#quantity_harvest').value;
-  const selectedNameOption = document.querySelector('#name_harvest option:checked');
+  const selectedNameOption = document.querySelector(
+    '#name_harvest option:checked'
+  );
   const harvestDate = document.querySelector('#harvest_date').value;
-  const selectedName = selectedNameOption ? selectedNameOption.textContent.split(' (')[0] : '';
-  const selectedAreaId = selectedNameOption ? selectedNameOption.dataset.areaId : '';
-  const baseUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const selectedName = selectedNameOption
+    ? selectedNameOption.textContent.split(' (')[0]
+    : '';
+  const selectedAreaId = selectedNameOption
+    ? selectedNameOption.dataset.areaId
+    : '';
+  const baseUrl =
+    'http://127.0.0.1:8000/api/v1/vegetable_manager/vegetable_manager';
   const vegetableId = selectedNameOption.value;
   const putUrl = `${baseUrl}/${vegetableId}`;
 
@@ -121,21 +130,38 @@ function clearFormHarvest() {
 // Function to fetch vegetable names for harvest from the API
 function fetchVegetableNamesForHarvest() {
   // Replace with the URL of your API endpoint that provides vegetable names for harvest
-  const apiUrl = 'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_manager';
+  const apiUrl = 'http://127.0.0.1:8000/api/v1/vegetable_manager/';
 
   // Fetch garden area data first
-  fetch('https://walrus-app-jbfmz.ondigitalocean.app/areas')
+  fetch('http://127.0.0.1:8000/api/v1/area', {
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      Accept: 'application/json',
+    },
+  })
     .then((areaResponse) => areaResponse.json())
     .then((areaData) => {
       // Get the select element for vegetable names for harvest
       const nameSelect = document.querySelector('#name_harvest');
 
       // Fetch vegetable data
-      fetch(apiUrl)
+      fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          Accept: 'application/json',
+        },
+      })
         .then((vegetableResponse) => vegetableResponse.json())
         .then((vegetableData) => {
           // Filter the vegetables that are ready to harvest (planted)
-          const vegetablesToHarvest = vegetableData.filter((vegetable) => (vegetable.planted === true || vegetable.sowed === true) && vegetable.area_id !== "64722a61-55a2-47ef-af3c-f05634b2b862" && vegetable.remove_date === null);
+          const vegetablesToHarvest = vegetableData.filter(
+            (vegetable) =>
+              (vegetable.planted === true || vegetable.sowed === true) &&
+              vegetable.area_id !== '3e01d962-43c3-42fe-8dd8-f1cca6f4977f' &&
+              vegetable.remove_date === null
+          );
 
           // Loop through the filtered vegetable names data for harvest and create options
           vegetablesToHarvest.forEach((vegetable) => {
@@ -151,7 +177,9 @@ function fetchVegetableNamesForHarvest() {
             }
 
             // Find the garden area name based on the area_id
-            const gardenArea = areaData.find((area) => area.id === vegetable.area_id);
+            const gardenArea = areaData.find(
+              (area) => area.area_id === vegetable.area_id
+            );
 
             if (gardenArea) {
               option.textContent += ` (${gardenArea.name})`; // Set the text content to the vegetable name
