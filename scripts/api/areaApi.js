@@ -24,7 +24,7 @@ export async function getAreas() {
  * @returns {Promise<{ok: boolean, data: Object|null}>} A promise that resolves to an object containing the success status and data.
  * @throws {Error} Throws an error if there is an issue creating the area.
  */
-export async function createArea(data) {
+export async function createAreaApi(data) {
   // Make a POST request to create a new area
   const response = await fetch(`${BASE_URL}/area/create`, {
     method: 'POST',

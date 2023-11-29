@@ -8,21 +8,6 @@ nav {
   border-radius: 20px;
   overflow: visible;
 }
-@media only screen and (max-width: 950px) {
-  nav {
-    display: none;
-    width: 90%;
-    height: auto;
-    padding: 10px;
-  }
-}
-@media only screen and (min-width: 950px) and (max-width: 1400px) {
-  nav {
-    width: 400px;
-    height: auto;
-    padding: 10px;
-  }
-}
 
 nav ul {
   display: flex;

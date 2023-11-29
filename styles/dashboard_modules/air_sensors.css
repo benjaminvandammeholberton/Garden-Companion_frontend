@@ -6,16 +6,6 @@
   grid-row: span 1;
   border-radius: 5px 5px 5px 5px;
 }
-@media only screen and (max-width: 1400px) {
-  .dashbord__module--air-sensors {
-    border-radius: 0px 100px 0px 0px;
-  }
-}
-@media only screen and (max-width: 950px) {
-  .dashbord__module--air-sensors {
-    opacity: 1;
-  }
-}
 
 .dashbord__module__content--air-sensors {
   gap: 55px;

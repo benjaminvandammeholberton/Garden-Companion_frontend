@@ -1,29 +1,49 @@
-async function getVegetablesInfos() {
+// recommandations.js
+
+import { getVegetableInfo } from '../api/vegetableInfoApi.js';
+
+/**
+ * Initializes the recommendation module by fetching and displaying vegetable information.
+ */
+export async function initializeRecommandationModule() {
   try {
-    const apiUrl =
-      'https://walrus-app-jbfmz.ondigitalocean.app/vegetable_infos';
-    const response = await fetch(apiUrl);
+    // Fetch and sort vegetable information
+    const vegetables = await fetchAndSortVegetableInfo();
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
+    // Get the recommendation module container
+    const recommandationModule = document.getElementById(
+      'recommandationModule'
+    );
 
-    const data = await response.json();
-
-    // Filter the data based on date criteria
-    const currentDate = new Date();
-    let startDate;
-
-    const filteredData = data.filter((vegetable) => {
-      if (vegetable.start_indoor) {
-        startDate = new Date(vegetable.start_indoor);
-      } else {
-        startDate = new Date(vegetable.start_outdoor);
-      }
-
-      const outdoorEndDate = new Date(vegetable.end);
-      return startDate < currentDate && outdoorEndDate > currentDate;
+    // Render each vegetable in the recommendation module
+    vegetables.forEach((vegetable) => {
+      const vegetableContainer = createVegetableElement(vegetable);
+      recommandationModule.appendChild(vegetableContainer);
     });
+  } catch (error) {
+    // Handle errors during initialization
+    console.error('Error initializing recommendation module:', error.message);
+  }
+}
+
+/**
+ * Fetches vegetable information from the API, filters based on date criteria, and sorts the data.
+ * @returns {Promise<Array<Object>>} A promise that resolves to an array of sorted vegetable information.
+ * @throws {Error} Throws an error if there is an issue fetching or processing vegetable information.
+ */
+async function fetchAndSortVegetableInfo() {
+  try {
+    // Fetch vegetable information from the API
+    const data = await getVegetableInfo();
+
+    // Get the current date
+    const currentDate = new Date();
+
+    // Filter vegetable data based on date criteria
+    const filteredData = data.filter((vegetable) =>
+      isVegetableInSeason(vegetable, currentDate)
+    );
+
     // Sort the filtered data by the start date of indoor planting
     filteredData.sort(
       (a, b) => new Date(a.start_indoor) - new Date(b.start_indoor)
@@ -34,36 +54,52 @@ async function getVegetablesInfos() {
 
     return filteredData;
   } catch (error) {
-    console.error('Error fetching data:', error);
+    // Throw an error if there is an issue with fetching or processing vegetable information
+    throw new Error(
+      'Error fetching and sorting vegetable information:',
+      error.message
+    );
   }
 }
 
-async function displayVegetables() {
-  const vegetables = await getVegetablesInfos();
-  const recommandationModule = document.getElementById('recommandationModule');
-
-  vegetables.forEach((element) => {
-    const vegetableElement = createVegetableElement(element);
-    recommandationModule.appendChild(vegetableElement);
-  });
+/**
+ * Checks if a vegetable is in season based on date criteria.
+ * @param {Object} vegetable - The vegetable information.
+ * @param {Date} currentDate - The current date.
+ * @returns {boolean} True if the vegetable is in season, false otherwise.
+ */
+function isVegetableInSeason(vegetable, currentDate) {
+  const startDate = vegetable.start_indoor
+    ? new Date(vegetable.start_indoor)
+    : new Date(vegetable.start_outdoor);
+  const outdoorEndDate = new Date(vegetable.end);
+  return startDate < currentDate && outdoorEndDate > currentDate;
 }
 
+/**
+ * Creates a DOM element for a vegetable and sets its background image.
+ * @param {Object} vegetable - The vegetable information.
+ * @returns {HTMLDivElement} The created vegetable container element.
+ */
 function createVegetableElement(vegetable) {
-  const element = document.createElement('div');
-  element.className = 'recommandations-container';
+  // Create a div element for the vegetable container
+  const vegetableContainer = document.createElement('div');
+  vegetableContainer.className = 'recommandations-container';
 
+  // Create a paragraph element for the vegetable name
   const vegetableName = document.createElement('p');
   vegetableName.textContent = vegetable.name;
   vegetableName.className = 'recommandations-container__vegetable-name';
 
+  // Generate the URL for the vegetable image
   const vegetableNameWithoutSpaces = vegetable.name.replace(/\s/g, '');
   const imgUrl = `url(./styles/assets/vegetable_icons/${vegetableNameWithoutSpaces}.png)`;
 
-  element.style.backgroundImage = imgUrl;
+  // Set the background image of the vegetable container
+  vegetableContainer.style.backgroundImage = imgUrl;
 
-  element.appendChild(vegetableName);
+  // Append the vegetable name to the vegetable container
+  vegetableContainer.appendChild(vegetableName);
 
-  return element;
+  return vegetableContainer;
 }
-
-displayVegetables();

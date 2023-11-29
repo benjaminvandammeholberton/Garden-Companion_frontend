@@ -1,6 +1,6 @@
 // Function to create and render the harvest form
 function renderHarvestForm() {
-  const formContainer = document.getElementById('form-harvest'); // Assuming you want to use the same form container
+  const formContainer = document.getElementById('form-harvestForm'); // Assuming you want to use the same form container
 
   // Create the form element
   const form = document.createElement('form');

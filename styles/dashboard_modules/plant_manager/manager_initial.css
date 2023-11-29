@@ -1,0 +1,122 @@
+.dashbord__module--plant-manager {
+  grid-area: plant-manager;
+  grid-column: span 1;
+  grid-row: span 3;
+  border-radius: 100px 5px 5px 100px;
+  position: relative;
+}
+
+.dashbord__module__content--plant-manager {
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  gap: 45px;
+  height: 100%;
+}
+
+.manager {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+.manager__icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 290px;
+  gap: 45px;
+  height: auto;
+  flex-wrap: wrap;
+  padding: 20px;
+  overflow: visible;
+}
+
+.manager__icons__icon {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  transition: transform 0.3s ease;
+}
+
+.manager__icons__icon:hover::after {
+  content: attr(label);
+  display: block;
+  position: absolute;
+  top: 108%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white; /* Background color for the label */
+  padding: 4px; /* Add padding for better visibility */
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: visible;
+  z-index: 1;
+  border: 1px solid gray;
+  border-radius: 10px;
+  opacity: 0; /* Start with zero opacity */
+  transition: opacity 0.3s ease; /* Add transition for opacity */
+  font-size: 13px;
+}
+.manager__icons__icon:hover::after {
+  opacity: 1; /* Change opacity to 1 on hover */
+}
+.manager__icons__icon:not(:hover)::after {
+  opacity: 0;
+}
+.manager__icons__icon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.manager__icon-direct-sowing {
+  background-image: url(../../assets/icons/vegetable-sowing-icon4.png);
+  background-size: contain;
+}
+.manager__icon-indirect-sowing {
+  background-image: url(../../assets/icons/vegetable-sowing-icon5.png);
+  background-size: contain;
+}
+.manager__icon-planting {
+  background-image: url(../../assets/icons/vegetable-planting-icon4.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.manager__icon-harvest {
+  background-image: url(../../assets/icons/vegetable-harvest-icon.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.manager__icon-remove {
+  background-image: url(../../assets/icons/vegetable-remove-icon4.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.manager__icon-delete {
+  background-image: url(../../assets/icons/vegetable-delete-icon7.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.manager__icon-add-area {
+  background-image: url(../../assets/icons/area-add-icon6.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.manager__icon-update-area {
+  background-image: url(../../assets/icons/area-update-icon1.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.manager__icon-delete-area {
+  background-image: url(../../assets/icons/area-remove-icon3.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.manager__icon-sowing_area {
+  background-image: url(../../assets/icons/area-add-icon.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}

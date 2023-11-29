@@ -11,19 +11,25 @@
   font-family: Roboto;
   font-weight: 300;
 }
+button {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 18px;
+}
 
 body {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(123, 240, 234);
+  /* background: rgb(123, 240, 234); */
   background: linear-gradient(
     180deg,
     rgba(123, 240, 234, 1) 0%,
     rgba(193, 250, 129, 1) 67%,
     rgba(245, 193, 132, 1) 100%
   );
+  min-width: 1500px;
 }
 
 .main-container {
@@ -68,6 +74,15 @@ h2 {
   font-weight: 100;
   background-image: radial-gradient(ellipse, #0c0a12, #671f11);
   color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+h3 {
+  font-size: 20px;
+  opacity: 0.6;
+  font-weight: 300;
+  background-image: radial-gradient(ellipse, #0c0a12, #671f11);
+  color: black;
   background-clip: text;
   -webkit-background-clip: text;
 }

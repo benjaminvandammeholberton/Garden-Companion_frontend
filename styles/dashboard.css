@@ -4,22 +4,6 @@
   grid-auto-rows: 200px;
 }
 
-@media only screen and (max-width: 950px) {
-  .dashboard {
-    grid-template-columns: repeat(1, auto);
-    grid-auto-rows: 25vh;
-  }
-}
-
-@media only screen and (min-width: 950px) and (max-width: 1400px) {
-  .dashboard {
-    grid-template-columns: repeat(2, 480px);
-    gap: 15px;
-    padding: 0;
-    width: 100%;
-  }
-}
-
 .dashbord__module {
   position: relative;
   padding: 15px;
@@ -29,21 +13,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-@media only screen and (max-width: 950px) {
-  .dashbord__module {
-    border-radius: 30px;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media only screen and (min-width: 950px) and (max-width: 1400px) {
-  .dashbord__module {
-    width: 100%;
-  }
 }
 
 .dashbord__module__title {

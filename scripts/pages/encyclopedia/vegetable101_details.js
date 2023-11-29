@@ -35,7 +35,7 @@ export function initializeVegetableInfoDetails() {
         vegetableItem.getAttribute('cold_resistance');
       const vegetableWater_needs = vegetableItem.getAttribute('water_needs');
       const vegetableSpacing_on_raw =
-        vegetableItem.getAttribute('spacing_on_raw');
+        vegetableItem.getAttribute('spacing_on_row');
       const vegetableSoil_temperature =
         vegetableItem.getAttribute('soil_temperature');
 

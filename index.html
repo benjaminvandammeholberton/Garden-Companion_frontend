@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8">
@@ -18,7 +18,8 @@
   <link rel="stylesheet" href="styles/production.css" />
   <link rel="stylesheet" href="styles/settings.css" />
 
-  <link rel="stylesheet" href="styles/dashboard_modules/plant_manager/plant_manager.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/plant_manager/manager_initial.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/plant_manager/manager_form.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/air_sensors.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/forecast.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/recommandations.css" />
@@ -92,65 +93,77 @@
     <main class="dashboard" id="container_dashboard">
 
       <div class="dashbord__module dashbord__module--plant-manager">
-        <h2 class="dashbord__module__title" id="plant_manager_title">Manager</h2>
-        <div class="dashbord__module__content dashbord__module__content--plant-manager">
-
-          <!----------------------icon container ------------------------------>
-          <div class="icons_container">
-            <div class="dont_move">
-              <div class="icon_garden icon_plant_manager" id="plant-icon"></div>
-              <p>Planter</p>
+        <h2 class="dashbord__module__title" id="plant_manager_title">Gestion du Potager</h2>
+        <div class="dashbord__module__content dashbord__module__content--plant-manager" id="managerContent">
+          <div class="notification" id="managerNotification">Notifications</div>
+          <div class="manager">
+            <h3>Semis et Plants</h3>
+            <div class="manager__icons manager__icons--vegetable">
+              <div label="Semi en place" class="manager__icons__icon manager__icon-direct-sowing"
+                id="directSowVegetable"></div>
+              <div label="Semi en pot" class="manager__icons__icon manager__icon-indirect-sowing"
+                id="indirectSowVegetable">
+              </div>
+              <div label="Planter" class="manager__icons__icon manager__icon-planting" id="plantVegetable"></div>
+              <div label="Récolter" class="manager__icons__icon manager__icon-harvest" id="harvestVegetable"></div>
+              <div label="Retirer" class="manager__icons__icon manager__icon-remove" id="removeVegetable">
+              </div>
+              <div label="Modifier" class="manager__icons__icon manager__icon-delete" id="updateSowVegetable">
+              </div>
             </div>
           </div>
-          <div class="icons_container">
-            <div class="dont_move">
-              <div class="icon_garden icon_sow_manager" id="sow-icon"></div>
-              <p>Semer</p>
-            </div>
-          </div>
-          <div class="icons_container">
-            <div class="dont_move">
-              <div class="icon_garden icon_harvest_manager" id="harvest-icon"></div>
-              <p>Récolter</p>
-            </div>
-          </div>
-          <div class="icons_container">
-            <div class="dont_move">
-              <div class="icon_garden icon_create_manager" id="create-icon"></div>
-              <p>Parcelles</p>
-            </div>
-          </div>
-          <div class="icons_container">
-            <div class="dont_move">
-              <div class="icon_garden icon_remove_manager" id="remove-icon"></div>
-              <p>Retirer</p>
-            </div>
-          </div>
-          <div class="icons_container">
-            <div class="dont_move">
-              <div class="icon_garden icon_delete_manager" id="delete-icon"></div>
-              <p>Supprimer</p>
+          <div class="manager">
+            <h3>Zones de Culture</h3>
+            <div class="manager__icons">
+              <div label="Ajouter" class="manager__icons__icon manager__icon-add-area" id="createArea"></div>
+              <div label="Modifier" class="manager__icons__icon manager__icon-update-area" id="updateArea"></div>
+              <div label="Supprimer" class="manager__icons__icon manager__icon-delete-area" id="deleteArea"></div>
             </div>
           </div>
         </div>
-        <!---------------------- Form fields -------------------------------->
-        <div id="form-plant"></div>
-        <div id="form-sow"></div>
-        <div id="form-harvest"></div>
-        <div id="form-add-garden-area"></div>
-        <div id="form-remove"></div>
-        <div id="form-delete"></div>
+        <!-- Forms -->
+        <div id="directSowingVegetableForm" class="form-container">
+          <!-- Add your form fields for direct sowing here -->
+          Direct Sowing Form
+        </div>
+        <div id="indirectSowingVegetableForm" class="form-container">
+          <!-- Add your form fields for indirect sowing here -->
+          Indirect Sowing Form
+        </div>
+        <div id="plantingVegetableForm" class="form-container">
+          <!-- Add your form fields for planting here -->
+          Planting Form
+        </div>
+        <div id="harvestVegetableForm" class="form-container">
+          <!-- Add your form fields for harvesting here -->
+          Harvest Form
+        </div>
+        <div id="removeVegetableForm" class="form-container">
+          <!-- Add your form fields for removing here -->
+          Remove Form
+        </div>
+        <div id="updateVegetableForm" class="form-container">
+          <!-- Add your form fields for deleting here -->
+          Update Form
+        </div>
+        <div id="createAreaForm" class="form-container">
+        </div>
+        <div id="updateAreaForm" class="form-container">
+        </div>
+        <div id="deleteAreaForm" class="form-container">
+        </div>
+
       </div>
 
       <div class="dashbord__module dashbord__module--todolist">
-        <h2 class="dashbord__module__title">Todo</h2>
+        <h2 class="dashbord__module__title">Liste des Tâches</h2>
         <div class="add-todo-button" id="addTask"></div>
         <div class="dashbord__module__content dashbord__module__content--todolist" id="toDoContainer">
         </div>
       </div>
 
       <div class="dashbord__module dashbord__module--recommandations">
-        <h2 class="dashbord__module__title">Semis</h2>
+        <h2 class="dashbord__module__title">Conseils de Semis</h2>
         <div id="recommandationModule" class="dashbord__module__content dashbord__module__content--recommandations">
         </div>
       </div>
@@ -172,7 +185,7 @@
       </div>
 
       <div class="dashbord__module dashbord__module--forecast">
-        <h2 class="dashbord__module__title">Météo</h2>
+        <h2 class="dashbord__module__title">Prévisions Météo</h2>
         <div class="dashbord__module__content dashbord__module__content--forecast">
           <!--------- forecast.js to integrate forecast_container --------->
         </div>
@@ -283,7 +296,7 @@
 
     <main id="container_settings">
       <div class="settings-container">
-        <h2 class="settings-container__title">Paramètres</h2>
+        <h2 class="settings-container__title">Préférences</h2>
         <div class="settings-container__content" id="settingsContent">
 
         </div>
@@ -299,14 +312,7 @@
 
   </aside>
 
-  <script type="module" src="./scripts/modules/managerModule/script_formulaire.js"></script>
-  <script type="module" src="./scripts/modules/managerModule/form_plant.js"></script>
-  <script type="module" src="./scripts/modules/managerModule/form_add_and_update.js"></script>
-  <script type="module" src="./scripts/modules/managerModule/form_delete.js"></script>
-  <script type="module" src="./scripts/modules/managerModule/form_harvest.js"></script>
-  <script type="module" src="./scripts/modules/managerModule/form_remove.js"></script>
-  <script type="module" src="./scripts/modules/managerModule/form_sow.js"></script>
-  <script type="module" src="./scripts/pages/productionPage.js"></script>
+  <!-- <script type="module" src="./scripts/pages/productionPage.js"></script> -->
 
 </body>
 
