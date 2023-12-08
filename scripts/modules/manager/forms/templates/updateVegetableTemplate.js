@@ -2,38 +2,32 @@ export function generateUpdateVegetableFormContent() {
   return `
 <div class="form-container__back-button" id="backFormButton"></div>
 <div class="form-container__icon form-container__icon--update"></div>
-<h3 class="form-container__title">Oups, je me suis trompé...</h3>
+<h3 class="form-container__title">Supprimer</h3>
 <form class="form-container__form">
 
   <div class="form-container__form__field">
-    <label class="form-container__form____field__label" for="areaName">Nom du nouvel espace</label>
-    <input class="form-container__form__field__input form-container__form__field__input--text" type="text" id="areaName" name="name" maxlength="24"
-      required>
+    <label class="form-container__form____field__label">Sélectionnez une zone de culture</label>
+    <select class="form-container__form__field__select" type="text" id="updateVegetableAreaSelect" name="area">
+    </select>
   </div>
 
   <div class="form-container__form__field">
-    <label class="form-container__form____field__label" for="areaSurface">Surface (en m²)</label>
-    <input class="form-container__form__field__input form-container__form__field__input--number" type="number" id="areaUpdateSurface" name="surface"
-      step="0.01" min="0" max="10000" required value=data.surface>
+    <label class="form-container__form____field__label"">Sélectionnez le(s) plant(s)</label>
+    <select class="form-container__form__field__select" type="text" id="updateVegetableSelect" name="vegetable_manager_id">
+    </select>
   </div>
 
   <div class="form-container__form__field">
-    <label class="form-container__form____field__label">Souhaitez-vous réserver cet espace pour vos semis en pot ?</label>
-    <div class="row-input">
-      <div class="form-container__form__field__radio">
-        <input type="radio" id="reservationCreateAreaYes" name="sowing_area" value="true" required>
-        <label for="reservationCreateAreaYes">Oui</label>
-      </div>
-      <div class="form-container__form__field__radio">
-        <input type="radio" id="reservationCreateAreaNo" name="sowing_area" value="false" required>
-        <label for="reservationCreateAreaNo">Non</label>
-      </div>
-    </div>
+    <label class="form-container__form____field__label">Nombre de plants à supprimer</label>
+    <input class="form-container__form__field__input form-container__form__field__input--number" id="updateQantity" type="number" name="quantity"
+  step="1" min="0" max="10000" required>
   </div>
 
-  <div class="form-container__form__field">
-    <button class="form-container__form__field__button form-container__form__field__button--create" type="submit">Créer</button>
+  <div class="form-container__form__field--updateVegetableSubmit">
+    <button class="form-container__form__field__button form-container__form__field__button--delete" type="submit">Supprimer</button>
   </div>
+
+  
 </form>
 `;
 }

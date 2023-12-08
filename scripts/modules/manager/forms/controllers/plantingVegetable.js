@@ -9,10 +9,10 @@ import * as utilsForm from '../utilsForm.js';
 
 export async function plantingVegetableForm(formId, form) {
   // Connect the back button
-  const backButton = document.getElementById('backFormButton');
+  const backButton = document.getElementById('backFormButtonPlanting');
   backButton.addEventListener('click', () => {
+    document.getElementById('plantingVegetableForm').style.display = 'none';
     document.getElementById('managerContent').style.display = 'flex';
-    document.getElementById(formId).style.display = 'none';
   });
 
   const newPlantedVegetable = document.getElementById('newOrigin');
@@ -27,7 +27,7 @@ function newPlantedVegetableController(newPlantedVegetable, form, formId) {
     const vegetableNames = await vegetableInfoApi.getVegetableInfo();
     vegetableNames.sort((a, b) => a.name.localeCompare(b.name));
     const vegetableNameOptions = document.getElementById(
-      'vegetableDirectSowingNameSelect'
+      'vegetableDirectPlantingNameSelect'
     );
     vegetableNames.forEach(function (vegetable) {
       const newVegetableOption = document.createElement('option');
@@ -40,7 +40,7 @@ function newPlantedVegetableController(newPlantedVegetable, form, formId) {
     // Sort the areas array by name
     nonSowingAreas.sort((a, b) => a.name.localeCompare(b.name));
     const areaNameOptions = document.getElementById(
-      'vegetableDirectSowingAreaSelect'
+      'vegetableDirectPlantingAreaSelect'
     );
     nonSowingAreas.forEach(function (area) {
       const newAreaOption = document.createElement('option');
@@ -79,11 +79,11 @@ function newPlantedVegetableController(newPlantedVegetable, form, formId) {
 
 function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
   let previousQuantity = 0;
+  let name = '';
   sowedPlantedVegetable.addEventListener('click', async () => {
     form.innerHTML = generatePlantingSowedVegetableFormContent();
     const vegetableSowedSelect = document.getElementById('vegetableSowed');
     const allVegetables = await vegetableManagerApi.getVegetableManager();
-    // const vegetableSowedSelect = document.getElementById('vegetableSowed');
     const quantity = document.getElementById('plantingSowingQuantity');
 
     // Fetch sowingAreas and put them in select
@@ -99,36 +99,45 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
       newAreaOption.text = area.name;
       areaNameOptions.add(newAreaOption);
     });
+
     // Put the vegetables corresponding to the first sowing area
+
     const defaultVegetableList = allVegetables.filter(
       (vegetable) => vegetable.area.area_id === sowingAreas[0].area_id
     );
+
     defaultVegetableList.forEach(function (vegetable) {
       const newVegetableOption = document.createElement('option');
       newVegetableOption.value = vegetable.vegetable_manager_id;
       newVegetableOption.text = vegetable.name;
       vegetableSowedSelect.add(newVegetableOption);
+      const defaultQuantity = defaultVegetableList[0].quantity;
+      previousQuantity = defaultQuantity;
+      quantity.value = defaultQuantity;
+      name = defaultVegetableList[0].name;
     });
-
-    const defaultQuantity = defaultVegetableList[0].quantity;
-    previousQuantity = defaultQuantity;
-    quantity.value = defaultQuantity;
 
     // Add an event listener for the 'change' event on the 'sowingAreas' select element
     areaNameOptions.addEventListener('change', async () => {
       // Clear the options in the 'vegetableSowed' select element
       vegetableSowedSelect.innerHTML = '';
+      quantity.value = '';
       // Get the selected area ID
       const selectedAreaId = areaNameOptions.value;
       const VegetableList = allVegetables.filter(
         (vegetable) => vegetable.area.area_id === selectedAreaId
       );
-      VegetableList.forEach(function (vegetable) {
-        const newVegetableOption = document.createElement('option');
-        newVegetableOption.value = vegetable.vegetable_manager_id;
-        newVegetableOption.text = vegetable.name;
-        vegetableSowedSelect.add(newVegetableOption);
-      });
+      if (VegetableList) {
+        VegetableList.forEach(function (vegetable) {
+          const newVegetableOption = document.createElement('option');
+          newVegetableOption.value = vegetable.vegetable_manager_id;
+          newVegetableOption.text = vegetable.name;
+          vegetableSowedSelect.add(newVegetableOption);
+          const selectedQuantity = vegetable.quantity;
+          previousQuantity = selectedQuantity;
+          quantity.value = selectedQuantity;
+        });
+      }
     });
 
     const plantationAreas = areas.filter((area) => area.sowing_area === false);
@@ -152,6 +161,7 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
       if (selectedVegetable) {
         quantity.value = selectedVegetable.quantity || '';
         previousQuantity = selectedVegetable.quantity;
+        name = selectedVegetable.name;
       }
     });
 
@@ -161,6 +171,7 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
         const today = new Date();
         const todayFormatted = today.toISOString().split('T')[0]; // Format as 'YYYY-MM-DD'
         const data = utilsForm.getFormValues(formId);
+        data['name'] = name;
         data['sowed'] = true;
         data['planted'] = true;
         data['planting_date'] =
@@ -169,21 +180,24 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
         // => we do a put and change the area, and planting date:
         if (data['quantity'] >= previousQuantity) {
           data['quantity'] = previousQuantity;
-          console.log(data);
-          const response = await vegetableManagerApi.updateVegetableManagerById(
+          await vegetableManagerApi.updateVegetableManagerById(
             data['vegetable_manager_id'],
             data
           );
-          console.log(data);
-          // console.log('Data is:');
-          // console.log(data);
-          // console.log('Response is:');
-          // console.log(response);
         } else {
           // Case if the quantity submited is less than the vegetable quantity:
           // we do a PUT to change the quantity of the vegetable and we POST a new
           // vegetable with the quantity submited, the new area, planting date
-          // console.log(data);
+          // console.log('vegetable created :');
+          await vegetableManagerApi.createVegetableManager(data);
+          data['quantity'] = previousQuantity - data['quantity'];
+          data['area'] = data['origin_area'];
+          data['planted'] = false;
+          data['planting_date'] = null;
+          await vegetableManagerApi.updateVegetableManagerById(
+            data['vegetable_manager_id'],
+            data
+          );
         }
         document.getElementById('managerContent').style.display = 'flex';
         form.style.display = 'none';

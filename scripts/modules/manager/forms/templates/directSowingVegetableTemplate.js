@@ -36,7 +36,7 @@ export function generateDirectSowingVegetableFormContent() {
 
 
   <div class="form-container__form__field">
-    <button class="form-container__form__field__button form-container__form__field__button--create" type="submit">Créer</button>
+    <button class="form-container__form__field__button form-container__form__field__button--create" type="submit">Semer</button>
   </div>
 </form>
 `;

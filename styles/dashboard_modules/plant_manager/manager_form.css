@@ -191,3 +191,10 @@
 .form-container__form__field__checkbox:focus {
   border-color: green;
 }
+
+.row-field {
+  display: flex;
+}
+
+.form-container__form__field--updateVegetableSubmit {
+}

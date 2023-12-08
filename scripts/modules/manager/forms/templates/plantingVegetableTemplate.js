@@ -1,6 +1,6 @@
 export function generatePlantingVegetableFormContent() {
   return `
-  <div class="form-container__back-button" id="backFormButton"></div>
+  <div class="form-container__back-button" id="backFormButtonPlanting"></div>
   <div class="form-container__icon form-container__icon--planting"></div>
   <h3 class="form-container__title">Planter</h3>
   <form class="form-container__form">
@@ -30,8 +30,8 @@ export function generatePlantingNewVegetableFormContent() {
   <form class="form-container__form">
   
   <div class="form-container__form__field">
-  <label class="form-container__form____field__label" for="areaName">Que voulez-vous planter ?*</label>
-  <select class="form-container__form__field__select" type="text" id="vegetableDirectSowingNameSelect" name="name">
+  <label class="form-container__form____field__label">Que voulez-vous planter ?*</label>
+  <select class="form-container__form__field__select" type="text" id="vegetableDirectPlantingNameSelect" name="name">
   </select>
   </div>
   
@@ -49,7 +49,7 @@ export function generatePlantingNewVegetableFormContent() {
   
   <div class="form-container__form__field">
   <label class="form-container__form____field__label" for="vegetableName">Choisissez la zone de culture</label>
-  <select class="form-container__form__field__select" type="text" id="vegetableDirectSowingAreaSelect" name="area">
+  <select class="form-container__form__field__select" type="text" id="vegetableDirectPlantingAreaSelect" name="area">
   </select>
   </div>
   
@@ -60,7 +60,7 @@ export function generatePlantingNewVegetableFormContent() {
   
   
   <div class="form-container__form__field">
-  <button class="form-container__form__field__button form-container__form__field__button--create" type="submit">Créer</button>
+  <button class="form-container__form__field__button form-container__form__field__button--create" type="submit">Planter</button>
   </div>
   </form>`;
 }
@@ -74,7 +74,7 @@ export function generatePlantingSowedVegetableFormContent() {
   
   <div class="form-container__form__field">
   <label class="form-container__form____field__label" for="areaName">Sélectionnez l'espace de semis*</label>
-  <select class="form-container__form__field__select" type="text" id="sowingAreas" name="area">
+  <select class="form-container__form__field__select" type="text" id="sowingAreas" name="origin_area">
   </select>
   </div>
 
@@ -103,7 +103,7 @@ export function generatePlantingSowedVegetableFormContent() {
   
   
   <div class="form-container__form__field">
-  <button class="form-container__form__field__button form-container__form__field__button--create" type="submit">Créer</button>
+  <button class="form-container__form__field__button form-container__form__field__button--create" type="submit">Planter</button>
   </div>
   </form>`;
 }

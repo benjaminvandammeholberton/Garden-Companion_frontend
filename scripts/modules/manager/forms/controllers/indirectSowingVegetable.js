@@ -22,7 +22,7 @@ export async function indirectSowingVegetableForm(formId, form) {
   // Sort the areas array by name
   nonSowingAreas.sort((a, b) => a.name.localeCompare(b.name));
   const areaNameOptions = document.getElementById(
-    'vegetableDirectSowingAreaSelect'
+    'vegetableIndirectSowingAreaSelect'
   );
   nonSowingAreas.forEach(function (area) {
     // Populate the dropdown with gardening area names
