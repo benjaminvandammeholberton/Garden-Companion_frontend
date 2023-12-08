@@ -12,6 +12,7 @@ export function assistantModuleSizeChanger() {
   const recommandationsModule = document.querySelector(
     '.dashbord__module--recommandations'
   );
+  const assistantConversationContainer = document.getElementById('chat-output');
   let isAssistantToggled = false; // Variable to track the grid state
 
   function showChatContainer() {
@@ -19,9 +20,7 @@ export function assistantModuleSizeChanger() {
   }
 
   // Function to hide the chat container
-  function hideChatContainer() {
-    chatOutput.style.display = 'none';
-  }
+  function hideChatContainer() {}
 
   // Add a click event listener to the element
   expandElement.addEventListener('click', (event) => {
@@ -33,6 +32,7 @@ export function assistantModuleSizeChanger() {
       toDoModule.style.display = '';
       assistantModule.style.borderRadius = '';
       recommandationsModule.style.display = '';
+      assistantConversationContainer.style.height = '70%';
       hideChatContainer();
       // placeholderMessage.style.display = 'block';
     } else {
@@ -42,6 +42,7 @@ export function assistantModuleSizeChanger() {
       forecastModule.style.display = 'none';
       recommandationsModule.style.display = 'none';
       toDoModule.style.display = 'none';
+      assistantConversationContainer.style.height = '80%';
       showChatContainer();
       // placeholderMessage.style.display = 'none';
     }

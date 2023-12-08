@@ -169,17 +169,22 @@
       </div>
 
       <div class="dashbord__module dashbord__module--assistant">
-        <h2 class="dashbord__module__title dashbord__module__title--assistant" id="assistant_title">Assistant
+        <h2 class="dashbord__module__title" id="assistant_title">Assistant
         </h2>
 
-        <img src="./styles/assets/enlarge.png" id="assistant_button">
+        <img src="./styles/assets/enlarge.png" class="assistant__resize-button" id="assistant_button">
 
         <div class="dashbord__module__content dashbord__module__content--assistant">
-          <div class="chat-container">
-            <p id="placeholder-message">Hey gardener ! How can I help you ?</p>
-            <div class="chat-output" id="chat-output"></div>
-            <input type="text" id="user-input" placeholder="Type your question here...">
-            <button id="submit-button">🥕</button>
+          <div class="assistant__conversation-container">
+
+            <div class="chat-output" id="chat-output">
+              <p class="assistant__placeholder-message">Salut jardinier ! Comment puis-je t'aider ?</p>
+            </div>
+            <form class='assistant__input-container'>
+              <input type="text" id="user-input" maxlength="50" minlength="10" placeholder="Posez votre question ici "
+                required>
+              <button type="submit" id="assistantSubmit"></button>
+            </form>
           </div>
         </div>
       </div>
@@ -312,7 +317,8 @@
 
   </aside>
 
-  <!-- <script type="module" src="./scripts/pages/productionPage.js"></script> -->
+  <script type="module" src="./scripts/pages/productionPage.js"></script>
+  <script type="module" src="./scripts/modules/assistant.js"></script>
 
 </body>
 
