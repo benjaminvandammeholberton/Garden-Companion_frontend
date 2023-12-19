@@ -60,10 +60,17 @@ export async function harvestVegetableForm(formId, form) {
     try {
       // Get form values using utility function
       const data = utilsForm.getFormValues(formId);
+
+      // Fetch information about the vegetable selected
       const vegetableHarvested =
         await vegetableManagerApi.getVegetableManagerById(
           data['vegetable_manager_id']
         );
+
+      // Set the harvest date with the today's date if the user didn't set the date input
+      // and if the vegetable has not been harvested yet
+      // if the vegetable has been harvested before, the harvested date will not change
+      // from vegetable information
       const today = new Date();
       const todayFormatted = today.toISOString().split('T')[0]; // Format as 'YYYY-MM-DD'
       if (vegetableHarvested.harvest_date === null) {
@@ -73,11 +80,18 @@ export async function harvestVegetableForm(formId, form) {
       } else {
         data['harvest_date'] = vegetableHarvested.harvest_date;
       }
+
+      // Add the quantity harvested enter by the user with the actual harvested quantity
+      // of the vegetable selected
+      data['harvest_quantity'] = parseInt(data['harvest_quantity']);
+      data['harvest_quantity'] += vegetableHarvested.harvest_quantity;
+
       // Call the API to update the vegetable
       await vegetableManagerApi.updateVegetableManagerById(
         data['vegetable_manager_id'],
         data
       );
+
       // Show success notification and update display
       document.getElementById('managerContent').style.display = 'flex';
       form.style.display = 'none';

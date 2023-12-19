@@ -3,7 +3,7 @@ export function changePage() {
     'dashboard',
     'vegetable101',
     'production',
-    'charts',
+    // 'charts',
     'settings',
   ];
 

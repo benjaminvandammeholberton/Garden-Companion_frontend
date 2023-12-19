@@ -56,10 +56,8 @@ nav .icon_settings {
 }
 
 .icon-nav:hover {
-  border-bottom: 4px solid #131212;
-  border-right: 3px solid #131212;
   cursor: pointer;
-  transition: border 0.2s ease;
+  transition: 0.2s ease;
 }
 
 .icon-nav::after {
@@ -68,9 +66,9 @@ nav .icon_settings {
   position: absolute;
   left: 0px;
   background-color: white;
-  padding: 4px;
+  padding: 2px 4px;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 5px;
   z-index: -1;
   cursor: text;
   opacity: 0;

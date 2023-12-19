@@ -11,6 +11,14 @@
   font-family: Roboto;
   font-weight: 300;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: lightblue;
+  border-radius: 100%;
+}
 button {
   font-family: Roboto;
   font-weight: 300;
@@ -124,12 +132,13 @@ h3 {
   left: 50%;
   transform: translateX(-50%);
   background-color: white; /* Background color for the label */
-  padding: 4px; /* Add padding for better visibility */
+  padding: 2px 4px; /* Add padding for better visibility */
   white-space: nowrap; /* Prevent line breaks */
   overflow: visible;
   z-index: 1;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 5px;
+  font-size: 15px;
   opacity: 0; /* Start with zero opacity */
   transition: opacity 0.3s ease; /* Add transition for opacity */
 }

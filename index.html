@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="styles/aside.css" />
   <link rel="stylesheet" href="styles/dashboard.css" />
   <link rel="stylesheet" href="styles/vegetable101.css" />
-  <link rel="stylesheet" href="styles/charts.css" />
+  <!-- <link rel="stylesheet" href="styles/charts.css" /> -->
   <link rel="stylesheet" href="styles/production.css" />
   <link rel="stylesheet" href="styles/settings.css" />
 
@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="styles/dashboard_modules/air_sensors.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/forecast.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/recommandations.css" />
-  <link rel="stylesheet" href="styles/dashboard_modules/todoModule.css" />
+  <link rel="stylesheet" href="styles/dashboard_modules/to-do-list.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/automation.css" />
   <link rel="stylesheet" href="styles/dashboard_modules/assistant.css" />
 
@@ -72,7 +72,7 @@
     <ul>
       <li id="dashboard_page" class="icon-nav icon_dashboard" data-label="Dashboard"></li>
       <li id="production_page" class="icon-nav icon_production" data-label="Production"></li>
-      <li id="charts_page" class="icon-nav icon_chart" data-label="Graphiques"></li>
+      <!-- <li id="charts_page" class="icon-nav icon_chart" data-label="Graphiques"></li> -->
       <li id="vegetable101_page" class="icon-nav icon_vegetable101" data-label="Guide"></li>
       <li id="settings_page" class="icon-nav icon_settings" data-label="Préférences"></li>
     </ul>
@@ -106,9 +106,9 @@
               </div>
               <div label="Planter" class="manager__icons__icon manager__icon-planting" id="plantVegetable"></div>
               <div label="Récolter" class="manager__icons__icon manager__icon-harvest" id="harvestVegetable"></div>
-              <div label="Retirer" class="manager__icons__icon manager__icon-remove" id="removeVegetable">
+              <div label="Fin de culture" class="manager__icons__icon manager__icon-remove" id="removeVegetable">
               </div>
-              <div label="Modifier" class="manager__icons__icon manager__icon-delete" id="updateSowVegetable">
+              <div label="Supprimer" class="manager__icons__icon manager__icon-delete" id="updateSowVegetable">
               </div>
             </div>
           </div>
@@ -157,13 +157,13 @@
 
       <div class="dashbord__module dashbord__module--todolist">
         <h2 class="dashbord__module__title">Liste des Tâches</h2>
-        <div class="add-todo-button" id="addTask"></div>
+        <div class="add-todo-button" id="addTask" data-label="Ajouter"></div>
         <div class="dashbord__module__content dashbord__module__content--todolist" id="toDoContainer">
         </div>
       </div>
 
       <div class="dashbord__module dashbord__module--recommandations">
-        <h2 class="dashbord__module__title">Conseils de Semis</h2>
+        <h2 class="dashbord__module__title">Semis du moment</h2>
         <div id="recommandationModule" class="dashbord__module__content dashbord__module__content--recommandations">
         </div>
       </div>
@@ -172,7 +172,8 @@
         <h2 class="dashbord__module__title" id="assistant_title">Assistant
         </h2>
 
-        <img src="./styles/assets/enlarge.png" class="assistant__resize-button" id="assistant_button">
+        <div class="assistant__resize-button" id="assistant_button" data-label="Redimensionner">
+        </div>
 
         <div class="dashbord__module__content dashbord__module__content--assistant">
           <div class="assistant__conversation-container">
@@ -191,75 +192,14 @@
 
       <div class="dashbord__module dashbord__module--forecast">
         <h2 class="dashbord__module__title">Prévisions Météo</h2>
-        <div class="dashbord__module__content dashbord__module__content--forecast">
+        <div class="dashbord__module__content dashbord__module__content--forecast" id="forecastModule">
           <!--------- forecast.js to integrate forecast_container --------->
         </div>
       </div>
 
-      <div class="dashbord__module dashbord__module--air-sensors">
-        <!-- <h2 class="dashbord__module__title" id="plantManagerTitle">Air Sensors</h2>
-            <div class="dashbord__module__content dashbord__module__content--air-sensors">
-              <div class="air-sensors-container">
-                <div class="air-sensors-container__icon air-sensors-container__icon--temperature"></div>
-                <p class="air-sensors-container__value" id="temperatureSensorValue"></p>
-              </div>
-              <div class="air-sensors-container">
-                <div class="air-sensors-container__icon air-sensors-container__icon--humidity"></div>
-                <p class="air-sensors-container__value" id="humiditySensorValue"></p>
-              </div>
-              <div class="air-sensors-container">
-                <div class="air-sensors-container__icon air-sensors-container__icon--luminosity"></div>
-                <p class="air-sensors-container__value d=" luminositySensorValue">8/10</p>
-              </div>
-            </div> -->
-      </div>
-
-
-
-
-      <div class="dashbord__module dashbord__module--automation">
-        <!-- <h2 class="dashbord__module__title">Automation</h2>
-            <div class="dashbord__module__content dashbord__module__content--automation">
-              <div class="automation-container">
-                <p class="automation-container__plug-name">1</p>
-                <div class="automation-container__icon automation-container__icon--watering"></div>
-                <input list="timer" class="automation-container__form" id="smartPlug1" placeholder="minutes">
-                <datalist id="timer">
-                  <option value="15">
-                  <option value="30">
-                  <option value="60">
-                  <option value="90">
-                </datalist>
-              </div>
-              <div class="automation-container">
-                <p class="automation-container__plug-name">2</p>
-                <div class="automation-container__icon automation-container__icon--watering"></div>
-                <input list="timer" class="automation-container__form" id="smartPlug2" placeholder="minutes">
-                <datalist id="timer">
-                  <option value="15">
-                  <option value="30">
-                  <option value="60">
-                  <option value="90">
-                </datalist>
-              </div>
-              <div class="automation-container">
-                <p class="automation-container__plug-name">3</p>
-                <div class="automation-container__icon automation-container__icon--watering"></div>
-                <input list="timer" class="automation-container__form" id="smartPlug3" placeholder="minutes">
-                <datalist id="timer">
-                  <option value="15">
-                  <option value="30">
-                  <option value="60">
-                  <option value="90">
-                </datalist>
-              </div>
-              <div class="automation-container__sendButton"></div>
-            </div> -->
-      </div>
-
     </main>
 
-    <main id="container_charts">
+    <!-- <main id="container_charts">
       <div id="box_charts">
         <h2>Charts</h2>
         <form action="" id="chartSubmit">
@@ -275,7 +215,7 @@
         </form>
         <canvas id="chart"></canvas>
       </div>
-    </main>
+    </main> -->
 
     <main id="container_production">
       <div class="production-container">
@@ -309,7 +249,7 @@
     </main>
 
     <footer>
-      <p>&copy; 2023 Garden Companion - Tous droits réservés</p>
+      <p>&copy; 2024 Garden Companion - Tous droits réservés</p>
     </footer>
   </div>
 
@@ -319,6 +259,7 @@
 
   <script type="module" src="./scripts/pages/productionPage.js"></script>
   <script type="module" src="./scripts/modules/assistant.js"></script>
+  <script type="module" src="./scripts/modules/forecast.js"></script>
 
 </body>
 

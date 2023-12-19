@@ -22,7 +22,6 @@ function addAssistantMessage(message) {
 
 async function sendQuestionToBackend() {
   const userQuestion = userInput.value;
-  console.log(userQuestion);
   addUserMessage(userQuestion);
 
   // Display animated "..." to indicate that the assistant is generating a response
@@ -39,9 +38,9 @@ async function sendQuestionToBackend() {
 }
 
 // Event listener for the submit button
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit', async function (event) {
   event.preventDefault();
-  sendQuestionToBackend();
+  await sendQuestionToBackend();
   // Clear the user input field
   userInput.value = '';
 });

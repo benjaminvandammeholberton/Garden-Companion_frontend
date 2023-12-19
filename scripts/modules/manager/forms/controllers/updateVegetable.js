@@ -47,9 +47,25 @@ export async function updateVegetableForm(formId, form) {
         newVegetableOption.value = vegetable.vegetable_manager_id;
         newVegetableOption.text = vegetable.name;
         vegetableSelect.add(newVegetableOption);
-        const selectedQuantity = vegetable.quantity;
+        const selectedQuantity = VegetableList[0].quantity;
         quantity.value = selectedQuantity;
       });
+    }
+  });
+
+  // Add an event listener for the 'change' event on the 'vegetableSelect' select element
+  vegetableSelect.addEventListener('change', () => {
+    // Get the selected vegetable ID
+    const selectedVegetableId = vegetableSelect.value;
+
+    // Find the selected vegetable from the allVegetables array
+    const selectedVegetable = allVegetables.find(
+      (vegetable) => vegetable.vegetable_manager_id === selectedVegetableId
+    );
+
+    // Update the quantity input field with the selected vegetable's quantity
+    if (selectedVegetable) {
+      quantity.value = selectedVegetable.quantity;
     }
   });
 

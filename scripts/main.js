@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   try {
     await checkAuthentication();
     initializeDateDisplay();
-    // initializeForecast();
+    initializeForecast();
     initializeRecommandationModule();
     changePage();
     initializeManagerModule();
