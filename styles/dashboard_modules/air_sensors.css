@@ -1,18 +1,10 @@
 /* ----------------------- AirSensor Module ----------------------- */
 .dashbord__module--air-sensors {
+  display: none;
   grid-area: air-sensors;
   grid-column: span 1;
   grid-row: span 1;
-}
-@media only screen and (max-width: 1400px) {
-  .dashbord__module--air-sensors {
-    border-radius: 0px 100px 0px 0px;
-  }
-}
-@media only screen and (max-width: 950px) {
-  .dashbord__module--air-sensors {
-    opacity: 1;
-  }
+  border-radius: 5px 5px 5px 5px;
 }
 
 .dashbord__module__content--air-sensors {
@@ -44,7 +36,7 @@
   position: absolute;
   background-color: white;
   padding: 4px;
-  top : 45px;
+  top: 45px;
   border: 1px solid black;
   border-radius: 10px;
   cursor: text;
@@ -67,7 +59,7 @@
   position: absolute;
   background-color: white;
   padding: 4px;
-  top : 45px;
+  top: 45px;
   border: 1px solid black;
   border-radius: 10px;
   cursor: text;
@@ -90,7 +82,7 @@
   position: absolute;
   background-color: white;
   padding: 4px;
-  top : 45px;
+  top: 45px;
   border: 1px solid black;
   border-radius: 10px;
   cursor: text;

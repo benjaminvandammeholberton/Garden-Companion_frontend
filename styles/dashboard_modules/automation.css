@@ -1,5 +1,6 @@
 /* ----------------------- Automation Module ----------------------- */
 .dashbord__module--automation {
+  display: none;
   grid-area: automation;
   grid-column: span 1;
   grid-row: span 1;

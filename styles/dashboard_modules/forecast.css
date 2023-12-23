@@ -1,29 +1,139 @@
-/* ----------------------- Forecast Module ----------------------- */
+/*** FORECAST MODULE ***/
 .dashbord__module--forecast {
   grid-area: forecast;
   grid-column: span 1;
   grid-row: span 1;
 }
-@media only screen and (max-width: 1400px) {
-  .dashbord__module--forecast {
-    border-radius: 5px 5px 100px 5px;
-  }
-}
-@media only screen and (max-width: 950px) {
-  .dashbord__module--forecast {
-    border-radius: 30px 30px 30px 30px;
-  }
-}
 .dashbord__module__content--forecast {
-  margin-top: 25px;
+  margin-top: 20px;
   width: 100%;
   justify-content: space-around;
+}
+
+/* Form to set the location
+============================= */
+.forecast__location-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.forecast__location-form__field {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.forecast__location-form__input {
+  width: 100px;
+  padding: 5px;
+  margin: 5px;
+  height: 35px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  border-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.forecast__location-form__select {
+  width: 200px;
+  padding: 5px;
+  margin: 5px;
+  height: 35px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  border-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url(../assets/select-arrow.png);
+  background-repeat: no-repeat;
+  background-position: right;
+}
+.forecast__location-form__postCodeButton {
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  background-image: url(../assets/search-postcode-2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+.forecast__location-form__cityButton {
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border: none;
+  background-image: url(../assets/valid-city-2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+/* Forecast container to display the forecast data
+============================= */
+.forecast__change-location-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  background-image: url(../assets/location-2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.forecast__change-location-button::after {
+  content: attr(data-label);
+  display: inline-block;
+  position: absolute;
+  top: -5px;
+  left: 30px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2px 4px;
+  border: 1.5px solid #1e81ce;
+  color: #1e81ce;
+  border-radius: 5px;
+  cursor: text;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+  font-size: 16px;
+  text-align: center;
+}
+
+.forecast__change-location-button:hover::after {
+  opacity: 1;
+}
+
+.forecast__change-location-button:hover {
+  overflow: visible;
+}
+
+.forecast__change-location-name {
+  position: absolute;
+  top: 5px;
+  right: 7px;
+  font-size: 11px;
+  font-variant: small-caps;
 }
 .forecast-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   font-size: 15px;
   margin-top: 20px;
 }
@@ -32,22 +142,22 @@
   height: 40px;
 }
 .forecast-container__rain {
-  width: 80px;
+  width: 70px;
   text-align: center;
   overflow: visible;
   background-image: url(../assets/water.png);
   background-repeat: no-repeat;
-  background-size: 17px;
+  background-size: 15px;
 }
 .forecast-container__rain span {
-  font-size: 8px; /* Set the font size to your desired value, e.g., 14 pixels */
+  font-size: 7px;
 }
 .forecast-container__day {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .forecast-container__temperature {
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .forecast-tooltip {
@@ -55,8 +165,8 @@
   display: none;
   background-color: white;
   padding: 4px;
-  top : 45px;
-  border: 1px solid black;
+  top: 45px;
+  border: 1px solid gray;
   border-radius: 10px;
   cursor: text;
   font-size: 12px;

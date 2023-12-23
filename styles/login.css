@@ -1,0 +1,106 @@
+nav {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(250, 250, 250, 0.5);
+  border-radius: 20px;
+  overflow: visible;
+  height: 350px;
+  width: 95px;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 562px);
+  grid-auto-rows: 660px;
+}
+
+.section {
+  grid-column: span 1;
+  grid-row: span 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(250, 250, 250, 0.9);
+  position: relative;
+}
+.section--login {
+  border-radius: 100px 0 0px 100px;
+}
+.section--sign-up {
+  border-radius: 0 100px 100px 0;
+}
+
+.section__title {
+  padding: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 1rem;
+}
+.section__form__field {
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.section__form__field__input {
+  width: 15rem;
+  padding: 5px;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
+  border-color: transparent;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.section__form__field__input:focus {
+  outline: none;
+}
+
+.section__form__button {
+  height: 40px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  transition: box-shadow 0.2s ease;
+  border: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 10rem;
+}
+.section__form__button:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
+}
+.section__form__button:active {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Adjust the values as needed */
+}
+.section__form__button--login {
+  background-color: #79e97dc7;
+}
+.section__form__button--register {
+  background-color: #78caeac7;
+}
+
+.section__form__error {
+  display: none;
+  border: 1px #be4e4e solid;
+  margin-left: 20px;
+  margin-right: 20px;
+  color: #be4e4e;
+  padding: 10px;
+}

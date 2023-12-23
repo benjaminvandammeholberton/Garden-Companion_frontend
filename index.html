@@ -1,365 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" type="image/x-icon" href="./styles/assets/favicon.ico">
-
-  <link rel="stylesheet" href="styles/global.css" />
-  <link rel="stylesheet" href="styles/birds.css" />
-  <link rel="stylesheet" href="styles/utils.css" />
-  <link rel="stylesheet" href="styles/aside.css" />
-  <link rel="stylesheet" href="styles/dashboard.css" />
-  <link rel="stylesheet" href="styles/vegetable101.css" />
-  <link rel="stylesheet" href="styles/charts.css" />
-  <link rel="stylesheet" href="styles/production.css" />
-
-  <link rel="stylesheet" href="styles/dashboard_modules/plant_manager/plant_manager.css" />
-  <link rel="stylesheet" href="styles/dashboard_modules/air_sensors.css" />
-  <link rel="stylesheet" href="styles/dashboard_modules/forecast.css" />
-  <link rel="stylesheet" href="styles/dashboard_modules/recommandations.css" />
-  <link rel="stylesheet" href="styles/dashboard_modules/to-do-list.css" />
-  <link rel="stylesheet" href="styles/dashboard_modules/automation.css" />
-  <link rel="stylesheet" href="styles/dashboard_modules/assistant.css" />
-
-  <script src="
-  https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js
-  "></script>
-  <title>Garden Companion</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./landing/assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./landing/style.css" />
+    <title>Garden Companion</title>
+    <meta name="description"
+        content="Garden Companion - Votre allié pour un potager optimisé et productif. Gérez votre jardin potager avec notre tableau de bord complet, suivez le développement de chaque culture, optimisez la production, et profitez de fonctionnalités pratiques telles que la prévision météo, le guide de culture, et bien plus. Rejoignez la communauté Garden Companion dès maintenant. Happy Gardening! 🌱🌺">
 </head>
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD7S3GJ5KN"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-DD7S3GJ5KN');
+    gtag('config', 'G-DD7S3GJ5KN');
 </script>
 
 <body>
-
-  <!-- <div id="loading-animation">
-    <div class="loading-container">
-      <p><span>"</span>The greatest fine art of the future will be the making of a comfortable living from a small piece
-        of
-        land.<span>"</span>(Abraham Lincoln)
-      </p>
-      <div id="loading"></div>
-    </div>
-  </div> -->
-
-  <div>
-    <!-- Create a dropdown menu for background selection -->
-    <!-- <select id="background-select">
-      <option value="styles/assets/background-anim4.jpg">Default Background</option>
-      <option value="/styles/assets/background-anim6.jpg">Custom Background 1</option>
-      <option value="/styles/assets/background-anim.jpg">Custom Background 2</option>
-      <option value="/styles/assets/background-anim5.jpg">Custom Background 3</option>
-      <option value="/styles/assets/background-anim7.jpg">Night mode </option>
-      <option value="/styles/assets/background-anim8.jpg">Custom Background 5</option>
-      <option value="/styles/assets/dark-mode.jpg">Dark mode </option>
-      <option value="/styles/assets/gradient.png">Gradient Background</option>
-      <option value="/styles/assets/gradient2.png">Gradient Background 2</option>
-    </select>
-  </div> -->
-
-    <div class="bird-container bird-container-one">
-      <div class="bird bird-one"></div>
-    </div>
-    <div class="bird-container bird-container-two">
-      <div class="bird bird-two"></div>
-    </div>
-    <div class="bird-container bird-container-three">
-      <div class="bird bird-three"></div>
-    </div>
-    <div class="bird-container bird-container-four">
-      <div class="bird bird-four"></div>
-    </div>
-
-    <div class="tree"></div>
-    <div class="rooster"></div>
-    <div class="chicken"></div>
-    <div class="poussin"></div>
-    <div class="farm-house"></div>
-    <div class="wheat"></div>
-    <div class="wheat2"></div>
-    <div class="wheat3"></div>
-
-    <div class="common_container">
-      <!-- <div class="logo_container">
-      <img src="./styles/assets/GreenHouse.png" alt="logo" class="logo">
-    </div> -->
-      <aside>
-        <ul>
-          <li id="dashboard_page" class="icon-aside icon_dashboard"></li>
-          <li id="production_page" class="icon-aside icon_production"></li>
-          <li id="charts_page" class="icon-aside icon_chart"></li>
-          <li id="vegetable101_page" class="icon-aside icon_vegetable101"></li>
-        </ul>
-      </aside>
-      <main>
-        <header>
-          <div class="header__title">
-            <h1>Garden Companion</h1>
-            <div class="signal_statut" id="signalStatus"></div>
-          </div>
-          <p id="date"></p>
-        </header>
-        <div class="dashboard" id="container_dashboard">
-          <div class="dashbord__module dashbord__module--plant-manager">
-            <h2 class="dashbord__module__title" id="plant_manager_title">Plant Manager</h2>
-            <div class="dashbord__module__content dashbord__module__content--plant-manager">
-
-              <!----------------------icon container ------------------------------>
-              <div class="icons_container">
-                <div class="dont_move">
-                  <div class="icon_garden icon_plant_manager" id="plant-icon"></div>
-                  <p>Plant</p>
-                </div>
-              </div>
-              <div class="icons_container">
-                <div class="dont_move">
-                  <div class="icon_garden icon_sow_manager" id="sow-icon"></div>
-                  <p>Sow</p>
-                </div>
-              </div>
-              <div class="icons_container">
-                <div class="dont_move">
-                  <div class="icon_garden icon_harvest_manager" id="harvest-icon"></div>
-                  <p>Harvest</p>
-                </div>
-              </div>
-              <div class="icons_container">
-                <div class="dont_move">
-                  <div class="icon_garden icon_create_manager" id="create-icon"></div>
-                  <p>Garden</p>
-                </div>
-              </div>
-              <div class="icons_container">
-                <div class="dont_move">
-                  <div class="icon_garden icon_remove_manager" id="remove-icon"></div>
-                  <p>Remove</p>
-                </div>
-              </div>
-              <div class="icons_container">
-                <div class="dont_move">
-                  <div class="icon_garden icon_delete_manager" id="delete-icon"></div>
-                  <p>Delete</p>
-                </div>
-              </div>
-              <h6 style="display: none;">List of sowed vegetables</h6>
-              <div class="sowing-table-container" style="display: none;">
-                <table id="sowing-table">
-                  <tbody>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!---------------------- Form fields -------------------------------->
-            <div id="form-plant"></div>
-            <div id="form-sow"></div>
-            <div id="form-harvest"></div>
-            <div id="form-add-garden-area"></div>
-            <div id="form-remove"></div>
-            <div id="form-delete"></div>
-          </div>
-
-
-          <div class="dashbord__module dashbord__module--air-sensors">
-            <h2 class="dashbord__module__title" id="plantManagerTitle">Air Sensors</h2>
-            <div class="dashbord__module__content dashbord__module__content--air-sensors">
-              <!-- <div class="air-sensors-container">
-              <div class="air-sensors-container__icon air-sensors-container__icon--weather">
-              </div>
-              <p class="air-sensors-container__value" id="air-sensors-container__temperature"></p>
-            </div> -->
-              <div class="air-sensors-container">
-                <div class="air-sensors-container__icon air-sensors-container__icon--temperature"></div>
-                <p class="air-sensors-container__value" id="temperatureSensorValue"></p>
-              </div>
-              <div class="air-sensors-container">
-                <div class="air-sensors-container__icon air-sensors-container__icon--humidity"></div>
-                <p class="air-sensors-container__value" id="humiditySensorValue"></p>
-              </div>
-              <div class="air-sensors-container">
-                <div class="air-sensors-container__icon air-sensors-container__icon--luminosity"></div>
-                <p class="air-sensors-container__value d=" luminositySensorValue">8/10</p>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="dashbord__module dashbord__module--recommandations">
-            <h2 class="dashbord__module__title">Recommandation</h2>
-            <div id="recommandationModule" class="dashbord__module__content dashbord__module__content--recommandations">
-            </div>
-          </div>
-
-          <div class="dashbord__module dashbord__module--assistant">
-            <h2 class="dashbord__module__title dashbord__module__title--assistant" id="assistant_title">Gardener
-              assistant
-            </h2>
-
-            <img src="./styles/assets/enlarge.png" id="assistant_button">
-
-            <div class="dashbord__module__content dashbord__module__content--assistant">
-              <div class="chat-container">
-                <p id="placeholder-message">Hey gardener ! How can I help you ?</p>
-                <div class="chat-output" id="chat-output"></div>
-                <input type="text" id="user-input" placeholder="Type your question here...">
-                <button id="submit-button">🥕</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="dashbord__module dashbord__module--todolist">
-            <h2 class="dashbord__module__title">ToDo List</h2>
-            <div class="add-todo-button" id="addTask"></div>
-            <div class="dashbord__module__content dashbord__module__content--todolist" id="toDoContainer">
-            </div>
-          </div>
-
-
-
-          <div class="dashbord__module dashbord__module--automation">
-            <h2 class="dashbord__module__title">Automation</h2>
-            <div class="dashbord__module__content dashbord__module__content--automation">
-              <div class="automation-container">
-                <p class="automation-container__plug-name">1</p>
-                <div class="automation-container__icon automation-container__icon--watering"></div>
-                <input list="timer" class="automation-container__form" id="smartPlug1" placeholder="minutes">
-                <datalist id="timer">
-                  <option value="15">
-                  <option value="30">
-                  <option value="60">
-                  <option value="90">
-                </datalist>
-              </div>
-              <div class="automation-container">
-                <p class="automation-container__plug-name">2</p>
-                <div class="automation-container__icon automation-container__icon--watering"></div>
-                <input list="timer" class="automation-container__form" id="smartPlug2" placeholder="minutes">
-                <datalist id="timer">
-                  <option value="15">
-                  <option value="30">
-                  <option value="60">
-                  <option value="90">
-                </datalist>
-              </div>
-              <div class="automation-container">
-                <p class="automation-container__plug-name">3</p>
-                <div class="automation-container__icon automation-container__icon--watering"></div>
-                <input list="timer" class="automation-container__form" id="smartPlug3" placeholder="minutes">
-                <datalist id="timer">
-                  <option value="15">
-                  <option value="30">
-                  <option value="60">
-                  <option value="90">
-                </datalist>
-              </div>
-              <!-- <div class="automation-container">
-              <p class="automation-container__plug-name">4</p>
-              <div class="automation-container__icon automation-container__icon--fan"></div>
-              <div class="automation-container__plug-settings"></div>
-            </div> -->
-              <div class="automation-container__sendButton"></div>
-            </div>
-          </div>
-
-
-
-          <div class="dashbord__module dashbord__module--forecast">
-            <h2 class="dashbord__module__title">Forecast</h2>
-            <div class="dashbord__module__content dashbord__module__content--forecast">
-              <!--------- forecast.js to integrate forecast_container --------->
-            </div>
-          </div>
-
-
-
-        </div>
-        <div id="container_charts">
-          <div id="box_charts">
-            <h2>Charts</h2>
-            <form action="" id="chartSubmit">
-              <div class="charts__start-date">
-                <label for="startDate">From</label>
-                <input type="date" id="startDate" name="startDate">
-              </div>
-              <div class="charts__end-date">
-                <label for="endDate">To</label>
-                <input type="date" id="endDate" name="endDate">
-              </div>
-              <input type="submit" value="Display" class="charts__submit-button">
-            </form>
-            <canvas id="chart"></canvas>
-          </div>
+    <header>
+        <div class="header__title">
+            <h1 id="home">Garden Companion</h1>
+            <p>Ensemble, cultivons l'abondance</p>
+            <ul class="header__menu">
+                <li> <button class="button" role="button"><a href="#features">Fonctionnalités</a></button></li>
+                <li> <button class="button" role="button"><a href="#about">À propos</a></button></li>
+            </ul>
         </div>
 
-        <div id="container_production">
-          <div class="production-container">
-            <h2 class="production-container__title">Production</h2>
-            <div class="production-container__content" id="productionContent">
+        <div class="header__content">
+            <img class="header__content__dashboard" src="./landing/assets/dashboard.png" alt="">
+            <div class="header__content__description">
+                <div class="header__content__description__vegetable-icons">
+                    <div
+                        class="header__content__description__vegetable-icon__icon header__content__description__vegetable-icon__icon--1">
+                    </div>
+                    <div
+                        class="header__content__description__vegetable-icon__icon header__content__description__vegetable-icon__icon--2">
+                    </div>
+                    <div
+                        class="header__content__description__vegetable-icon__icon header__content__description__vegetable-icon__icon--3">
+                    </div>
+                </div>
+                <p>
+                    Greenhouse Companion est un tableau de bord complet qui donne aux amateurs de jardin potager, les
+                    outils et les informations nécessaires pour gérer leur espace de culture de manière
+                    efficace et efficiente.
+                </p>
+                <div class="header__content__description__buttons"> <button class="button" role="button"><a
+                            href="./login.html">Se
+                            connecter</a></button>
+                    <button class="button" role="button"><a href="./login.html">Démarrer gratuitement</a></button>
+                </div>
 
             </div>
-          </div>
+        </div>
+    </header>
+
+    <main>
+        <h2 id="features">Fonctionnalités</h2>
+        <div class="section plant-manager">
+            <div class="section__content plant-manager__content">
+                <h3>Gestionnaire de Plantes et d'Espaces de Culture</h3>
+                <div class="section__content__icon feature__icon--manager"></div>
+                <p>
+                    Organisez et gérez efficacement des zones distinctes dans votre jardin en créant des parcelles
+                    dédiées à différents types de plantes ou d'usages. Attribuez ensuite à chaque parcelle les
+                    légumes au fil de vos semis et plantations.
+                </p>
+                <p>
+                    Tenez à jour ces informations en suivant le développement de chaque culture, depuis le stade de
+                    semis jusqu'à la fin de culture et enregistrez les quantités récoltées.
+                </p>
+
+            </div>
+            <div class="section__screenshot">
+                <img src="./landing/assets/screenshot-manager-large.png" alt="" />
+                <img src="./landing/assets/screenshot-manager-3-large.png" alt="" />
+            </div>
         </div>
 
-        <div id="container_vegetable101">
-
-          <div id="container_allVegetables" class="all-vegetables-container">
-            <h2 class="all-vegetables-container__title">Vegetables</h2>
-            <div class="all-vegetables-container__content" id="allVegetablesInfos"></div>
-          </div>
-          <div id="container_vegetableInfos" class="vegetable-characteristic">
-
-
-          </div>
-
+        <div class="section production">
+            <div class="section__content production__content">
+                <h3>Visualisation de la Production</h3>
+                <div class="section__content__icon feature__icon--production"></div>
+                <p>
+                    Optimisez la gestion de votre jardin en ayant une constante vue d'ensemble de chaque espace de
+                    culture de votre potager. Lorsque vous enregistrez la première récolte d'un légume, la timeline
+                    change de couleur, améliorant ainsi la visualisation.
+                </p>
+                <p>
+                    À mesure que plusieurs saisons s'écoulent, vous développerez une meilleure vision du temps
+                    nécessaire à chaque légume selon la période de l'année. Cela contribuera à accroître l'efficacité et
+                    les rendements de votre potager.
+                </p>
+            </div>
+            <img class="section__screenshot section__screenshot--production" src="./landing/assets/production.png"
+                alt="" />
         </div>
 
-      </main>
-    </div>
+        <div class="section forecast">
+            <img class="section__screenshot forecast__image" src="./landing/assets/screenshot-forecast.png" alt="" />
+            <div class="section__content forecast__content">
+                <h3>Prévisions Météo</h3>
+                <div class="section__content__icon feature__icon--forecast"></div>
+                <p class="forecast__text">
+                    Restez informé sur la météo grâce à des prévisions pour votre localisation. Planifiez vos
+                    activités de jardinage en toute confiance.
+                </p>
+            </div>
+        </div>
 
-    <script src=" ./scripts/dashboard_modules/plant_manager/form_plant.js">
-    </script>
-    <script src="./scripts/dashboard_modules/plant_manager/form_sow.js"></script>
-    <script src="./scripts/dashboard_modules/plant_manager/form_harvest.js"></script>
-    <script src="./scripts/dashboard_modules/plant_manager/form_add_and_update.js"></script>
-    <script src="./scripts/dashboard_modules/plant_manager/form_remove.js"></script>
-    <script src="./scripts/dashboard_modules/plant_manager/form_delete.js"></script>
+        <div class="section production">
+            <div class="section__content production__content">
+                <h3>Guide de Culture</h3>
+                <div class="section__content__icon feature__icon--guide"></div>
+                <p>
+                    Explorez notre guide de culture, une source complète consacrée à une multitude de légumes. Il
+                    propose
+                    des descriptions ainsi que des informations essentielles, telles que les périodes de semis, les
+                    températures de germination, les besoins en eau, etc. L'ensemble est présenté de manière concise et
+                    facilement accessible pour une consultation rapide.
+                </p>
+            </div>
+            <img class="section__screenshot section__screenshot--production" src="./landing/assets/guide.png" alt="" />
+        </div>
 
-    <script src="./forecast_module/forecast.js"></script>
+        <div class="section container-3features">
+            <div class="section-3features">
+                <div class="section__content content-3features">
+                    <h3>To-Do List</h3>
+                    <div class="section__content__icon feature__icon--todo"></div>
+                    <p class="section-3features__text">
+                        Restez organisé avec une liste de tâches spécifique au jardin et suivez vos activités de
+                        jardinage.
+                    </p>
+                </div>
+            </div>
+            <div class="section-3features">
+                <div class="section__content content-3features">
+                    <h3>Assistant Spécialisé</h3>
+                    <div class="section__content__icon feature__icon--assistant"></div>
+                    <p class="section-3features__text">
+                        Interagissez avec un chatbot compétent conçu pour répondre à vos questions sur le
+                        jardinage, fournir des conseils et vous assister en temps réel.
+                    </p>
+                </div>
+            </div>
+            <div class="section-3features">
+                <div class="section__content content-3features">
+                    <h3>Semis du moment</h3>
+                    <div class="section__content__icon feature__icon--recommandations"></div>
+                    <p class="section-3features__text">
+                        Identifiez rapidement les semis recommandés en fonction de la date actuelle.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-    <script src="./chatGPT_module/chatGPT.js"></script>
+        <div class="community">
+            <h3>Rejoignez la communauté !</h3>
+            <button class="button" role="button"><a href="./login.html">Créez votre
+                    compte dès maintenant</a></button>
+        </div>
+        <div class="separation"></div>
+        <h2 id="about">À propos</h2>
+        <div class="about-section">
+            <p>
+                Se lancer dans le jardinage peut être intimidant pour les débutants, découragés par la multitude
+                d'informations à assimiler et de paramètres à prendre en compte. Même pour les jardiniers plus
+                expérimentés, rester organisé et optimiser la production peut devenir laborieux à mesure que le jardin
+                potager grandit.
+            </p>
+            <p>
+                <b>Garden Companion</b> est né de ma volonté de simplifier cette expérience, la rendre accessible au
+                plus grand nombre. Les fonctionnalités implémentées visent à résoudre ces deux problématiques : offrir
+                une assistance tant dans l'apprentissage que dans l'optimisation du jardin potager. Le tout, réuni dans
+                un espace agréable, intuitif et facile d'utilisation.
+            </p>
+            <p>
+                L'application en est à ses débuts, mon ambition est d'intégrer rapidement d'autres outils tels qu'un
+                planificateur de culture, un journal de bord ou encore un module pour l'arrosage automatique, dans le
+                but d'offrir une expérience complète et pratique.
+            </p>
+            <p>
+                Vos retours sont l'un des éléments essentiels dans l'évolution de <b>Garden Companion</b>. La démarche
+                est guidée par la passion partagée pour le jardinage et le désir constant de rendre cette expérience
+                agréable et enrichissante pour chacun.
+            </p>
+            <p>
+                <b>Happy Gardening 😉🥕</b>
+            </p>
 
-    <script src="./scripts/dashboard_modules/toDoList.js"></script>
 
+            <div class="member">
+                <p>Benjamin, créateur de l'application</p>
+                <div class="link-buttons">
+                    <button class="button" role="button"><a href="mailto:benjamin.vandamme@me.com">Email</a></button>
+                    <button class="button" role="button"><a
+                            href="https://www.linkedin.com/in/benjamin-vandamme-6084aa262/" target="_blank"
+                            rel="noopener noreferrer">LinkedIn</a></button>
+                </div>
+                <button class="button" role="button"><a href="./login.html">Démarrer gratuitement</a></button>
+            </div>
+        </div>
+        <div class="top-button">
+            <a href="#home"><img src="./landing/assets/move-up.png" alt=""></a>
+            <p>Retour en haut</p>
+        </div>
+    </main>
 
-    <script src="./scripts/dashboard_modules/plant_manager/script_formulaire.js"></script>
-
-    <script src="./scripts/dashboard_modules/air_sensors.js"></script>
-    <script src="./scripts/dashboard_modules/recommandations.js"></script>
-    <script src="./scripts/dashboard_modules/automation.js"></script>
-
-    <script src=" ./scripts/chart_page.js"></script>
-    <script src=" ./scripts/production_page.js"></script>
-
-    <script src="./scripts/vegetable_101/vegetable101.js"></script>
-    <script src="./scripts/vegetable_101/vegetable101_details.js"></script>
-
-    <script src="./scripts/moduleSizeChanger.js"></script>
-    <script src="./scripts/change_page.js"></script>
-    <script src="./scripts/utils.js"></script>
-
-    <script src="./scripts/moduleSizeChanger/plantManager.js"></script>
-
-    <script src="./scripts/change_background.js"></script>
-
+    <footer>
+        <img class="icon-bottom icon-cock" src="./landing/assets/cock.png" alt="">
+        <img class="icon-bottom icon-chicken-3" src="./landing/assets/chicken-3.png" alt="">
+        <img class="icon-bottom icon-chicken" src="./landing/assets/chicken.png" alt="">
+        <img class="icon-bottom icon-tree" src="./landing/assets/tree.png" alt="">
+        <img class="icon-bottom icon-vegetation" src="./landing/assets/vegetation.png" alt="">
+        <img class="icon-bottom icon-vegetation2" src="./landing/assets/vegetation.png" alt="">
+        <img class="icon-bottom icon-vegetation3" src="./landing/assets/vegetation.png" alt="">
+        <p>&copy; 2024 Garden Companion - Tous droits réservés</p>
+    </footer>
 </body>
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                // Determine the duration of the scroll animation (in milliseconds)
+                const animationDuration = 1000; // 1000ms = 1 second
+
+                // Get the starting position
+                const startingY = window.pageYOffset;
+
+                // Calculate the target position
+                const targetY = targetElement.getBoundingClientRect().top + window.pageYOffset;
+
+                // Calculate the distance and time interval for the scroll
+                const distance = targetY - startingY;
+                const startTime = performance.now();
+
+                // Define the animation function
+                function scrollStep(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    if (elapsedTime < animationDuration) {
+                        window.scrollTo(0, startingY + distance * easeInOutCubic(elapsedTime / animationDuration));
+                        requestAnimationFrame(scrollStep);
+                    } else {
+                        window.scrollTo(0, targetY);
+                    }
+                }
+
+                // Start the animation
+                function easeInOutCubic(t) {
+                    return t < 0.5
+                        ? 4 * t * t * t
+                        : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+
+                requestAnimationFrame(scrollStep);
+            }
+        });
+    });
+</script>
+
 
 </html>

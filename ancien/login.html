@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+
+<body>
+
+    <h2>Login</h2>
+
+    <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <button type="button" id="login-button">Login</button>
+    </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const loginForm = document.getElementById("login-form");
+            const usernameInput = document.getElementById("username");
+            const passwordInput = document.getElementById("password");
+            const loginButton = document.getElementById("login-button");
+
+            loginButton.addEventListener("click", async function () {
+                const username = usernameInput.value;
+                const password = passwordInput.value;
+
+                try {
+                    const response = await fetch("http://127.0.0.1:8000/api/v1/auth/login", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            "Accept": "application.json"
+                        },
+                        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
+                    });
+
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log("Access Token:", result.access_token);
+                        console.log("Refresh Token:", result.refresh_token);
+                        // Store the access token in localStorage
+                        localStorage.setItem("access_token", result.access_token);
+                        window.location.href = "index.html";
+                        // Handle successful login, e.g., redirect to another page
+                    } else {
+                        // Handle login error
+                        console.error("Login failed:", response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error("Error during login:", error);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

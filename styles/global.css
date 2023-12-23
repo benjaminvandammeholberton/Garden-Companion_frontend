@@ -11,137 +11,65 @@
   font-family: Roboto;
   font-weight: 300;
 }
-@media only screen and (max-width: 1400px) {
-  * {
-    overflow-y: scroll;
-  }
+
+::-webkit-scrollbar {
+  width: 4px;
 }
+::-webkit-scrollbar-thumb {
+  background: lightblue;
+  border-radius: 100%;
+}
+button {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 18px;
+}
+
 body {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  /* background-image: url(./assets/background-anim4.jpg);
-  background-size: cover;
-  background-repeat: no-repeat; */
-  /* background-image: linear-gradient(
-    to bottom,
-    #4fe5df,
-    #48e7d2,
-    #4be9c3,
-    #59eab0,
-    #6bea9c,
-    #85e88d,
-    #9ce680,
-    #b1e374,
-    #c9de73,
-    #ddd977,
-    #ecd57e,
-    #f8d189
-  ); */
-  background: rgb(123, 240, 234);
+  justify-content: center;
+  /* background: rgb(123, 240, 234); */
   background: linear-gradient(
     180deg,
     rgba(123, 240, 234, 1) 0%,
     rgba(193, 250, 129, 1) 67%,
     rgba(245, 193, 132, 1) 100%
   );
+  min-width: 1500px;
 }
 
-#background-select {
-  display: block;
-  position: absolute;
-  height: 20px;
-  left: 10px;
-  top: 10px;
-  z-index: 1;
-  background-color: rgb(218, 217, 217);
-  opacity: 0.8;
-}
-
-@media only screen and (max-width: 950px) {
-  body {
-    height: auto;
-    width: 100%;
-    overflow-x: hidden;
-    margin-bottom: 30px;
-    background-color: rgb(47, 79, 79);
-    background-image: none;
-  }
-}
-@media only screen and (min-width: 950px) and (max-width: 1400px) {
-  body {
-    width: 100vw;
-    height: auto;
-    overflow-x: hidden;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    background-color: rgb(119, 136, 153);
-    background-image: none;
-  }
-}
-
-.common_container {
-  height: 100%;
+.main-container {
+  width: 1200px;
+  height: 750px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
   position: relative;
-}
-@media only screen and (max-width: 950px) {
-  .common_container {
-    flex-direction: column;
-  }
-}
-@media only screen and (min-width: 950px) and (max-width: 1400px) {
-  .common_container {
-    flex-direction: column;
-    width: 100%;
-  }
+  gap: 5px;
+  overflow: visible;
 }
 
 main {
-  width: 1200px;
-  height: 800px;
-  display: flex;
+  gap: 15px;
   justify-content: center;
-  align-items: center;
-  position: relative;
-}
-@media only screen and (max-width: 950px) {
-  main {
-    width: auto;
-    height: auto;
-  }
-}
-@media only screen and (min-width: 950px) and (max-width: 1400px) {
-  main {
-    width: 100%;
-    height: auto;
-  }
 }
 
 header {
   width: 100%;
-  position: absolute;
   top: 30px;
   left: 0px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 290px;
+  gap: 15%;
+  overflow: visible;
 }
-@media only screen and (max-width: 950px) {
-  header {
-    display: none;
-  }
-}
-@media only screen and (min-width: 950px) and (max-width: 1400px) {
-  header {
-    display: none;
-  }
+
+footer {
+  width: 100%;
+  text-align: center;
 }
 
 h1 {
@@ -154,6 +82,15 @@ h2 {
   font-weight: 100;
   background-image: radial-gradient(ellipse, #0c0a12, #671f11);
   color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+h3 {
+  font-size: 20px;
+  opacity: 0.6;
+  font-weight: 300;
+  background-image: radial-gradient(ellipse, #0c0a12, #671f11);
+  color: black;
   background-clip: text;
   -webkit-background-clip: text;
 }
@@ -176,23 +113,114 @@ h2 {
   display: flex;
   align-items: center;
   gap: 10px;
+  overflow: visible;
 }
 
-.signal_statut {
-  width: 10px;
-  height: 10px;
-  background-color: #67d46d;
-  border-radius: 50%;
-  animation: lighting 3s ease infinite alternate; /* Alternate back and forth */
+.header__title__log-out {
+  width: 24px;
+  height: 24px;
+  background-image: url(./assets/log-out.png);
+  position: relative;
+  overflow: visible;
 }
 
-@keyframes lighting {
-  0% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 1;
-  }
+.header__title__log-out:hover::after {
+  content: 'Déconnexion';
+  display: block;
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white; /* Background color for the label */
+  padding: 2px 4px; /* Add padding for better visibility */
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: visible;
+  z-index: 1;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-size: 15px;
+  opacity: 0; /* Start with zero opacity */
+  transition: opacity 0.3s ease; /* Add transition for opacity */
+}
+.header__title__log-out:hover::after {
+  opacity: 1; /* Change opacity to 1 on hover */
+}
+.header__title__log-out:not(:hover)::after {
+  opacity: 0;
+}
+.header__title__log-out:hover {
+  cursor: pointer;
+}
+
+.header__title__profile {
+  display: none;
+  width: 24px;
+  height: 24px;
+  background-image: url(./assets/user.png);
+  position: relative;
+  overflow: visible;
+}
+
+.header__title__profile:hover::after {
+  content: 'Profil';
+  display: block;
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white; /* Background color for the label */
+  padding: 4px; /* Add padding for better visibility */
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: visible;
+  z-index: 1;
+  border: 1px solid black;
+  border-radius: 10px;
+  opacity: 0; /* Start with zero opacity */
+  transition: opacity 0.35s ease; /* Add transition for opacity */
+}
+.header__title__profile:hover::after {
+  opacity: 1; /* Change opacity to 1 on hover */
+}
+.header__title__profile:not(:hover)::after {
+  opacity: 0;
+}
+.header__title__profile:hover {
+  cursor: pointer;
+}
+.header__title__dark-mode {
+  width: 24px;
+  height: 24px;
+  background-image: url(./assets/dark-mode.png);
+  position: relative;
+  overflow: visible;
+  display: none;
+}
+
+.header__title__dark-mode:hover::after {
+  content: 'Mode nuit';
+  display: block;
+  position: absolute;
+  top: 115%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white; /* Background color for the label */
+  padding: 4px; /* Add padding for better visibility */
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: visible;
+  z-index: 1;
+  border: 1px solid black;
+  border-radius: 10px;
+  opacity: 0; /* Start with zero opacity */
+  transition: opacity 0.35s ease; /* Add transition for opacity */
+}
+.header__title__dark-mode:hover::after {
+  opacity: 1; /* Change opacity to 1 on hover */
+}
+.header__title__dark-mode:not(:hover)::after {
+  opacity: 0;
+}
+.header__title__dark-mode:hover {
+  cursor: pointer;
 }
 
 .tree {
@@ -203,6 +231,7 @@ h2 {
   height: 250px;
   background-image: url(./assets/dashboard/tree.png);
   background-repeat: no-repeat;
+  z-index: -1;
 }
 .rooster {
   position: absolute;
@@ -244,11 +273,12 @@ h2 {
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
+  z-index: -1;
 }
 .wheat {
   position: absolute;
   bottom: -5px;
-  right: 20%;
+  right: 10%;
   width: 100px;
   height: 100px;
   background-image: url(./assets/dashboard/wheat.png);
@@ -258,7 +288,7 @@ h2 {
 .wheat2 {
   position: absolute;
   bottom: -5px;
-  right: 23.5%;
+  right: 13.5%;
   width: 100px;
   height: 100px;
   background-image: url(./assets/dashboard/wheat.png);
@@ -268,7 +298,7 @@ h2 {
 .wheat3 {
   position: absolute;
   bottom: -5px;
-  right: 27%;
+  right: 17%;
   width: 100px;
   height: 100px;
   background-image: url(./assets/dashboard/wheat.png);

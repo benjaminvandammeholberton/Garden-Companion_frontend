@@ -1,10 +1,7 @@
 #container_charts {
   display: none;
-  width: 100%;
-  gap: 15px;
   grid-template-columns: repeat(1, 1139px);
   grid-auto-rows: 660px;
-  justify-content: center;
 }
 @media only screen and (max-width: 950px) and (orientation: landscape) {
   #container_charts {
@@ -30,7 +27,7 @@
   align-items: center;
   justify-content: flex-end;
   padding-top: 60px;
-  background-color: rgba(250, 250, 250, 0.8);
+  background-color: rgba(250, 250, 250, 0.9);
   padding: 15px;
   font-weight: 700;
   font-size: 20px;

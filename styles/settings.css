@@ -1,0 +1,25 @@
+#container_settings {
+  display: none;
+  grid-template-columns: repeat(1, 1139px);
+  grid-auto-rows: 660px;
+}
+
+.settings-container {
+  position: relative;
+  grid-column: span 1;
+  grid-row: span 1;
+  border-radius: 100px 100px 100px 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(250, 250, 250, 0.9);
+  font-weight: 700;
+  padding: 30px;
+  padding-bottom: 50px;
+  overflow: scroll;
+}
+
+.settings-container::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
