@@ -8,15 +8,15 @@ export function generatePlantingVegetableFormContent() {
     <div class="form-container__form__field">
       <label class="form-container__form____field__label">Sélectionnez l'origine du plant</label>
       <div class="row-input">
-      <div class="form-container__form__field__radio">
-      <input type="radio" id="sowingSpaceOrigin" name="plantOrigin" required>
-      <label for="sowingSpaceOrigin">Espace semis</label>
-    </div>
-      <div class="form-container__form__field__radio">
-        <input type="radio" id="newOrigin" name="plantOrigin" required>
-        <label for="newOrigin">Nouveau plant</label>
+        <div class="form-container__form__field__radio">
+          <input type="radio" id="sowingSpaceOrigin" name="plantOrigin" required>
+          <label for="sowingSpaceOrigin">Espace semis</label>
+        </div>
+        <div class="form-container__form__field__radio">
+          <input type="radio" id="newOrigin" name="plantOrigin" required>
+          <label for="newOrigin">Nouveau plant</label>
+        </div>
       </div>
-    </div>
     </div>
   </form>
   `;
@@ -36,8 +36,8 @@ export function generatePlantingNewVegetableFormContent() {
   </div>
   
   <div class="form-container__form__field">
-  <label class="form-container__form____field__label" for="vegetableVariety">Indiquez la variété</label>
-  <input class="form-container__form__field__input form-container__form__field__input--text" type="text" id="vegetableVariety" name="variety" maxlength="60"
+  <label class="form-container__form____field__label" for="vegetableVariety">Variété ou nom distinctif*</label>
+  <input class="form-container__form__field__input form-container__form__field__input--text" type="text" id="vegetableVariety" name="variety" maxlength="60" placeholder="ex. Variété (Groupe 1)"
     >
   </div>
   

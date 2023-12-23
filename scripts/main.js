@@ -7,7 +7,7 @@ import { initializeDateDisplay } from './utils/date-display.js';
 import { initializeManagerModule } from './modules/manager/initialForm.js';
 import { initializeEncyclopedia } from './pages/encyclopedia/vegetable101.js';
 import { initializeVegetableInfoDetails } from './pages/encyclopedia/vegetable101_details.js';
-
+import { initializeAssistantModule } from './modules/assistant.js';
 import { displayToDo } from './modules/todoModule.js';
 import { changePage } from './utils/change-page.js';
 import { initializeForecast } from './modules/forecast.js';
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await checkAuthentication();
     initializeDateDisplay();
     initializeForecast();
+    initializeAssistantModule();
     initializeRecommandationModule();
     changePage();
     initializeManagerModule();

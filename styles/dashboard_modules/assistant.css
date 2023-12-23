@@ -50,13 +50,17 @@
   transition: opacity 0.2s ease-in;
   font-size: 16px;
 }
-
 .assistant__resize-button:hover::after {
   opacity: 1;
 }
-
 .assistant__resize-button:hover {
   overflow: visible;
+}
+.dashbord__module__request-counter {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  color: rgb(133, 133, 133);
 }
 
 .chat-output {

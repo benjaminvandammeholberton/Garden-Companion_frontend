@@ -14,7 +14,7 @@ export async function checkAuthentication() {
     try {
       // Make a request to test the validity of the access token
       const response = await fetch(
-        'http://127.0.0.1:8000/api/v1/auth/test-token',
+        'https://garden-companion-api-24y73.ondigitalocean.app/api/v1/auth/test-token',
         {
           method: 'POST',
           headers: {

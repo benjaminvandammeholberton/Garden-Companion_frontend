@@ -36,7 +36,7 @@ productionPage.addEventListener('click', async () => {
     const vegetablesInAreaSortedNyName = vegetablesInArea.sort((a, b) => {
       return a.name.localeCompare(b.name);
     });
-    vegetablesInArea.forEach((vegetable) => {
+    vegetablesInAreaSortedNyName.forEach((vegetable) => {
       const tableRow = document.createElement('tr');
       let startMonth;
       let startDay;
@@ -48,6 +48,9 @@ productionPage.addEventListener('click', async () => {
       let year;
 
       const currentDate = new Date();
+      currentDate.setMonth(5);
+      currentDate.setDate(16);
+      currentDate.setYear(2024);
 
       if (vegetable.sowing_date && vegetable.sowed) {
         const sowingDate = new Date(vegetable.sowing_date);
@@ -140,7 +143,7 @@ const headerTable = `
 <th colspan="1" class="cell-name">Nom</th>
 <th colspan="1" class="cell-variety">Variété</th>
 <th colspan="1" class="cell-quantity">Quantité</th>
-<th colspan="1" class="cell-harvested">Récolte (kg)</th>
+<th colspan="1" class="cell-harvested">Récolte</th>
 <th colspan="4">Jan</th>
 <th colspan="4">Fev</th>
 <th colspan="4">Mar</th>

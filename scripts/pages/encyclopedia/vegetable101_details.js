@@ -16,7 +16,7 @@ export function initializeVegetableInfoDetails() {
           vegetableItem.getAttribute('start_indoor')
         );
         vegetableStart_indoor = vegetableStart_indoor_raw.toLocaleDateString(
-          'en-US',
+          'fr-FR',
           options
         );
       }
@@ -25,10 +25,10 @@ export function initializeVegetableInfoDetails() {
         vegetableItem.getAttribute('start_outdoor')
       );
       const vegetableStart_outoor =
-        vegetableStart_outdoor_raw.toLocaleDateString('en-US', options);
+        vegetableStart_outdoor_raw.toLocaleDateString('fr-FR', options);
       const vegetableEnd_raw = new Date(vegetableItem.getAttribute('end'));
       const vegetableEnd = vegetableEnd_raw.toLocaleDateString(
-        'en-US',
+        'fr-FR',
         options
       );
       const vegetableCold_resistance =
@@ -53,7 +53,7 @@ export function initializeVegetableInfoDetails() {
         'vegetable-characteristic__header__text-content';
 
       const vegetableFamily = document.createElement('h3');
-      vegetableFamily.textContent = `Category: ${vegetableItem.getAttribute(
+      vegetableFamily.textContent = `Famille: ${vegetableItem.getAttribute(
         'family'
       )}`;
 
@@ -72,11 +72,11 @@ export function initializeVegetableInfoDetails() {
       quickInfosSpacingOnRow.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--spacing-on-row';
       const quickInfosSpacingOnRowTitle = document.createElement('div');
-      quickInfosSpacingOnRowTitle.textContent = 'Plant Spacing';
+      quickInfosSpacingOnRowTitle.textContent = 'Espacement entre plants';
       quickInfosSpacingOnRowTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfosSpacingOnRowContent = document.createElement('div');
-      quickInfosSpacingOnRowContent.textContent = `${vegetableSpacing_on_raw} cm`;
+      quickInfosSpacingOnRowContent.innerHTML = `<em>minimum</em>${vegetableSpacing_on_raw} cm`;
       quickInfosSpacingOnRowContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
@@ -84,18 +84,18 @@ export function initializeVegetableInfoDetails() {
       quickInfossoilTemperature.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--soil-temperature';
       const quickInfossoilTemperatureTitle = document.createElement('div');
-      quickInfossoilTemperatureTitle.textContent = 'Soil Temperature';
+      quickInfossoilTemperatureTitle.textContent = 'T° de germination';
       quickInfossoilTemperatureTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfossoilTemperatureContent = document.createElement('div');
-      quickInfossoilTemperatureContent.textContent = `${vegetableSoil_temperature}°C`;
+      quickInfossoilTemperatureContent.innerHTML = `<em>minimum</em>${vegetableSoil_temperature}°C`;
       quickInfossoilTemperatureContent.className =
         'vegetable-characteristic__quick-infos__item__content';
       const quickInfosWaterNeeds = document.createElement('div');
       quickInfosWaterNeeds.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--watering';
       const quickInfosWaterNeedsTitle = document.createElement('div');
-      quickInfosWaterNeedsTitle.textContent = 'Water Needs';
+      quickInfosWaterNeedsTitle.textContent = 'Besoins en eau';
       quickInfosWaterNeedsTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
 
@@ -108,11 +108,11 @@ export function initializeVegetableInfoDetails() {
       quickInfosFrost.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--frost';
       const quickInfosFrostTitle = document.createElement('div');
-      quickInfosFrostTitle.textContent = 'Frost Resistence';
+      quickInfosFrostTitle.textContent = 'Résistance au gel';
       quickInfosFrostTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfosFrostContent = document.createElement('div');
-      quickInfosFrostContent.textContent = `${vegetableCold_resistance}/5`;
+      quickInfosFrostContent.innerHTML = `${vegetableCold_resistance}/5`;
       quickInfosFrostContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
@@ -120,11 +120,11 @@ export function initializeVegetableInfoDetails() {
       quickInfosStartInside.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--start-inside';
       const quickInfosStartInsideTitle = document.createElement('div');
-      quickInfosStartInsideTitle.textContent = 'Start Inside';
+      quickInfosStartInsideTitle.textContent = 'Semi intérieur';
       quickInfosStartInsideTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfosStartInsideContent = document.createElement('div');
-      quickInfosStartInsideContent.textContent = vegetableStart_indoor;
+      quickInfosStartInsideContent.innerHTML = `<em>à partir du</em>${vegetableStart_indoor}`;
       quickInfosStartInsideContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
@@ -132,11 +132,11 @@ export function initializeVegetableInfoDetails() {
       quickInfosStartOutside.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--start-outside';
       const quickInfosStartOutsideTitle = document.createElement('div');
-      quickInfosStartOutsideTitle.textContent = 'Start Outside';
+      quickInfosStartOutsideTitle.textContent = 'Semi extérieur';
       quickInfosStartOutsideTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfosStartOutsideContent = document.createElement('div');
-      quickInfosStartOutsideContent.textContent = vegetableStart_outoor;
+      quickInfosStartOutsideContent.innerHTML = `<em>à partir du</em>${vegetableStart_outoor}`;
       quickInfosStartOutsideContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
@@ -144,7 +144,7 @@ export function initializeVegetableInfoDetails() {
       quickInfosEnd.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--end';
       const quickInfosEndTitle = document.createElement('div');
-      quickInfosEndTitle.textContent = 'Last Sowing';
+      quickInfosEndTitle.textContent = 'Dernier semi';
       quickInfosEndTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfosEndContent = document.createElement('div');

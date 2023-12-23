@@ -101,15 +101,22 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
     });
 
     // Put the vegetables corresponding to the first sowing area
-
     const defaultVegetableList = allVegetables.filter(
       (vegetable) => vegetable.area.area_id === sowingAreas[0].area_id
     );
+    const defaultVegetableListSorted = defaultVegetableList.sort((a, b) => {
+      if (a.sowing_date > b.sowing_date) {
+        return 1;
+      }
+      return -1;
+    });
 
-    defaultVegetableList.forEach(function (vegetable) {
+    defaultVegetableListSorted.forEach(function (vegetable) {
       const newVegetableOption = document.createElement('option');
       newVegetableOption.value = vegetable.vegetable_manager_id;
-      newVegetableOption.text = vegetable.name;
+      const sowingDate = new Date(vegetable.sowing_date);
+      const formattedSowingDate = sowingDate.toLocaleDateString('fr-FR');
+      newVegetableOption.innerHTML = `${vegetable.name} - ${vegetable.variety} (semi: ${formattedSowingDate})`;
       vegetableSowedSelect.add(newVegetableOption);
       const defaultQuantity = defaultVegetableList[0].quantity;
       previousQuantity = defaultQuantity;
@@ -127,15 +134,24 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
       const VegetableList = allVegetables.filter(
         (vegetable) => vegetable.area.area_id === selectedAreaId
       );
+      const defaultVegetableListSorted = VegetableList.sort((a, b) => {
+        if (a.sowing_date > b.sowing_date) {
+          return 1;
+        }
+        return -1;
+      });
       if (VegetableList) {
-        VegetableList.forEach(function (vegetable) {
+        defaultVegetableListSorted.forEach(function (vegetable) {
           const newVegetableOption = document.createElement('option');
           newVegetableOption.value = vegetable.vegetable_manager_id;
-          newVegetableOption.text = vegetable.name;
+          const sowingDate = new Date(vegetable.sowing_date);
+          const formattedSowingDate = sowingDate.toLocaleDateString('fr-FR');
+          newVegetableOption.innerHTML = `${vegetable.name} - ${vegetable.variety} (semi: ${formattedSowingDate})`;
           vegetableSowedSelect.add(newVegetableOption);
-          const selectedQuantity = vegetable.quantity;
-          previousQuantity = selectedQuantity;
-          quantity.value = selectedQuantity;
+          const defaultQuantity = defaultVegetableListSorted[0].quantity;
+          previousQuantity = defaultQuantity;
+          quantity.value = defaultQuantity;
+          name = defaultVegetableListSorted[0].name;
         });
       }
     });

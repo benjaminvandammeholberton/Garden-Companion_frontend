@@ -2,6 +2,9 @@
 
 export function initializeDateDisplay() {
   const currentDate = new Date();
+  currentDate.setMonth(5);
+  currentDate.setDate(16);
+  currentDate.setYear(2024);
 
   // Format options for the date
   const options = {

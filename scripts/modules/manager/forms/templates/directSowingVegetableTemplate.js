@@ -12,13 +12,13 @@ export function generateDirectSowingVegetableFormContent() {
   </div>
 
   <div class="form-container__form__field">
-    <label class="form-container__form____field__label" for="vegetableVariety">Indiquez la variété</label>
-    <input class="form-container__form__field__input form-container__form__field__input--text" type="text" id="vegetableVariety" name="variety" maxlength="60"
+    <label class="form-container__form____field__label" for="vegetableVariety">Variété ou nom distinctif*</label>
+    <input class="form-container__form__field__input form-container__form__field__input--text" type="text" id="vegetableVariety" name="variety" maxlength="60" placeholder="ex. Variété (Groupe 1)"
       >
   </div>
 
   <div class="form-container__form__field">
-    <label class="form-container__form____field__label" for="quantity">Quantité</label>
+    <label class="form-container__form____field__label" for="quantity">Quantité*</label>
     <input class="form-container__form__field__input form-container__form__field__input--number" type="number" id="quantity" name="quantity"
       step="1" min="0" max="10000" required value=1>
   </div>

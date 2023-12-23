@@ -14,7 +14,7 @@ const toDoContainer = document.getElementById('toDoContainer');
  */
 addTask.addEventListener('click', async function () {
   const userInput = window.prompt('Entrez une nouvelle tâche:');
-  if (userInput !== null) {
+  if (userInput !== '') {
     try {
       await createTodo({ title: userInput });
       while (toDoContainer.firstChild) {

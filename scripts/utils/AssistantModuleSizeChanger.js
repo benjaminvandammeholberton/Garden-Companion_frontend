@@ -13,6 +13,7 @@ export function assistantModuleSizeChanger() {
     '.dashbord__module--recommandations'
   );
   const assistantConversationContainer = document.getElementById('chat-output');
+  const counter = document.getElementById('assistant_counter');
   let isAssistantToggled = false; // Variable to track the grid state
 
   function showChatContainer() {
@@ -33,9 +34,13 @@ export function assistantModuleSizeChanger() {
       assistantModule.style.borderRadius = '';
       recommandationsModule.style.display = '';
       assistantConversationContainer.style.height = '70%';
+      counter.style.top = '18px';
+      counter.style.right = '15px';
       hideChatContainer();
       // placeholderMessage.style.display = 'block';
     } else {
+      counter.style.top = '18px';
+      counter.style.right = '80px';
       assistantModule.style.gridRow = 'span 3';
       assistantModule.style.gridColumn = 'span 2';
       assistantModule.style.borderRadius = '5px 100px 100px 5px';

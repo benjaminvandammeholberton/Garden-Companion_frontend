@@ -1,4 +1,3 @@
-// Import necessary dependencies
 import { BASE_URL } from './apiConfig.js';
 import { handleResponse, getHeaders } from './apiService.js';
 

@@ -67,7 +67,6 @@ function createItemElement(vegetable) {
   const nameSpan = document.createElement('span');
   nameSpan.textContent = vegetable.name;
   item.appendChild(nameSpan);
-
   // Set attributes for additional vegetable details
   item.setAttribute('id', vegetable.id);
   item.setAttribute('name', vegetable.name);

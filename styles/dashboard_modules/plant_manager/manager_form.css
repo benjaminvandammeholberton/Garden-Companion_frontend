@@ -96,7 +96,7 @@
 }
 
 .form-container__form__field__input {
-  width: 200px;
+  width: 250px;
   padding: 5px;
   margin-bottom: 5px;
   box-sizing: border-box;
@@ -120,8 +120,10 @@
 }
 
 .form-container__form__field__select {
-  width: 200px;
+  max-width: 80%;
+  min-width: 50%;
   padding: 5px;
+  padding-right: 30px;
   margin-bottom: 5px;
   box-sizing: border-box;
   border-radius: 4px;
@@ -136,10 +138,19 @@
   background-repeat: no-repeat;
   background-position: right;
 }
+.form-container__form__field__select option {
+  width: 20px;
+}
 
 .form-container__form__field__select:focus {
   outline: none;
-  border-color: #6cd270c7;
+  /* border-color: #6cd270c7; */
+}
+
+.form-container__form__field__radio {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .form-container__form__field__button {

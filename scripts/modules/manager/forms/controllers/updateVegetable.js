@@ -24,11 +24,13 @@ export async function updateVegetableForm(formId, form) {
   );
 
   defaultVegetableList.forEach(function (vegetable) {
-    const newVegetableOption = document.createElement('option');
-    newVegetableOption.value = vegetable.vegetable_manager_id;
-    newVegetableOption.text = vegetable.name;
-    vegetableSelect.add(newVegetableOption);
-    quantity.value = vegetable.quantity;
+    if (!vegetable.remove_date) {
+      const newVegetableOption = document.createElement('option');
+      newVegetableOption.value = vegetable.vegetable_manager_id;
+      newVegetableOption.text = `${vegetable.name} - ${vegetable.variety}`;
+      vegetableSelect.add(newVegetableOption);
+      quantity.value = defaultVegetableList[0].quantity;
+    }
   });
 
   // Add an event listener for the 'change' event on the 'sowingAreas' select element
@@ -43,12 +45,14 @@ export async function updateVegetableForm(formId, form) {
     );
     if (VegetableList) {
       VegetableList.forEach(function (vegetable) {
-        const newVegetableOption = document.createElement('option');
-        newVegetableOption.value = vegetable.vegetable_manager_id;
-        newVegetableOption.text = vegetable.name;
-        vegetableSelect.add(newVegetableOption);
-        const selectedQuantity = VegetableList[0].quantity;
-        quantity.value = selectedQuantity;
+        if (!vegetable.remove_date) {
+          const newVegetableOption = document.createElement('option');
+          newVegetableOption.value = vegetable.vegetable_manager_id;
+          newVegetableOption.text = `${vegetable.name} - ${vegetable.variety}`;
+          vegetableSelect.add(newVegetableOption);
+          const selectedQuantity = VegetableList[0].quantity;
+          quantity.value = selectedQuantity;
+        }
       });
     }
   });

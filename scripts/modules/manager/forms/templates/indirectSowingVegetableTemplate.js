@@ -12,8 +12,8 @@ export function generateIndirectSowingVegetableFormContent() {
 </div>
 
 <div class="form-container__form__field">
-<label class="form-container__form____field__label">Indiquez la variété</label>
-<input class="form-container__form__field__input form-container__form__field__input--text" type="text" name="variety" maxlength="60"
+<label class="form-container__form____field__label">Variété ou nom distinctif*</label>
+<input class="form-container__form__field__input form-container__form__field__input--text" type="text" name="variety" maxlength="60" placeholder="ex. Variété (Groupe 1)"
   >
 </div>
 
@@ -24,7 +24,7 @@ export function generateIndirectSowingVegetableFormContent() {
 </div>
 
 <div class="form-container__form__field">
-<label class="form-container__form____field__label" for="vegetableName">Choisissez la zone de culture</label>
+<label class="form-container__form____field__label" for="vegetableName">Choisissez l'espace de semis</label>
 <select class="form-container__form__field__select" type="text" id="vegetableIndirectSowingAreaSelect" name="area">
 </select>
 </div>
