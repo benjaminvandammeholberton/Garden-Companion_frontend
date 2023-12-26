@@ -48,9 +48,6 @@ productionPage.addEventListener('click', async () => {
       let year;
 
       const currentDate = new Date();
-      currentDate.setMonth(5);
-      currentDate.setDate(16);
-      currentDate.setYear(2024);
 
       if (vegetable.sowing_date && vegetable.sowed) {
         const sowingDate = new Date(vegetable.sowing_date);

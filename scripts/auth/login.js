@@ -143,8 +143,8 @@ async function createAccount(username, email, password, errorRegister) {
       errorRegister.style.display = 'block';
     } else {
       errorRegister.style.display = 'block';
-      errorRegister.style.backgroundColor = 'green';
-      errorRegister.style.color = 'green';
+      errorRegister.style.borderColor = 'red';
+      errorRegister.style.color = 'red';
       errorRegister.innerHTML =
         "Une erreur s'est produite lors de l'inscription.";
       errorRegister.style.display = 'block';

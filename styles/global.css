@@ -89,10 +89,6 @@ h3 {
   font-size: 20px;
   opacity: 0.6;
   font-weight: 300;
-  background-image: radial-gradient(ellipse, #0c0a12, #671f11);
-  color: black;
-  background-clip: text;
-  -webkit-background-clip: text;
 }
 
 .logo_container {
