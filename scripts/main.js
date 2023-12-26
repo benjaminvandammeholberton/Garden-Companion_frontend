@@ -12,7 +12,7 @@ import { displayToDo } from './modules/todoModule.js';
 import { changePage } from './utils/change-page.js';
 import { initializeForecast } from './modules/forecast.js';
 import { initializeRecommandationModule } from './modules/recommandations.js';
-
+import { initializeUserSettings } from './pages/settings/userSettings.js';
 import { assistantModuleSizeChanger } from './utils/AssistantModuleSizeChanger.js';
 
 import { logOut } from './utils/log-out.js';
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeRecommandationModule();
     changePage();
     initializeManagerModule();
+    initializeUserSettings();
     await displayToDo();
     await initializeEncyclopedia();
     initializeVegetableInfoDetails();
