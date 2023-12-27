@@ -1,4 +1,4 @@
-// auth.js
+import { BASE_URL } from '../api/apiConfig.js';
 
 /**
  * Check if the user is authenticated by verifying the validity of the access token.
@@ -13,16 +13,13 @@ export async function checkAuthentication() {
   if (accessToken) {
     try {
       // Make a request to test the validity of the access token
-      const response = await fetch(
-        'https://garden-companion-api-24y73.ondigitalocean.app/api/v1/auth/test-token',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+      const response = await fetch(`${BASE_URL}/auth/test-token`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
 
       // Check if the response is okay (status 200)
       if (!response.ok) {

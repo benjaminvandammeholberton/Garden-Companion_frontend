@@ -30,6 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
   /* background: rgb(123, 240, 234); */
   background: linear-gradient(
     180deg,
@@ -37,11 +38,11 @@ body {
     rgba(193, 250, 129, 1) 67%,
     rgba(245, 193, 132, 1) 100%
   );
-  min-width: 1500px;
+  /* min-width: 1200px; */
 }
 
 .main-container {
-  width: 1200px;
+  /* width: 1200px; */
   height: 750px;
   display: flex;
   flex-direction: column;

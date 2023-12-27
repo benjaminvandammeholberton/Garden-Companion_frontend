@@ -1,7 +1,7 @@
 #container_settings {
   display: none;
   grid-template-columns: repeat(2, 562px);
-  grid-auto-rows: 660px;
+  grid-auto-rows: 600px;
 }
 
 .settings {

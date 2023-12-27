@@ -1,4 +1,5 @@
 import { getHeaders } from '../../api/apiService.js';
+import { BASE_URL } from '../../api/apiConfig.js';
 
 /**
  * Initializes the user settings and sets up an event listener for the change password form.
@@ -58,14 +59,11 @@ export function initializeUserSettings() {
  */
 async function verifyActualPassword(actualPassword, message) {
   try {
-    const response = await fetch(
-      `https://garden-companion-api-24y73.ondigitalocean.app/api/v1/users/verify_password/`,
-      {
-        method: 'POST',
-        headers: getHeaders(),
-        body: JSON.stringify({ password: actualPassword }),
-      }
-    );
+    const response = await fetch(`${BASE_URL}/users/verify_password/`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify({ password: actualPassword }),
+    });
     if (response.ok) {
       if (!(await response.json())) {
         message.innerHTML =
@@ -94,14 +92,11 @@ async function verifyActualPassword(actualPassword, message) {
  */
 async function updatePassword(newPassword, message) {
   try {
-    const response = await fetch(
-      'https://garden-companion-api-24y73.ondigitalocean.app/api/v1/users/update_password',
-      {
-        method: 'PUT',
-        headers: getHeaders(),
-        body: JSON.stringify({ new_password: newPassword }),
-      }
-    );
+    const response = await fetch(`${BASE_URL}/users/update_password`, {
+      method: 'PUT',
+      headers: getHeaders(),
+      body: JSON.stringify({ new_password: newPassword }),
+    });
     if (response.ok) {
       const newToken = await response.json();
       localStorage.setItem('access_token', newToken['new_access_token']);

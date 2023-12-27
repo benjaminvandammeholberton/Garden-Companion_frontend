@@ -1,7 +1,7 @@
 .dashboard {
   display: grid;
   grid-template-columns: repeat(3, 370px);
-  grid-auto-rows: 210px;
+  grid-auto-rows: 190px;
 }
 
 .dashbord__module {

@@ -1,4 +1,5 @@
 import { getHeaders } from '../api/apiService.js';
+import { BASE_URL } from '../api/apiConfig.js';
 
 const loginForm = document.getElementById('form-login');
 const emailLogin = document.getElementById('email-login');
@@ -19,19 +20,16 @@ loginForm.addEventListener('submit', async function (event) {
   const password = passwordLogin.value;
 
   try {
-    const response = await fetch(
-      'https://garden-companion-api-24y73.ondigitalocean.app/api/v1/auth/login',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          Accept: 'application/json',
-        },
-        body: `username=${encodeURIComponent(
-          email
-        )}&password=${encodeURIComponent(password)}`,
-      }
-    );
+    const response = await fetch(`${BASE_URL}/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Accept: 'application/json',
+      },
+      body: `username=${encodeURIComponent(
+        email
+      )}&password=${encodeURIComponent(password)}`,
+    });
 
     if (response.ok) {
       const result = await response.json();
@@ -81,13 +79,10 @@ function checkPassword(password, confirmPassword, errorRegister) {
 
 async function checkUsername(username, errorRegister) {
   try {
-    const response = await fetch(
-      `https://garden-companion-api-24y73.ondigitalocean.app/api/v1/users/byusername/${username}`,
-      {
-        method: 'GET',
-        headers: getHeaders(),
-      }
-    );
+    const response = await fetch(`${BASE_URL}/users/byusername/${username}`, {
+      method: 'GET',
+      headers: getHeaders(),
+    });
     const usernamValidation = await response.json();
     if (usernamValidation[username] === 'already exists') {
       errorRegister.innerHTML =
@@ -103,13 +98,10 @@ async function checkUsername(username, errorRegister) {
 
 async function checkEmail(email, errorRegister) {
   try {
-    const response = await fetch(
-      `https://garden-companion-api-24y73.ondigitalocean.app/api/v1/users/byemail/${email}`,
-      {
-        method: 'GET',
-        headers: getHeaders(),
-      }
-    );
+    const response = await fetch(`${BASE_URL}/users/byemail/${email}`, {
+      method: 'GET',
+      headers: getHeaders(),
+    });
     const usernamValidation = await response.json();
     if (usernamValidation[email] === 'already exists') {
       errorRegister.innerHTML =
@@ -126,14 +118,11 @@ async function checkEmail(email, errorRegister) {
 async function createAccount(username, email, password, errorRegister) {
   try {
     const data = { username: username, email: email, password: password };
-    const response = await fetch(
-      'https://garden-companion-api-24y73.ondigitalocean.app/api/v1/users/create',
-      {
-        method: 'POST',
-        headers: getHeaders(),
-        body: JSON.stringify(data),
-      }
-    );
+    const response = await fetch(`${BASE_URL}/users/create`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify(data),
+    });
     if (response.ok) {
       errorRegister.style.display = 'block';
       errorRegister.style.borderColor = 'green';
