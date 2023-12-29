@@ -59,7 +59,10 @@ function createItemElement(vegetable) {
   item.className = 'allVegetables__item';
 
   // Set background image based on vegetable name
-  const vegetableNameWithoutSpaces = vegetable.name.replace(/\s/g, '');
+  //   const vegetableNameWithoutSpacesRaw = vegetable.name.replace(/\s/g, '');
+  // const vegetableNameWithoutSpaces =
+  let vegetableNameWithoutSpaces = encodeURIComponent(vegetable.name);
+  vegetableNameWithoutSpaces = vegetable.name.replace(/\s/g, '');
   const imgUrl = `url(./styles/assets/vegetable_icons/${vegetableNameWithoutSpaces}.png)`;
   item.style.backgroundImage = imgUrl;
 
