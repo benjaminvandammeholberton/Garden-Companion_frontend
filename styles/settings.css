@@ -10,6 +10,7 @@
   flex-direction: column;
   align-items: center;
   background-color: rgba(250, 250, 250, 0.9);
+  gap: 2rem;
 }
 .settings--user {
   border-radius: 100px 5px 5px 100px;
@@ -19,7 +20,7 @@
 }
 
 .settings__title {
-  padding: 20px;
+  padding-top: 20px;
 }
 
 .settings__form {
@@ -27,21 +28,32 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  gap: 1rem;
+  gap: 0.2rem;
+}
+
+.settings--user {
+  position: relative;
 }
 .settings__form__field {
   display: flex;
-  padding: 5px;
   flex-direction: column;
-  gap: 0.2rem;
+  padding: 5px;
+}
+.settings__form__field--delete-account {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  font-size: 0.9rem;
+  gap: 0.7rem;
+}
+.settings__form__field--delete-account label {
+  width: 70%;
 }
 
 .settings__form__field__input {
   width: 15rem;
+  height: 1.5rem;
   padding: 5px;
   margin-bottom: 5px;
   box-sizing: border-box;
@@ -80,12 +92,15 @@
 .settings__form__button--register {
   background-color: #78caeac7;
 }
+.settings__form__button--delete {
+  background-color: #ea7878c7;
+}
 
 .settings__form__message {
   display: none;
-  border: 1px #be4e4e solid;
   margin-left: 20px;
   margin-right: 20px;
   color: #be4e4e;
+  border: 1px #be4e4e solid;
   padding: 10px;
 }

@@ -7,6 +7,8 @@ import { BASE_URL } from '../../api/apiConfig.js';
 export function initializeUserSettings() {
   const changePasswordForm = document.getElementById('form-change-password');
   const message = document.getElementById('message-change-password');
+  const deleteAccountForm = document.getElementById('delete-account-form');
+
   changePasswordForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const actualPassword = document.getElementById('password-change-before');
@@ -33,22 +35,27 @@ export function initializeUserSettings() {
     }
   });
 
-  /**
-   * Checks if the new password and repeated password match.
-   * @param {string} newPassword - The new password.
-   * @param {string} newRepeatPassword - The repeated new password.
-   * @param {HTMLElement} message - The message element to display error messages.
-   * @returns {boolean} - True if the passwords match, false otherwise.
-   */
-  function checkNewPassword(newPassword, newRepeatPassword, message) {
-    if (newPassword !== newRepeatPassword) {
-      message.innerHTML =
-        'Les nouveaux mots de passe sont différents.<br>Veuillez réessayer.';
-      message.style.display = 'block';
-      return false;
-    }
-    return true;
+  deleteAccountForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    deleteAccountForm();
+  });
+}
+
+/**
+ * Checks if the new password and repeated password match.
+ * @param {string} newPassword - The new password.
+ * @param {string} newRepeatPassword - The repeated new password.
+ * @param {HTMLElement} message - The message element to display error messages.
+ * @returns {boolean} - True if the passwords match, false otherwise.
+ */
+function checkNewPassword(newPassword, newRepeatPassword, message) {
+  if (newPassword !== newRepeatPassword) {
+    message.innerHTML =
+      'Les nouveaux mots de passe sont différents.<br>Veuillez réessayer.';
+    message.style.display = 'block';
+    return false;
   }
+  return true;
 }
 
 /**
@@ -59,22 +66,24 @@ export function initializeUserSettings() {
  */
 async function verifyActualPassword(actualPassword, message) {
   try {
-    const response = await fetch(`${BASE_URL}/users/verify_password/`, {
-      method: 'POST',
+    const response = await fetch(`${BASE_URL}/users/delete_account/`, {
+      method: 'DELETE',
       headers: getHeaders(),
-      body: JSON.stringify({ password: actualPassword }),
     });
     if (response.ok) {
       if (!(await response.json())) {
         message.innerHTML =
           'Mot de passe actuel incorrect<br>Veuillez réessayer.';
         message.style.display = 'block';
+        message.style.borderColor = '#be4e4e';
+        message.style.color = '#be4e4e';
         return false;
       }
       return true;
     } else {
       message.innerHTML = 'Une erreur est survenue<br>Veuillez réessayer.';
       message.style.display = 'block';
+      message.style.borderColor = '#be4e4e';
       throw new Error(
         `Failed to verify actual password. Server returned status ${response.status}`
       );
@@ -112,5 +121,25 @@ async function updatePassword(newPassword, message) {
     }
   } catch (error) {
     throw new Error(`Error during password update: ${error.message}`);
+  }
+}
+
+/**
+ *
+ */
+async function deleteAccount() {
+  try {
+    const response = await fetch('');
+
+    if (response.ok) {
+      window.location.href = '/index.html';
+    } else {
+      const errorMessage =
+        'Failed to delete account: ' +
+        (response.statusText || 'Unexpected response from the server');
+      throw new Error(errorMessage);
+    }
+  } catch (error) {
+    throw new Error(`Error during account delete: ${error.message}`);
   }
 }
