@@ -80,6 +80,7 @@ function newPlantedVegetableController(newPlantedVegetable, form, formId) {
 function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
   let previousQuantity = 0;
   let name = '';
+  let variety;
   sowedPlantedVegetable.addEventListener('click', async () => {
     form.innerHTML = generatePlantingSowedVegetableFormContent();
     const vegetableSowedSelect = document.getElementById('vegetableSowed');
@@ -122,6 +123,7 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
       previousQuantity = defaultQuantity;
       quantity.value = defaultQuantity;
       name = defaultVegetableList[0].name;
+      variety = defaultVegetableList[0].variety;
     });
 
     // Add an event listener for the 'change' event on the 'sowingAreas' select element
@@ -152,6 +154,7 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
           previousQuantity = defaultQuantity;
           quantity.value = defaultQuantity;
           name = defaultVegetableListSorted[0].name;
+          variety = defaultVegetableListSorted[0].variety;
         });
       }
     });
@@ -178,6 +181,7 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
         quantity.value = selectedVegetable.quantity || '';
         previousQuantity = selectedVegetable.quantity;
         name = selectedVegetable.name;
+        variety = selectedVegetable.variety;
       }
     });
 
@@ -204,7 +208,7 @@ function sowedPlantedVegetableController(sowedPlantedVegetable, form, formId) {
           // Case if the quantity submited is less than the vegetable quantity:
           // we do a PUT to change the quantity of the vegetable and we POST a new
           // vegetable with the quantity submited, the new area, planting date
-          // console.log('vegetable created :');
+          data['variety'] = variety;
           await vegetableManagerApi.createVegetableManager(data);
           data['quantity'] = previousQuantity - data['quantity'];
           data['area'] = data['origin_area'];
