@@ -66,9 +66,10 @@ function checkNewPassword(newPassword, newRepeatPassword, message) {
  */
 async function verifyActualPassword(actualPassword, message) {
   try {
-    const response = await fetch(`${BASE_URL}/users/delete_account/`, {
-      method: 'DELETE',
+    const response = await fetch(`${BASE_URL}/users/verify_password/`, {
+      method: 'POST',
       headers: getHeaders(),
+      body: JSON.stringify({ password: actualPassword }),
     });
     if (response.ok) {
       if (!(await response.json())) {
@@ -129,7 +130,10 @@ async function updatePassword(newPassword, message) {
  */
 async function deleteAccount() {
   try {
-    const response = await fetch(`${BASE_URL}/users/delete_account`);
+    const response = await fetch(`${BASE_URL}/users/delete_account`, {
+      method: 'DELETE',
+      headers: getHeaders(),
+    });
 
     if (response.ok) {
       window.location.href = '/index.html';
