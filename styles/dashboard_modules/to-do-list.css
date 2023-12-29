@@ -19,7 +19,7 @@
   overflow-y: scroll;
 }
 .dashbord__module__content--todolist::-webkit-scrollbar {
-  width: 4px;
+  width: 2px;
 }
 .dashbord__module__content--todolist::-webkit-scrollbar-thumb {
   background: lightblue;

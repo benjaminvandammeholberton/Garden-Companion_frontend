@@ -40,8 +40,11 @@ right the detail of the vegetable choosen -----------------------
 }
 
 .all-vegetables-container__content::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  width: 2px;
+}
+.all-vegetables-container__content::-webkit-scrollbar-thumb {
+  background: lightblue;
+  border-radius: 100%;
 }
 
 .allVegetables__item {
