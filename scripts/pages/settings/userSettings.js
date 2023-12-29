@@ -129,7 +129,7 @@ async function updatePassword(newPassword, message) {
  */
 async function deleteAccount() {
   try {
-    const response = await fetch('');
+    const response = await fetch(`${BASE_URL}/users/delete_account`);
 
     if (response.ok) {
       window.location.href = '/index.html';
