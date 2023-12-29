@@ -37,7 +37,7 @@ export function initializeUserSettings() {
 
   deleteAccountForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    deleteAccountForm();
+    deleteAccount();
   });
 }
 
