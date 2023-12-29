@@ -23,7 +23,7 @@ export function generateUpdateAreaFormContent() {
     <div class="form-container__form__field">
       <label class="form-container__form____field__label" for="areaSurface">Nouvelle surface (en m²)</label>
       <input class="form-container__form__field__input form-container__form__field__input--number" type="number" id="areaNewSurface" name="surface"
-        step="0.01" min="0" max="10000">
+        step="0.1" min="0" max="10000">
     </div>
 
     <div class="form-container__form__field">
