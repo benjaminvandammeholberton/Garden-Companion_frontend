@@ -56,12 +56,15 @@ registerForm.addEventListener('submit', async function (event) {
   const confirmPassword = confirmPasswordRegister.value;
 
   if (!checkPassword(password, confirmPassword, errorRegister)) {
+    registerForm.reset();
     return;
   }
   if (!(await checkUsername(username, errorRegister))) {
+    registerForm.reset();
     return;
   }
   if (!(await checkEmail(email, errorRegister))) {
+    registerForm.reset();
     return;
   }
   createAccount(username, email, password, errorRegister);
