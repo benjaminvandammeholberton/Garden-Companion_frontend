@@ -172,14 +172,14 @@ header {
   background-size: contain;
 }
 .header__content__description__vegetable-icon__icon--1 {
-  background-image: url(./assets/tomato.png);
+  background-image: url(./assets/assets-landing/tomato.png);
 }
 .header__content__description__vegetable-icon__icon--2 {
-  background-image: url(./assets/eggplant.png);
+  background-image: url(./assets/assets-landing/eggplant.png);
   background-size: contain;
 }
 .header__content__description__vegetable-icon__icon--3 {
-  background-image: url(./assets/carrot.png);
+  background-image: url(./assets/assets-landing/carrot.png);
 }
 .header__content__description__buttons {
   display: flex;
@@ -254,28 +254,28 @@ main {
   width: 20rem;
 }
 .feature__icon--manager {
-  background-image: url(./assets/management.png);
+  background-image: url(./assets/assets-landing/management.png);
 }
 .feature__icon--guide {
-  background-image: url(./assets/guide-icon.png);
+  background-image: url(./assets/assets-landing/guide-icon.png);
 }
 .feature__icon--recommandations {
-  background-image: url(./assets/sowing-seeds.png);
+  background-image: url(./assets/assets-landing/sowing-seeds.png);
 }
 .feature__icon--todo {
-  background-image: url(./assets/check.png);
+  background-image: url(./assets/assets-landing/check.png);
 }
 .feature__icon--forecast {
-  background-image: url(./assets/cloudy-2.png);
+  background-image: url(./assets/assets-landing/cloudy-2.png);
 }
 .feature__icon--assistant {
-  background-image: url(./assets/chatbot.png);
+  background-image: url(./assets/assets-landing/chatbot.png);
 }
 .feature__icon--assistant {
-  background-image: url(./assets/chatbot.png);
+  background-image: url(./assets/assets-landing/chatbot.png);
 }
 .feature__icon--production {
-  background-image: url(./assets/production-icon.png);
+  background-image: url(./assets/assets-landing/production-icon.png);
 }
 
 .community {
