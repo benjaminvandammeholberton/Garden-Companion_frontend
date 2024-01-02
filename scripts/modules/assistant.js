@@ -11,6 +11,7 @@ const form = document.querySelector('.assistant__input-container');
  */
 export function initializeAssistantModule() {
   requestCounterDisplay();
+  displayPlaceholder();
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
     try {
@@ -32,6 +33,20 @@ async function requestCounterDisplay() {
     const data = await getNumberOfRequestsAllowed();
     const requestNumber = data.chat_bot_day_requests;
     counter.textContent = `${requestNumber}/3`;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+/**
+ *
+ */
+async function displayPlaceholder() {
+  const message = document.getElementById('placeholder-message');
+  try {
+    const data = await getUserInfo();
+    const username = data.username;
+    message.textContent = `Salut ${username} ! Comment puis-je t'aider ?`;
   } catch (error) {
     console.error(error.message);
   }
