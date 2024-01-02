@@ -53,7 +53,7 @@ export function initializeVegetableInfoDetails() {
         'vegetable-characteristic__header__text-content';
 
       const vegetableFamily = document.createElement('h3');
-      vegetableFamily.textContent = `Famille: ${vegetableItem.getAttribute(
+      vegetableFamily.textContent = `Catégorie: ${vegetableItem.getAttribute(
         'family'
       )}`;
 
@@ -68,6 +68,7 @@ export function initializeVegetableInfoDetails() {
       const quickInfosSow = document.createElement('div');
       quickInfosSow.classList = 'vegetable-characteristic__sow-infos';
 
+      // Spacing on row
       const quickInfosSpacingOnRow = document.createElement('div');
       quickInfosSpacingOnRow.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--spacing-on-row';
@@ -80,6 +81,7 @@ export function initializeVegetableInfoDetails() {
       quickInfosSpacingOnRowContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
+      // Germination temperature
       const quickInfossoilTemperature = document.createElement('div');
       quickInfossoilTemperature.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--soil-temperature';
@@ -91,6 +93,8 @@ export function initializeVegetableInfoDetails() {
       quickInfossoilTemperatureContent.innerHTML = `<em>minimum</em>${vegetableSoil_temperature}°C`;
       quickInfossoilTemperatureContent.className =
         'vegetable-characteristic__quick-infos__item__content';
+
+      // Water needs
       const quickInfosWaterNeeds = document.createElement('div');
       quickInfosWaterNeeds.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--watering';
@@ -98,12 +102,18 @@ export function initializeVegetableInfoDetails() {
       quickInfosWaterNeedsTitle.textContent = 'Besoins en eau';
       quickInfosWaterNeedsTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
-
       const quickInfosWaterNeedsContent = document.createElement('div');
-      quickInfosWaterNeedsContent.textContent = `${vegetableWater_needs}/5`;
+      if (vegetableWater_needs === '1') {
+        quickInfosWaterNeedsContent.innerHTML = `<em>arrosage</em>léger`;
+      } else if (vegetableWater_needs === '2') {
+        quickInfosWaterNeedsContent.innerHTML = `<em>arrosage</em>régulier`;
+      } else {
+        quickInfosWaterNeedsContent.innerHTML = `<em>arrosage</em>fréquent`;
+      }
       quickInfosWaterNeedsContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
+      // Frost resistance
       const quickInfosFrost = document.createElement('div');
       quickInfosFrost.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--frost';
@@ -112,10 +122,17 @@ export function initializeVegetableInfoDetails() {
       quickInfosFrostTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfosFrostContent = document.createElement('div');
-      quickInfosFrostContent.innerHTML = `${vegetableCold_resistance}/5`;
+      if (vegetableCold_resistance === '0') {
+        quickInfosFrostContent.innerHTML = `<em>non tolérant</em>> 0°`;
+      } else if (vegetableCold_resistance === '1') {
+        quickInfosFrostContent.innerHTML = `<em>semi tolérant</em>≈ -2°`;
+      } else {
+        quickInfosFrostContent.innerHTML = `<em>tolérant</em>< -2°`;
+      }
       quickInfosFrostContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
+      // Start inside
       const quickInfosStartInside = document.createElement('div');
       quickInfosStartInside.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--start-inside';
@@ -128,6 +145,7 @@ export function initializeVegetableInfoDetails() {
       quickInfosStartInsideContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
+      // Transplant
       const quickInfosStartOutside = document.createElement('div');
       quickInfosStartOutside.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--start-outside';
@@ -140,6 +158,7 @@ export function initializeVegetableInfoDetails() {
       quickInfosStartOutsideContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
+      // Stop sowing
       const quickInfosEnd = document.createElement('div');
       quickInfosEnd.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--end';
@@ -148,7 +167,7 @@ export function initializeVegetableInfoDetails() {
       quickInfosEndTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfosEndContent = document.createElement('div');
-      quickInfosEndContent.textContent = vegetableEnd;
+      quickInfosEndContent.innerHTML = `<em>jusqu'au</em>${vegetableEnd}`;
       quickInfosEndContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 

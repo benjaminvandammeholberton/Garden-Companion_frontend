@@ -73,7 +73,7 @@ function createItemElement(vegetable) {
   // Set attributes for additional vegetable details
   item.setAttribute('id', vegetable.id);
   item.setAttribute('name', vegetable.name);
-  item.setAttribute('family', vegetable.family);
+  item.setAttribute('family', vegetable.category);
   item.setAttribute('start_indoor', vegetable.start_indoor);
   item.setAttribute('start_outdoor', vegetable.start_outdoor);
   item.setAttribute('end', vegetable.end);
