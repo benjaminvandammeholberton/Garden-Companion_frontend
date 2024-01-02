@@ -18,6 +18,9 @@
 .settings--customization {
   border-radius: 5px 100px 100px 5px;
 }
+.settings--customization h3 {
+  margin-top: 200px;
+}
 
 .settings__title {
   padding-top: 20px;
