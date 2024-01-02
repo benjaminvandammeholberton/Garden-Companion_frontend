@@ -87,7 +87,7 @@ export async function harvestVegetableForm(formId, form) {
 
       // Add the quantity harvested enter by the user with the actual harvested quantity
       // of the vegetable selected
-      data['harvest_quantity'] = parseInt(data['harvest_quantity']);
+      data['harvest_quantity'] = parseFloat(data['harvest_quantity']);
       data['harvest_quantity'] += vegetableHarvested.harvest_quantity;
 
       // Call the API to update the vegetable
