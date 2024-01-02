@@ -19,118 +19,152 @@ productionPage.addEventListener('click', async () => {
     }
   });
   areasData.forEach((area) => {
-    const areaName = document.createElement('h3');
-    areaName.classList.add('production-container__content__subtitle');
-    areaName.textContent = area.name;
-
-    const tableProduction = document.createElement('table');
-    tableProduction.classList.add('table-production');
-    tableProduction.innerHTML = headerTable;
-
-    productionContent.appendChild(areaName);
-    productionContent.appendChild(tableProduction);
-
     const vegetablesInArea = vegetablesData.filter((vegetable) => {
       return vegetable.area.area_id === area.area_id;
     });
-    const vegetablesInAreaSortedNyName = vegetablesInArea.sort((a, b) => {
-      return a.name.localeCompare(b.name);
+
+    const vegetablesinAreaCurrentYear = vegetablesInArea.filter((vegetable) => {
+      const removeDate = new Date(vegetable.remove_date);
+      return (
+        !vegetable.remove_date ||
+        removeDate.getFullYear() === new Date().getFullYear()
+      );
     });
-    vegetablesInAreaSortedNyName.forEach((vegetable) => {
-      const tableRow = document.createElement('tr');
-      let startMonth;
-      let startDay;
-      let startCell;
-      let endMonth;
-      let endDay;
-      let endCell;
-      let harvestCell;
-      let year;
 
-      const currentDate = new Date();
+    if (vegetablesinAreaCurrentYear.length > 0) {
+      const vegetablesInAreaSortedNyName = vegetablesinAreaCurrentYear.sort(
+        (a, b) => {
+          return a.name.localeCompare(b.name);
+        }
+      );
 
-      if (vegetable.sowing_date && vegetable.sowed) {
-        const sowingDate = new Date(vegetable.sowing_date);
-        startMonth = sowingDate.getMonth();
-        startDay = sowingDate.getDate();
-      }
-      if (vegetable.planting_date) {
-        const plantingDate = new Date(vegetable.planting_date);
-        startMonth = plantingDate.getMonth();
-        startDay = plantingDate.getDate();
-      }
-      startCell = getTableCellByDate(startDay, startMonth);
+      const areaName = document.createElement('h3');
+      areaName.classList.add('production-container__content__subtitle');
+      areaName.textContent = area.name;
 
-      if (vegetable.harvest_date) {
-        const harvestDate = new Date(vegetable.harvest_date);
-        const harvestMonth = harvestDate.getMonth();
-        const harvestDay = harvestDate.getDate();
-        harvestCell = getTableCellByDate(harvestDay, harvestMonth);
-      }
-      if (vegetable.remove_date) {
-        const removeDate = new Date(vegetable.remove_date);
-        endMonth = removeDate.getMonth();
-        endDay = removeDate.getDate();
-        endCell = getTableCellByDate(endDay, endMonth);
-      } else {
-        endMonth = currentDate.getMonth();
-        endDay = currentDate.getDate();
-        endCell = getTableCellByDate(endDay, endMonth);
-      }
+      const tableProduction = document.createElement('table');
+      tableProduction.classList.add('table-production');
+      tableProduction.innerHTML = headerTable;
 
-      for (let i = 0; i <= 52; i++) {
-        const tableCell = document.createElement('td');
-        if (i > 0 && i <= 4) {
-        }
-        if (i === 0) {
-          tableCell.textContent = '';
-          tableCell.style.backgroundImage = `url(./styles/assets/vegetable_icons/${vegetable.name.replace(
-            /\s/g,
-            ''
-          )}.png)`;
-          tableCell.classList.add('table-production__vegetable-icon');
-        }
-        if (i === 1) {
-          tableCell.textContent = vegetable.name;
-          tableCell.className = 'cell-name';
-        }
-        if (i === 2) {
-          tableCell.textContent = vegetable.variety;
-          tableCell.className = 'cell-variety';
-        }
-        if (i === 3) {
-          tableCell.textContent = vegetable.quantity;
-          tableCell.className = 'cell-quantity';
-        }
-        if (i === 4) {
-          tableCell.textContent = vegetable.harvest_quantity;
-          tableCell.className = 'cell-harvested';
-        }
+      productionContent.appendChild(areaName);
+      productionContent.appendChild(tableProduction);
 
-        if (i >= startCell && i <= endCell) {
-          const timePeriod = document.createElement('div');
-          timePeriod.classList = 'highlight-grow highlight';
-          if (i === startCell) {
-            timePeriod.classList = 'highlight-grow highlight highlight-start';
-          }
-          if (i === endCell) {
-            timePeriod.classList = 'highlight-grow highlight highlight-end';
-          }
-          if (startCell == endCell) {
-            timePeriod.classList =
-              'highlight-grow highlight highlight-start-end';
-          }
-          if (harvestCell !== null) {
-            if (i >= harvestCell && i <= endCell) {
-              timePeriod.style.backgroundColor = 'orangered';
+      vegetablesInAreaSortedNyName.forEach((vegetable) => {
+        const tableRow = document.createElement('tr');
+        let startMonth;
+        let startDay;
+        let startCell;
+        let endMonth;
+        let endDay;
+        let endCell;
+        let harvestCell;
+        let year;
+        const currentDate = new Date();
+
+        if (
+          !vegetable.removeDate ||
+          vegetable.removeDate.getFullYear() === currentDate.getFullYear()
+        ) {
+          if (vegetable.sowing_date && vegetable.sowed) {
+            const sowingDate = new Date(vegetable.sowing_date);
+            if (sowingDate.getFullYear() === currentDate.getFullYear()) {
+              startMonth = sowingDate.getMonth();
+              startDay = sowingDate.getDate();
+              startCell = getTableCellByDate(startDay, startMonth);
+            } else if (sowingDate.getFullYear() < currentDate.getFullYear()) {
+              startCell = 5;
             }
           }
-          tableCell.appendChild(timePeriod);
+          if (vegetable.planting_date) {
+            const plantingDate = new Date(vegetable.planting_date);
+            if (plantingDate.getFullYear() === currentDate.getFullYear()) {
+              startMonth = plantingDate.getMonth();
+              startDay = plantingDate.getDate();
+              startCell = getTableCellByDate(startDay, startMonth);
+            } else if (plantingDate.getFullYear() < currentDate.getFullYear()) {
+              startCell = 5;
+            }
+          }
+
+          if (vegetable.harvest_date) {
+            const harvestDate = new Date(vegetable.harvest_date);
+            if (harvestDate.getFullYear() === currentDate.getFullYear()) {
+              const harvestMonth = harvestDate.getMonth();
+              const harvestDay = harvestDate.getDate();
+              harvestCell = getTableCellByDate(harvestDay, harvestMonth);
+            } else if (harvestDate.getFullYear() < currentDate.getFullYear()) {
+              harvestCell = 5;
+            }
+          }
+          if (vegetable.remove_date) {
+            const removeDate = new Date(vegetable.remove_date);
+            if (removeDate.getFullYear() === currentDate.getFullYear()) {
+              endMonth = removeDate.getMonth();
+              endDay = removeDate.getDate();
+              endCell = getTableCellByDate(endDay, endMonth);
+            }
+          } else {
+            endMonth = currentDate.getMonth();
+            endDay = currentDate.getDate();
+            endCell = getTableCellByDate(endDay, endMonth);
+          }
+
+          for (let i = 0; i <= 52; i++) {
+            const tableCell = document.createElement('td');
+            if (i > 0 && i <= 4) {
+            }
+            if (i === 0) {
+              tableCell.textContent = '';
+              tableCell.style.backgroundImage = `url(./styles/assets/vegetable_icons/${vegetable.name.replace(
+                /\s/g,
+                ''
+              )}.png)`;
+              tableCell.classList.add('table-production__vegetable-icon');
+            }
+            if (i === 1) {
+              tableCell.textContent = vegetable.name;
+              tableCell.className = 'cell-name';
+            }
+            if (i === 2) {
+              tableCell.textContent = vegetable.variety;
+              tableCell.className = 'cell-variety';
+            }
+            if (i === 3) {
+              tableCell.textContent = vegetable.quantity;
+              tableCell.className = 'cell-quantity';
+            }
+            if (i === 4) {
+              tableCell.textContent = vegetable.harvest_quantity;
+              tableCell.className = 'cell-harvested';
+            }
+
+            if (i >= startCell && i <= endCell) {
+              const timePeriod = document.createElement('div');
+              timePeriod.classList = 'highlight-grow highlight';
+              if (i === startCell) {
+                timePeriod.classList =
+                  'highlight-grow highlight highlight-start';
+              }
+              if (i === endCell) {
+                timePeriod.classList = 'highlight-grow highlight highlight-end';
+              }
+              if (startCell == endCell) {
+                timePeriod.classList =
+                  'highlight-grow highlight highlight-start-end';
+              }
+              if (harvestCell !== null) {
+                if (i >= harvestCell && i <= endCell) {
+                  timePeriod.style.backgroundColor = 'orangered';
+                }
+              }
+              tableCell.appendChild(timePeriod);
+            }
+            tableRow.appendChild(tableCell);
+          }
+          tableProduction.appendChild(tableRow);
         }
-        tableRow.appendChild(tableCell);
-      }
-      tableProduction.appendChild(tableRow);
-    });
+      });
+    }
   });
 });
 
@@ -148,7 +182,7 @@ const headerTable = `
 <th colspan="4">Mai</th>
 <th colspan="4">Jui</th>
 <th colspan="4">Jul</th>
-<th colspan="4">Aut</th>
+<th colspan="4">Aoû</th>
 <th colspan="4">Sep</th>
 <th colspan="4">Oct</th>
 <th colspan="4">Nov</th>
