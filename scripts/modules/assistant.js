@@ -1,4 +1,5 @@
 import { getAssistantAnswer } from '../api/assistantApi.js';
+import { getNumberOfRequestsAllowed } from '../api/assistantApi.js';
 import { getUserInfo } from '../api/userApi.js';
 
 const chatOutput = document.getElementById('chat-output');
@@ -28,7 +29,7 @@ export function initializeAssistantModule() {
 async function requestCounterDisplay() {
   const counter = document.getElementById('assistant_counter');
   try {
-    const data = await getUserInfo();
+    const data = await getNumberOfRequestsAllowed();
     const requestNumber = data.chat_bot_day_requests;
     counter.textContent = `${requestNumber}/3`;
   } catch (error) {

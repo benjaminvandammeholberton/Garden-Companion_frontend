@@ -20,3 +20,18 @@ export async function getAssistantAnswer(data) {
     throw new Error(error);
   }
 }
+
+/**
+ *
+ */
+export async function getNumberOfRequestsAllowed() {
+  try {
+    const response = await fetch(`${BASE_URL}/assistant/`, {
+      method: 'GET',
+      headers: getHeaders(),
+    });
+    return handleResponse(response);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
