@@ -80,7 +80,7 @@ function createItemElement(vegetable) {
   item.setAttribute('water_needs', vegetable.water_needs);
   item.setAttribute('cold_resistance', vegetable.cold_resistance);
   item.setAttribute('spacing_on_row', vegetable.spacing_on_row);
-  item.setAttribute('soil_temperature', vegetable.soil_temperature);
+  item.setAttribute('soil_temperature', vegetable.germination);
   item.setAttribute('description', vegetable.description);
 
   return item;

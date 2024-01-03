@@ -21,11 +21,23 @@ export function initializeVegetableInfoDetails() {
         );
       }
 
-      const vegetableStart_outdoor_raw = new Date(
-        vegetableItem.getAttribute('start_outdoor')
-      );
-      const vegetableStart_outoor =
-        vegetableStart_outdoor_raw.toLocaleDateString('fr-FR', options);
+      let vegetableStart_outdoor = 'N/A';
+      if (vegetableItem.getAttribute('start_outdoor') !== 'null') {
+        const vegetableStart_outdoor_raw = new Date(
+          vegetableItem.getAttribute('start_outdoor')
+        );
+        vegetableStart_outdoor = vegetableStart_outdoor_raw.toLocaleDateString(
+          'fr-FR',
+          options
+        );
+      }
+
+      // const vegetableStart_outdoor_raw = new Date(
+      //   vegetableItem.getAttribute('start_outdoor')
+      // );
+      // const vegetableStart_outoor =
+      //   vegetableStart_outdoor_raw.toLocaleDateString('fr-FR', options);
+
       const vegetableEnd_raw = new Date(vegetableItem.getAttribute('end'));
       const vegetableEnd = vegetableEnd_raw.toLocaleDateString(
         'fr-FR',
@@ -81,16 +93,16 @@ export function initializeVegetableInfoDetails() {
       quickInfosSpacingOnRowContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
-      // Germination temperature
+      // Germination
       const quickInfossoilTemperature = document.createElement('div');
       quickInfossoilTemperature.classList =
         'vegetable-characteristic__quick-infos__item vegetable-characteristic__quick-infos__item--soil-temperature';
       const quickInfossoilTemperatureTitle = document.createElement('div');
-      quickInfossoilTemperatureTitle.textContent = 'T° de germination';
+      quickInfossoilTemperatureTitle.textContent = 'Durée de germination';
       quickInfossoilTemperatureTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfossoilTemperatureContent = document.createElement('div');
-      quickInfossoilTemperatureContent.innerHTML = `<em>minimum</em>${vegetableSoil_temperature}°C`;
+      quickInfossoilTemperatureContent.innerHTML = `<em>jours</em>${vegetableSoil_temperature}`;
       quickInfossoilTemperatureContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
@@ -154,7 +166,7 @@ export function initializeVegetableInfoDetails() {
       quickInfosStartOutsideTitle.className =
         'vegetable-characteristic__quick-infos__item__title';
       const quickInfosStartOutsideContent = document.createElement('div');
-      quickInfosStartOutsideContent.innerHTML = `<em>à partir du</em>${vegetableStart_outoor}`;
+      quickInfosStartOutsideContent.innerHTML = `<em>à partir du</em>${vegetableStart_outdoor}`;
       quickInfosStartOutsideContent.className =
         'vegetable-characteristic__quick-infos__item__content';
 
