@@ -40,7 +40,7 @@ right the detail of the vegetable choosen -----------------------
 }
 
 .all-vegetables-container__content::-webkit-scrollbar {
-  width: 2px;
+  width: 7px;
 }
 .all-vegetables-container__content::-webkit-scrollbar-thumb {
   background: lightblue;
