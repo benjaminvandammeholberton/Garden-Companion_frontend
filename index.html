@@ -16,9 +16,14 @@
         content="Garden Companion - Votre allié pour un potager optimisé et productif. Gérez votre jardin potager avec notre tableau de bord complet, suivez le développement de chaque culture, optimisez la production, et profitez de fonctionnalités pratiques telles que la prévision météo, le guide de culture, et bien plus. Rejoignez la communauté Garden Companion dès maintenant. Happy Gardening! 🌱🌺">
 </head>
 <script>
-    if (window.location.hostname === 'www.gardencompanion.fr' || 'gardencompanion.fr' || 'www.gardencompanion.io') {
-        window.location.href = 'https://gardencompanion.io';
+    let flag = false
+    if (!flag) {
+        if (window.location.hostname === 'www.gardencompanion.fr' || 'gardencompanion.fr' || 'www.gardencompanion.io') {
+            window.location.href = 'https://gardencompanion.io';
+            flag = true
+        }
     }
+
 </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD7S3GJ5KN"></script>
