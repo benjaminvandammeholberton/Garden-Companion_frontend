@@ -21,6 +21,14 @@
         window.location.href = 'https://gardencompanion.io';
     }
 </script>
+<script>
+    // Check if the URL ends with '.html'
+    if (window.location.pathname.endsWith('.html')) {
+        // Remove '.html' from the URL
+        var newUrl = window.location.pathname.slice(0, -5);
+        history.pushState({}, '', newUrl);
+    }
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD7S3GJ5KN"></script>
 <script>
