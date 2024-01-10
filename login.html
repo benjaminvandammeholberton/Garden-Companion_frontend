@@ -29,6 +29,14 @@
 
     gtag('config', 'G-DD7S3GJ5KN');
 </script>
+<script>
+    // Check if the URL ends with '.html'
+    if (window.location.pathname.endsWith('.html')) {
+        // Remove '.html' from the URL
+        var newUrl = window.location.pathname.slice(0, -5);
+        history.pushState({}, '', newUrl);
+    }
+</script>
 
 
 <body>
