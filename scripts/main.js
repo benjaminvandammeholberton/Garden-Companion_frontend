@@ -17,6 +17,10 @@ import { assistantModuleSizeChanger } from './utils/AssistantModuleSizeChanger.j
 
 import { logOut } from './utils/log-out.js';
 
+if (window.location.hostname === 'gardencompanion.fr') {
+  window.location.replace('https://gardencompanion.io');
+}
+
 // Wait for the DOM to be fully loaded before running the initialization
 document.addEventListener('DOMContentLoaded', async () => {
   try {
