@@ -17,14 +17,9 @@
 </head>
 <script>
     console.log(window.location.hostname)
-    let flag = false
-    if (!flag) {
-        if (window.location.hostname === 'www.gardencompanion.fr' || 'gardencompanion.fr') {
-            window.location.href = 'https://gardencompanion.io';
-            flag = true
-        }
+    if (window.location.hostname === 'www.gardencompanion.fr' || window.location.hostname === 'gardencompanion.fr' || window.location.hostname === 'www.gardencompanion.io') {
+        window.location.href = 'https://gardencompanion.io';
     }
-
 </script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DD7S3GJ5KN"></script>
