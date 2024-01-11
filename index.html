@@ -14,22 +14,11 @@
     <title>Garden Companion</title>
     <meta name="description"
         content="Garden Companion - Votre allié pour un potager optimisé et productif. Gérez votre jardin potager avec notre tableau de bord complet, suivez le développement de chaque culture, optimisez la production, et profitez de fonctionnalités pratiques telles que la prévision météo, le guide de culture, et bien plus. Rejoignez la communauté Garden Companion dès maintenant. Happy Gardening! 🌱🌺">
-<script>window.sa_event=window.sa_event||function(){var a=[].slice.call(arguments);window.sa_event.q?window.sa_event.q.push(a):window.sa_event.q=[a]};</script>
 </head>
 <script>
-    console.log(window.location.hostname)
     if (window.location.hostname === 'www.gardencompanion.fr' || window.location.hostname === 'gardencompanion.fr' || window.location.hostname === 'www.gardencompanion.io') {
         window.location.href = 'https://gardencompanion.io';
     }
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DD7S3GJ5KN"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-DD7S3GJ5KN');
 </script>
 
 <body>
@@ -65,16 +54,8 @@
                 <div class="header__content__description__buttons"><a href="./login.html"><button class="button"
                             role="button">Se
                             connecter</button></a>
-                    <a href="./login.html"><button class="button" id="login" role="button">Démarrer gratuitement</button></a>
-                    <script>
-  // Add an event listener to the link
-  document.getElementById('login').addEventListener('click', function () {
-    // Track the link click event using Simple Analytics sa_event
-    sa_event('click_login');
-
-    // You can also perform additional actions here if needed
-  });
-</script>
+                    <a href="./login.html"><button class="button" role="button">Démarrer
+                            gratuitement</button></a>
                 </div>
 
             </div>
@@ -248,9 +229,11 @@
         <p>&copy; 2024 Garden Companion - Tous droits réservés</p>
     </footer>
 </body>
-    <!-- 100% privacy-first analytics -->
+<!-- simpleanalytics -->
 <script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
+<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt=""
+        referrerpolicy="no-referrer-when-downgrade" /></noscript>
+
 <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
