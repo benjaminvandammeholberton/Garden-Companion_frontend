@@ -65,7 +65,16 @@
                 <div class="header__content__description__buttons"><a href="./login.html"><button class="button"
                             role="button">Se
                             connecter</button></a>
-                    <a href="./login.html"><button class="button" role="button">Démarrer gratuitement</button></a>
+                    <a href="./login.html"><button class="button" id="login" role="button">Démarrer gratuitement</button></a>
+                    <script>
+  // Add an event listener to the link
+  document.getElementById('login').addEventListener('click', function () {
+    // Track the link click event using Simple Analytics sa_event
+    sa_event('click_login');
+
+    // You can also perform additional actions here if needed
+  });
+</script>
                 </div>
 
             </div>
