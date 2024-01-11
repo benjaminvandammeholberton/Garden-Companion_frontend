@@ -21,48 +21,6 @@
         content="Garden Companion - Votre allié pour un potager optimisé et productif. Gérez votre jardin potager avec notre tableau de bord complet, suivez le développement de chaque culture, optimisez la production, et profitez de fonctionnalités pratiques telles que la prévision météo, le guide de culture, et bien plus. Rejoignez la communauté Garden Companion dès maintenant. Happy Gardening! 🌱🌺">
 </head>
 
-<script>
-    // Function to check if the URL ends with '.html'
-    function hasHtmlExtension() {
-        return window.location.pathname.endsWith('.html');
-    }
-
-    // Function to remove '.html' from the URL
-    function removeHtmlExtension() {
-        var newUrl = window.location.pathname.slice(0, -5);
-        history.pushState({}, '', newUrl);
-    }
-
-    // Function to add '.html' to the URL
-    function addHtmlExtension() {
-        var currentUrl = window.location.pathname;
-        if (!currentUrl.endsWith('.html')) {
-            var newUrl = currentUrl + '.html';
-            history.pushState({}, '', newUrl);
-        }
-    }
-
-    // Check if the URL ends with '.html' during page load
-    if (hasHtmlExtension()) {
-        removeHtmlExtension();
-    }
-
-    // Check if the URL ends with '.html' after a page reload
-    window.addEventListener('popstate', function () {
-        if (hasHtmlExtension()) {
-            removeHtmlExtension();
-        }
-    });
-
-    // Check if the URL is missing '.html' after a page reload
-    window.addEventListener('load', function () {
-        if (!hasHtmlExtension()) {
-            addHtmlExtension();
-        }
-    });
-</script>
-
-
 <body>
     <div class="bird-container bird-container-one">
         <div class="bird bird-one"></div>
