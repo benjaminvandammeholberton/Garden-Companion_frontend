@@ -1,7 +1,15 @@
+DirectorySlash Off
+
 RewriteEngine On
+
+# Remove trailing slash and add .html extension
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^/]+)/$ $1.html
-RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.html
+RewriteRule ^([^/]+)/$ $1.html [QSA]
+
+# Add .html extension for two-level paths
+RewriteRule ^([^/]+)/([^/]+)/$ /$1/$2.html [QSA]
+
+# Remove trailing slash, if not a directory
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !(\[a-zA-Z0-9]{1,5}|/)$
