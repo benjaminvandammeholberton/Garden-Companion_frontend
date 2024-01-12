@@ -1,3 +1,5 @@
+import { getAreas } from '../../../api/areaApi.js';
+
 export function backInitialForm(formId, form, submitHandler) {
   // Use event delegation to handle dynamic elements
   document.addEventListener('click', (event) => {
@@ -42,10 +44,58 @@ export function showCustomSuccessNotification(message) {
   notification.style.backgroundColor = '#7ad17dcb';
   notification.textContent = message;
 
-  // Remove the notification after a delay (e.g., 3 seconds)
+  // Remove the notification after a delay (e.g., 6 seconds)
   setTimeout(() => {
     notification.textContent = 'Notifications';
     notification.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
     notification.className = 'notification';
-  }, 4000);
+  }, 5000);
+}
+
+export function showCustomFailNotification(message) {
+  const notification = document.getElementById('managerNotification');
+  notification.style.backgroundColor = '#ea7878c7';
+  notification.textContent = message;
+
+  // Remove the notification after a delay (e.g., 6 seconds)
+  setTimeout(() => {
+    notification.textContent = 'Notifications';
+    notification.style.backgroundColor = 'rgba(255, 255, 255, 0.4)';
+  }, 5000);
+}
+
+export async function checkIfNoSowingArea() {
+  try {
+    const areas = await getAreas();
+    let noSowingArea = [];
+    areas.forEach((area) => {
+      if (area.sowing_area === false) {
+        noSowingArea.push(area);
+      }
+    });
+    if (noSowingArea.length === 0) {
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error(`Fail to get areas: ${error}`);
+  }
+}
+
+export async function checkIfSowingArea() {
+  try {
+    const areas = await getAreas();
+    let sowingArea = [];
+    areas.forEach((area) => {
+      if (area.sowing_area === true) {
+        sowingArea.push(area);
+      }
+    });
+    if (sowingArea.length === 0) {
+      return false;
+    }
+    return true;
+  } catch (error) {
+    console.error(`Fail to get areas: ${error}`);
+  }
 }
