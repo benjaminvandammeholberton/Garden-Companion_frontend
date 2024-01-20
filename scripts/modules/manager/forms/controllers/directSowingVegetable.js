@@ -4,8 +4,10 @@ import * as vegetableManagerApi from '../../../../api/vegetableManagerApi.js';
 import * as utilsForm from '../utilsForm.js';
 
 export async function directSowingVegetableForm(formId, form) {
+  // Fetch all vegetables_infos from the API
   const vegetableNames = await vegetableInfoApi.getVegetableInfo();
   vegetableNames.sort((a, b) => a.name.localeCompare(b.name));
+  // Populate the dropdown with vegetables names
   const vegetableNameOptions = document.getElementById(
     'vegetableDirectSowingNameSelect'
   );
@@ -14,6 +16,29 @@ export async function directSowingVegetableForm(formId, form) {
     newVegetableOption.value = vegetable.name;
     newVegetableOption.text = vegetable.name;
     vegetableNameOptions.add(newVegetableOption);
+  });
+  // Add to the dropdown the custom vegetable choice
+  const newVegetableOption = document.createElement('option');
+  newVegetableOption.id = 'custom-choice';
+  newVegetableOption.text = 'Autre';
+  newVegetableOption.value = 'Autre';
+  vegetableNameOptions.add(newVegetableOption);
+
+  // Add event listener to the <select> element to handle the change event
+  vegetableNameOptions.addEventListener('change', (event) => {
+    const selectedValue = event.target.value;
+
+    // Check if the selected value is the custom choice
+    if (selectedValue === 'Autre') {
+      const inputReplace = document.createElement('input');
+      inputReplace.className = 'form-container__form__field__input';
+      inputReplace.type = 'text';
+      inputReplace.id = 'vegetableDirectSowingNameSelect';
+      inputReplace.name = 'name';
+      inputReplace.maxLength = '20';
+      inputReplace.minLength = '3';
+      vegetableNameOptions.replaceWith(inputReplace);
+    }
   });
 
   // Fetch all gardening areas from the API
