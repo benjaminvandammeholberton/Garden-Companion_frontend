@@ -5,7 +5,7 @@ export function generateIndirectSowingVegetableFormContent() {
 <h3 class="form-container__title">Faire un semi en pot</h3>
 <form class="form-container__form">
 
-<div class="form-container__form__field">
+<div class="form-container__form__field" id="form-indirect-sowing-vegetable-name">
 <label class="form-container__form____field__label">Que voulez-vous semer ?*</label>
 <select class="form-container__form__field__select" type="text" id="vegetableIndirectSowingNameSelect" name="name">
 </select>

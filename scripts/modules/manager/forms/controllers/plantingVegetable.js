@@ -42,6 +42,29 @@ function newPlantedVegetableController(newPlantedVegetable, form, formId) {
         newVegetableOption.text = vegetable.name;
         vegetableNameOptions.add(newVegetableOption);
       });
+      // Add to the dropdown the custom vegetable choice
+      const newVegetableOption = document.createElement('option');
+      newVegetableOption.id = 'custom-choice';
+      newVegetableOption.text = 'Autre';
+      newVegetableOption.value = 'Autre';
+      vegetableNameOptions.add(newVegetableOption);
+
+      // Add event listener to the <select> element to handle the change event
+      vegetableNameOptions.addEventListener('change', (event) => {
+        const selectedValue = event.target.value;
+
+        // Check if the selected value is the custom choice
+        if (selectedValue === 'Autre') {
+          const inputReplace = document.createElement('input');
+          inputReplace.className = 'form-container__form__field__input';
+          inputReplace.type = 'text';
+          inputReplace.id = 'vegetableDirectSowingNameSelect';
+          inputReplace.name = 'name';
+          inputReplace.maxLength = '20';
+          inputReplace.minLength = '3';
+          vegetableNameOptions.replaceWith(inputReplace);
+        }
+      });
       const areas = await areaApi.getAreas();
       const nonSowingAreas = areas.filter((area) => area.sowing_area === false);
       // Sort the areas array by name

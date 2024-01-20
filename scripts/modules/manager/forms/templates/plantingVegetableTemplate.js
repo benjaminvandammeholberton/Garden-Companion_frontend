@@ -29,7 +29,7 @@ export function generatePlantingNewVegetableFormContent() {
   <h3 class="form-container__title">Planter</h3>
   <form class="form-container__form">
   
-  <div class="form-container__form__field">
+  <div class="form-container__form__field" id="form-planting-vegetable-name">
   <label class="form-container__form____field__label">Que voulez-vous planter ?*</label>
   <select class="form-container__form__field__select" type="text" id="vegetableDirectPlantingNameSelect" name="name">
   </select>
