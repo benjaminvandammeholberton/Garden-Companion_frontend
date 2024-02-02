@@ -5,7 +5,6 @@ const loginForm = document.getElementById('form-login');
 const emailLogin = document.getElementById('email-login');
 const passwordLogin = document.getElementById('password-login');
 const errorLogin = document.getElementById('error-login');
-
 const registerForm = document.getElementById('form-register');
 const usernameRegister = document.getElementById('username-register');
 const emailRegister = document.getElementById('email-register');
@@ -38,7 +37,12 @@ loginForm.addEventListener('submit', async function (event) {
       // Store the access token in localStorage
       localStorage.setItem('access_token', result.access_token);
       window.location.href = 'dashboard.html';
+    } else if (response.status == 403) {
+      errorLogin.style.display = 'block';
+      errorLogin.innerHTML =
+        "Votre compte n'a pas encore été vérifié !<br> <br>Veuillez consulter votre boîte de réception et cliquer sur le lien de confirmation que nous vous avons envoyé afin de valider votre inscription.";
     } else {
+      errorLogin.innerHTML = "Nom d'utilisateur ou mot de passe incorrect.";
       errorLogin.style.display = 'block';
       console.error('Login failed:', response.status, response.statusText);
     }
@@ -68,6 +72,7 @@ registerForm.addEventListener('submit', async function (event) {
     return;
   }
   createAccount(username, email, password, errorRegister);
+  registerForm.reset();
 });
 
 function checkPassword(password, confirmPassword, errorRegister) {
@@ -130,8 +135,9 @@ async function createAccount(username, email, password, errorRegister) {
       errorRegister.style.display = 'block';
       errorRegister.style.borderColor = 'green';
       errorRegister.style.color = 'green';
+      errorRegister.style.width = '400px';
       errorRegister.innerHTML =
-        'Votre compte a été créé avec succès<br>Vous pouvez maintenant vous connecter';
+        'Votre compte a été créé avec succès 😃🥕<br>Un e-mail de validation vous a été envoyé afin de finaliser votre inscription.';
       errorRegister.style.display = 'block';
     } else {
       errorRegister.style.display = 'block';
