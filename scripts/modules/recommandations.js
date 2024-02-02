@@ -51,7 +51,6 @@ async function fetchAndSortVegetableInfo() {
 
     // Then, sort by the end date of outdoor planting
     filteredData.sort((a, b) => new Date(a.end) - new Date(b.end));
-
     return filteredData;
   } catch (error) {
     // Throw an error if there is an issue with fetching or processing vegetable information
@@ -69,6 +68,7 @@ async function fetchAndSortVegetableInfo() {
  * @returns {boolean} True if the vegetable is in season, false otherwise.
  */
 function isVegetableInSeason(vegetable, currentDate) {
+  currentDate.setFullYear(2023);
   const startDate = vegetable.start_indoor
     ? new Date(vegetable.start_indoor)
     : new Date(vegetable.start_outdoor);
@@ -89,6 +89,20 @@ function createVegetableElement(vegetable) {
   // Create a paragraph element for the vegetable name
   const vegetableName = document.createElement('p');
   vegetableName.textContent = vegetable.name;
+  const currentDate = new Date();
+  currentDate.setFullYear(2023);
+
+  //case if the vegetable has to be sow only indoor
+  if (
+    !vegetable.start_outdoor ||
+    new Date(vegetable.start_outdoor) > currentDate
+  ) {
+    vegetableContainer.style.position = 'relative';
+    const indoorLogo = document.createElement('div');
+    indoorLogo.className = 'indoor-logo';
+    vegetableContainer.appendChild(indoorLogo);
+  }
+
   vegetableName.className = 'recommandations-container__vegetable-name';
 
   // Generate the URL for the vegetable image
