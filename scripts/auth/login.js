@@ -11,12 +11,15 @@ const emailRegister = document.getElementById('email-register');
 const passwordRegister = document.getElementById('password-register');
 const confirmPasswordRegister = document.getElementById('confirm-password');
 const errorRegister = document.getElementById('error-register');
+const loaderLogin = document.getElementById('loader-login')
+const loaderRegister = document.getElementById('loader-register')
 
 loginForm.addEventListener('submit', async function (event) {
   event.preventDefault();
 
   const email = emailLogin.value;
   const password = passwordLogin.value;
+  loaderLogin.style.display = 'block'
 
   try {
     const response = await fetch(`${BASE_URL}/auth/login`, {
@@ -31,6 +34,7 @@ loginForm.addEventListener('submit', async function (event) {
     });
 
     if (response.ok) {
+      loaderLogin.style.display = 'none'
       const result = await response.json();
       console.log('Access Token:', result.access_token);
       console.log('Refresh Token:', result.refresh_token);
@@ -38,10 +42,12 @@ loginForm.addEventListener('submit', async function (event) {
       localStorage.setItem('access_token', result.access_token);
       window.location.href = 'dashboard.html';
     } else if (response.status == 403) {
+      loaderLogin.style.display = 'none'
       errorLogin.style.display = 'block';
       errorLogin.innerHTML =
         "Votre compte n'a pas encore été vérifié !<br> <br>Veuillez consulter votre boîte de réception et cliquer sur le lien de confirmation que nous vous avons envoyé afin de valider votre inscription.";
     } else {
+      loaderLogin.style.display = 'none'
       errorLogin.innerHTML = "Nom d'utilisateur ou mot de passe incorrect.";
       errorLogin.style.display = 'block';
       console.error('Login failed:', response.status, response.statusText);
@@ -53,6 +59,7 @@ loginForm.addEventListener('submit', async function (event) {
 
 registerForm.addEventListener('submit', async function (event) {
   event.preventDefault();
+
 
   const username = usernameRegister.value;
   const email = emailRegister.value;
@@ -86,6 +93,7 @@ function checkPassword(password, confirmPassword, errorRegister) {
 }
 
 async function checkUsername(username, errorRegister) {
+  loaderRegister.style.display = 'block'
   try {
     const response = await fetch(`${BASE_URL}/users/byusername/${username}`, {
       method: 'GET',
@@ -96,8 +104,10 @@ async function checkUsername(username, errorRegister) {
       errorRegister.innerHTML =
         "Le nom d'utilisateur est déjà utilisé.<br>Veuillez réessayer.";
       errorRegister.style.display = 'block';
+      loaderRegister.style.display = 'none'
       return false;
     }
+    loaderRegister.style.display = 'none'
     return true;
   } catch (error) {
     console.error('Error during register:', error);
@@ -105,6 +115,7 @@ async function checkUsername(username, errorRegister) {
 }
 
 async function checkEmail(email, errorRegister) {
+  loaderRegister.style.display = 'block'
   try {
     const response = await fetch(`${BASE_URL}/users/byemail/${email}`, {
       method: 'GET',
@@ -115,8 +126,10 @@ async function checkEmail(email, errorRegister) {
       errorRegister.innerHTML =
         "L'email est déjà utilisé.<br>Veuillez réessayer.";
       errorRegister.style.display = 'block';
+      loaderRegister.style.display = 'none'
       return false;
     }
+    loaderRegister.style.display = 'none'
     return true;
   } catch (error) {
     console.error('Error during register:', error);
@@ -124,6 +137,7 @@ async function checkEmail(email, errorRegister) {
 }
 
 async function createAccount(username, email, password, errorRegister) {
+  loaderRegister.style.display = 'block'
   try {
     const data = { username: username, email: email, password: password };
     const response = await fetch(`${BASE_URL}/users/create`, {
@@ -132,6 +146,7 @@ async function createAccount(username, email, password, errorRegister) {
       body: JSON.stringify(data),
     });
     if (response.ok) {
+      loaderRegister.style.display = 'none'
       errorRegister.style.display = 'block';
       errorRegister.style.borderColor = 'green';
       errorRegister.style.color = 'green';
@@ -140,6 +155,7 @@ async function createAccount(username, email, password, errorRegister) {
         'Votre compte a été créé avec succès 😃🥕<br>Un e-mail de validation vous a été envoyé afin de finaliser votre inscription.';
       errorRegister.style.display = 'block';
     } else {
+      loaderRegister.style.display = 'none'
       errorRegister.style.display = 'block';
       errorRegister.style.borderColor = 'red';
       errorRegister.style.color = 'red';
