@@ -10,6 +10,12 @@
   background-size: auto 10%;
   overflow: visible;
 }
+@media screen and (max-width: 430px) {
+  .dashbord__module--assistant {
+    border-radius: 5px 5px 5px 5px;
+    grid-row: span 2;
+  }
+}
 .dashbord__module__content--assistant {
   flex-direction: column;
   width: 100%;
@@ -33,6 +39,11 @@
   transition: transform 0.2s ease;
   overflow: hidden;
   z-index: 2;
+}
+@media screen and (max-width: 430px) {
+  .assistant__resize-button {
+   display: none;
+  }
 }
 .assistant__resize-button::after {
   content: attr(data-label);
@@ -70,7 +81,11 @@
   overflow: scroll;
   padding: 5px;
   top: 45px;
-
+}
+@media screen and (max-width: 430px) {
+  .chat-output {
+   height: 300px;
+  }
 }
 .chat-output::-webkit-scrollbar {
   width: 0;

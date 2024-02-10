@@ -8,6 +8,16 @@ nav {
   border-radius: 20px;
   overflow: visible;
 }
+@media screen and (max-width: 430px) {
+  nav {
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    border-radius: 0px;
+    background-color:rgb(222, 212, 126);
+  }
+}
 
 nav ul {
   display: flex;
@@ -17,6 +27,14 @@ nav ul {
   gap: 20px;
   font-weight: bold;
   overflow: visible;
+}
+@media screen and (max-width: 430px) {
+  nav ul{
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 0px;
+  }
 }
 
 nav li {

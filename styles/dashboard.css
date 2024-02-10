@@ -3,6 +3,14 @@
   grid-template-columns: repeat(3, 370px);
   grid-auto-rows: 190px;
 }
+@media screen and (max-width: 430px){
+  .dashboard {
+    grid-template-columns: repeat(1, 100%);
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  
+}
 
 .dashbord__module {
   position: relative;

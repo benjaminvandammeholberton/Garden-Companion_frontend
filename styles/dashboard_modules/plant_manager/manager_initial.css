@@ -5,6 +5,12 @@
   border-radius: 100px 5px 5px 100px;
   position: relative;
 }
+@media screen and (max-width: 430px) {
+  .dashbord__module--plant-manager {
+    border-radius: 5px 5px 5px 5px;
+    grid-row: span 3;
+  }
+}
 
 .dashbord__module__content--plant-manager {
   width: 100%;

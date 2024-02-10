@@ -11,6 +11,14 @@
   font-family: Roboto;
   font-weight: 300;
 }
+@media screen and (max-width: 430px) {
+  * {
+    overflow: scroll;
+  }
+  *::-webkit-scrollbar{
+    display: none;
+  }
+}
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -31,18 +39,21 @@ body {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  /* background: rgb(123, 240, 234); */
   background: linear-gradient(
     180deg,
     rgba(123, 240, 234, 1) 0%,
     rgba(193, 250, 129, 1) 67%,
     rgba(245, 193, 132, 1) 100%
   );
-  /* min-width: 1200px; */
+}
+@media screen and (max-width: 430px) {
+  body {
+    align-items: start;
+  }
 }
 
+
 .main-container {
-  /* width: 1200px; */
   height: 750px;
   display: flex;
   flex-direction: column;
@@ -50,6 +61,12 @@ body {
   position: relative;
   gap: 5px;
   overflow: visible;
+}
+@media screen and (max-width: 430px) {
+  .main-container {
+    height: auto;
+    padding-bottom: 30%;
+  }
 }
 
 main {
@@ -59,23 +76,44 @@ main {
 
 header {
   width: 100%;
-  top: 30px;
-  left: 0px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   gap: 15%;
   overflow: visible;
 }
+@media screen and (max-width: 430px) {
+  header {
+    padding-top: 5%;
+    padding-bottom: 3%;
+    gap: 0;
+    justify-content: end;
+  }
+}
+@media screen and (max-width: 430px) {
+  header p:nth-child(2){
+    display: none;
+  }
+}
 
 footer {
   width: 100%;
   text-align: center;
 }
+@media screen and (max-width: 430px) {
+  footer {
+    display: none;
+  }
+}
 
 h1 {
   font-size: 27px;
   font-weight: 200;
+}
+@media screen and (max-width: 430px) {
+  h1 {
+    font-size: 25px;
+  }
 }
 h2 {
   font-size: 25px;
@@ -111,6 +149,12 @@ h3 {
   align-items: center;
   gap: 10px;
   overflow: visible;
+}
+@media screen and (max-width: 430px) {
+  .header__title {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 .header__title__log-out {
@@ -230,6 +274,11 @@ h3 {
   background-repeat: no-repeat;
   z-index: -1;
 }
+@media screen and (max-width: 430px) {
+  .tree {
+    display: none;
+  }
+}
 .rooster {
   position: absolute;
   bottom: 0;
@@ -239,6 +288,11 @@ h3 {
   background-image: url(./assets/dashboard/rooster-2.png);
   background-repeat: no-repeat;
   background-position: bottom;
+}
+@media screen and (max-width: 430px) {
+  .rooster {
+    display: none;
+  }
 }
 .chicken {
   position: absolute;
@@ -250,6 +304,11 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
+@media screen and (max-width: 430px) {
+  .chicken {
+    display: none;
+  }
+}
 .poussin {
   position: absolute;
   bottom: 0;
@@ -259,6 +318,11 @@ h3 {
   background-image: url(./assets/dashboard/poussin.png);
   background-repeat: no-repeat;
   background-position: bottom;
+}
+@media screen and (max-width: 430px) {
+  .poussin {
+    display: none;
+  }
 }
 .farm-house {
   position: absolute;
@@ -272,6 +336,11 @@ h3 {
   background-size: cover;
   z-index: -1;
 }
+@media screen and (max-width: 430px) {
+  .farm-house {
+    display: none;
+  }
+}
 .wheat {
   position: absolute;
   bottom: -5px;
@@ -281,6 +350,11 @@ h3 {
   background-image: url(./assets/dashboard/wheat.png);
   background-repeat: no-repeat;
   background-position: bottom;
+}
+@media screen and (max-width: 430px) {
+  .wheat {
+    display: none;
+  }
 }
 .wheat2 {
   position: absolute;
@@ -292,6 +366,11 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
+@media screen and (max-width: 430px) {
+  .wheat2 {
+    display: none;
+  }
+}
 .wheat3 {
   position: absolute;
   bottom: -5px;
@@ -302,3 +381,9 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
+@media screen and (max-width: 430px) {
+  .wheat3 {
+    display: none;
+  }
+}
+
