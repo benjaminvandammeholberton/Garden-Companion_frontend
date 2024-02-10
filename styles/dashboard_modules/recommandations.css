@@ -6,6 +6,11 @@
   border-radius: 5px 100px 5px 5px;
   justify-content: start;;
 }
+@media screen and (max-width: 430px) {
+  .dashbord__module--recommandations {
+    border-radius: 5px 5px 5px 5px;
+  }
+}
 
 .dashbord__module__content--recommandations {
   flex-wrap: wrap;
@@ -16,6 +21,12 @@
   padding-left: 15px;
   gap: 7px;
   overflow: scroll;
+}
+@media screen and (max-width: 430px) {
+  .dashbord__module__content--recommandations {
+    justify-content:center;
+    padding-left: 0px;
+  }
 }
 
 .dashbord__module__content--recommandations::-webkit-scrollbar {
