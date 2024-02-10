@@ -2,19 +2,22 @@
 .dashbord__module--recommandations {
   grid-area: recommandations;
   grid-column: span 1;
-  grid-row: span 1;
+  grid-row: span 2;
   border-radius: 5px 100px 5px 5px;
+  justify-content: start;;
 }
 
 .dashbord__module__content--recommandations {
   flex-wrap: wrap;
-  margin-top: 27px;
-  justify-content: start;
-  align-items: start;
+  margin-top: 40px;
+  justify-content: flex-start;
+  align-items:flex-start;
+  max-height: 285px;
+  padding-left: 15px;
+  gap: 7px;
   overflow: scroll;
-  width: 100%;
-  min-height: 80%;
 }
+
 .dashbord__module__content--recommandations::-webkit-scrollbar {
   width: 0;
   height: 0;
@@ -50,8 +53,9 @@
 
 .legend {
   position: absolute;
-  top: 14px;
-  left: 5px;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%);
   width: 70px;
   display: flex;
   flex-direction: column;
