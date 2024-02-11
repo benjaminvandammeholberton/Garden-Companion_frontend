@@ -11,7 +11,7 @@
   font-family: Roboto;
   font-weight: 300;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
+@media screen and (max-width: 430px){
   * {
     overflow: scroll;
   }
@@ -49,11 +49,6 @@ body {
 @media screen and (max-width: 430px) {
   body {
     align-items: start;
-  }
-}
-@media screen and (orientation: landscape) {
-  body {
-    height: 100vh;
   }
 }
 
@@ -279,11 +274,7 @@ h3 {
   background-repeat: no-repeat;
   z-index: -1;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
-  .tree {
-    display: none;
-  }
-}
+
 .rooster {
   position: absolute;
   bottom: 0;
@@ -294,7 +285,7 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
+@media screen and (max-width: 430px){
   .rooster {
     display: none;
   }
@@ -309,7 +300,7 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
+@media screen and (max-width: 430px) {
   .chicken {
     display: none;
   }
@@ -324,7 +315,7 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
+@media screen and (max-width: 430px) {
   .poussin {
     display: none;
   }
@@ -341,7 +332,7 @@ h3 {
   background-size: cover;
   z-index: -1;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
+@media screen and (max-width: 430px) {
   .farm-house {
     display: none;
   }
@@ -356,7 +347,7 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
+@media screen and (max-width: 430px) {
   .wheat {
     display: none;
   }
@@ -371,7 +362,7 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
+@media screen and (max-width: 430px) {
   .wheat2 {
     display: none;
   }
@@ -386,7 +377,7 @@ h3 {
   background-repeat: no-repeat;
   background-position: bottom;
 }
-@media screen and (max-width: 430px), (orientation: landscape) {
+@media screen and (max-width: 430px) {
   .wheat3 {
     display: none;
   }

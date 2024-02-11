@@ -18,11 +18,7 @@ nav {
     background-color:rgb(222, 212, 126);
   }
 }
-@media screen and (orientation: landscape) {
-  nav {
-    display: none;
-  }
-}
+
 
 
 nav ul {
