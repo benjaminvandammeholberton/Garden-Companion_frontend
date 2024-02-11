@@ -10,7 +10,9 @@
 }
 @media screen and (max-width: 430px) {
   .container {
-    grid-template-columns: repeat(1, 370px);
+    grid-template-columns: repeat(1, 350px);
+    padding-left: 2%;
+    padding-right: 2%;
     grid-auto-rows: 600px;
   }
 }
