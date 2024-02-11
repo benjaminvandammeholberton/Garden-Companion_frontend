@@ -64,31 +64,6 @@
   text-align: center;
 }
 
-/* .manager__icons__icon:hover::after {
-  content: attr(label);
-  display: block;
-  position: absolute;
-  top: 108%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  padding: 4px; 
-  white-space: nowrap;
-  overflow: visible;
-  z-index: 1;
-  border: 1px solid gray;
-  border-radius: 10px;
-  opacity: 0; 
-  transition: opacity 0.3s ease;
-  font-size: 13px;
-} */
-/* .manager__icons__icon:hover::after {
-  opacity: 1; 
-}
-.manager__icons__icon:not(:hover)::after {
-  opacity: 0;
-}
-*/
 .manager__icons__icon:hover {
   cursor: pointer;
   transform: scale(1.3);

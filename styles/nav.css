@@ -8,7 +8,7 @@ nav {
   border-radius: 20px;
   overflow: visible;
 }
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 430px){
   nav {
     position: fixed;
     bottom: 0;
@@ -18,6 +18,12 @@ nav {
     background-color:rgb(222, 212, 126);
   }
 }
+@media screen and (orientation: landscape) {
+  nav {
+    display: none;
+  }
+}
+
 
 nav ul {
   display: flex;
