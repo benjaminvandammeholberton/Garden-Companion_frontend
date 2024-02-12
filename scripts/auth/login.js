@@ -22,14 +22,14 @@ function detectMobile() {
   });
 }
 
-window.onload(() => {
+window.onload = () => {
   if (!detectMobile) {
     alert(
       "L'accès actuel à l'application est optimisé pour les appareils de bureau, veuillez vous connecter à partir d'un ordinateur 💻.\nNous développons actuellement les versions iOS et Android.\nMerci de votre patience. 🥕📱😃"
     );
     window.location.href = "https://gardencompanion.io";
   }
-});
+};
 
 const loginForm = document.getElementById("form-login");
 const emailLogin = document.getElementById("email-login");
