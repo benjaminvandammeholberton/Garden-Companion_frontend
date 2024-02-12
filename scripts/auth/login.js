@@ -23,7 +23,7 @@ function detectMobile() {
 }
 
 window.onload = () => {
-  if (!detectMobile) {
+  if (!detectMobile()) {
     alert(
       "L'accès actuel à l'application est optimisé pour les appareils de bureau, veuillez vous connecter à partir d'un ordinateur 💻.\nNous développons actuellement les versions iOS et Android.\nMerci de votre patience. 🥕📱😃"
     );
