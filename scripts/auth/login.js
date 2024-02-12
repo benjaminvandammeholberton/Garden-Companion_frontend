@@ -1,36 +1,6 @@
 import { getHeaders } from "../api/apiService.js";
 import { BASE_URL } from "../api/apiConfig.js";
 
-/*
- *
- *
- *
- */
-function detectMobile() {
-  const toMatch = [
-    /Android/i,
-    /webOS/i,
-    /iPhone/i,
-    /iPad/i,
-    /iPod/i,
-    /BlackBerry/i,
-    /Windows Phone/i,
-  ];
-
-  return toMatch.some((toMatchItem) => {
-    return navigator.userAgent.match(toMatchItem);
-  });
-}
-
-window.onload = () => {
-  if (!detectMobile()) {
-    alert(
-      "L'accès actuel à l'application est optimisé pour les appareils de bureau, veuillez vous connecter à partir d'un ordinateur 💻.\nNous développons actuellement les versions iOS et Android.\nMerci de votre patience. 🥕📱😃"
-    );
-    window.location.href = "https://gardencompanion.io";
-  }
-};
-
 const loginForm = document.getElementById("form-login");
 const emailLogin = document.getElementById("email-login");
 const passwordLogin = document.getElementById("password-login");
