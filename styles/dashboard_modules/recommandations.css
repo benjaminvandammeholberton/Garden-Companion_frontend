@@ -4,7 +4,7 @@
   grid-column: span 1;
   grid-row: span 2;
   border-radius: 5px 100px 5px 5px;
-  justify-content: start;;
+  justify-content: start;
 }
 @media screen and (max-width: 430px) {
   .dashbord__module--recommandations {
@@ -16,7 +16,7 @@
   flex-wrap: wrap;
   margin-top: 40px;
   justify-content: flex-start;
-  align-items:flex-start;
+  align-items: flex-start;
   max-height: 285px;
   padding-left: 15px;
   gap: 7px;
@@ -24,14 +24,17 @@
 }
 @media screen and (max-width: 430px) {
   .dashbord__module__content--recommandations {
-    justify-content:center;
+    justify-content: center;
     padding-left: 0px;
   }
 }
 
 .dashbord__module__content--recommandations::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  width: 7px;
+}
+.dashbord__module__content--recommandations::-webkit-scrollbar-thumb {
+  background: lightblue;
+  border-radius: 100%;
 }
 
 .recommandations-container {
