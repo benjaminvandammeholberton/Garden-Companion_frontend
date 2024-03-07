@@ -96,7 +96,7 @@ export function generatePlantingSowedVegetableFormContent() {
   </div>
   
   <div class="form-container__form__field">
-  <label class="form-container__form____field__label" for="vegetableName">Entrez la date du semi</label>
+  <label class="form-container__form____field__label" for="vegetableName">Entrez la date de plantation</label>
   <input class="form-container__form__field__select" type="date" id="vegetableDirectSowingDate" name="planting_date">
   </div>
   
