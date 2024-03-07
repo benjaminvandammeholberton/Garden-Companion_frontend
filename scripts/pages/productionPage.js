@@ -274,11 +274,15 @@ function updateVegetableFromFormValues(vegetableId) {
     if (planting_date_field.value === "") {
       planting_date_field.value = null;
     }
+    if (sowing_date_field.value === "") {
+      sowing_date_field.value = null;
+    }
     const data = {
       name: name_field.value,
       variety: variety_field.value,
       quantity: quantity_field.value,
-      sowing_date: sowing_date_field.value,
+      sowing_date:
+        sowing_date_field.value != "" ? sowing_date_field.value : null,
       planting_date:
         planting_date_field.value != "" ? planting_date_field.value : null,
     };
