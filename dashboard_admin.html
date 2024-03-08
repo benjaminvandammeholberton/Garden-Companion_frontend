@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/x-icon" href="./styles/assets/favicon.ico" />
+
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/birds.css" />
+    <link rel="stylesheet" href="styles/utils.css" />
+    <link rel="stylesheet" href="styles/nav.css" />
+    <link rel="stylesheet" href="styles/aside.css" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
+    <link rel="stylesheet" href="styles/vegetable101.css" />
+    <link rel="stylesheet" href="styles/production.css" />
+    <link rel="stylesheet" href="styles/settings.css" />
+
+    <link
+      rel="stylesheet"
+      href="styles/dashboard_modules/plant_manager/manager_initial.css"
+    />
+    <link
+      rel="stylesheet"
+      href="styles/dashboard_modules/plant_manager/manager_form.css"
+    />
+    <link rel="stylesheet" href="styles/dashboard_modules/air_sensors.css" />
+    <link rel="stylesheet" href="styles/dashboard_modules/forecast.css" />
+    <link
+      rel="stylesheet"
+      href="styles/dashboard_modules/recommandations.css"
+    />
+    <link rel="stylesheet" href="styles/dashboard_modules/to-do-list.css" />
+    <link rel="stylesheet" href="styles/dashboard_modules/automation.css" />
+    <link rel="stylesheet" href="styles/dashboard_modules/assistant.css" />
+
+    <script type="module" src="scripts/main.js"></script>
+    <script type="module" src="scripts/utils/change-page.js"></script>
+
+    <script src="
+  https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js
+  "></script>
+    <title>Garden Companion</title>
+    <meta
+      name="description"
+      content="Garden Companion - Votre allié pour un potager optimisé et productif. Gérez votre jardin potager avec notre tableau de bord complet, suivez le développement de chaque culture, optimisez la production, et profitez de fonctionnalités pratiques telles que la prévision météo, le guide de culture, et bien plus. Rejoignez la communauté Garden Companion dès maintenant. Happy Gardening! 🌱🌺"
+    />
+  </head>
+
+  <body>
+    <div class="bird-container bird-container-one">
+      <div class="bird bird-one"></div>
+    </div>
+    <div class="bird-container bird-container-two">
+      <div class="bird bird-two"></div>
+    </div>
+    <div class="bird-container bird-container-three">
+      <div class="bird bird-three"></div>
+    </div>
+    <div class="bird-container bird-container-four">
+      <div class="bird bird-four"></div>
+    </div>
+    <div class="tree"></div>
+    <div class="rooster"></div>
+    <div class="chicken"></div>
+    <div class="poussin"></div>
+    <!-- <div class="farm-house"></div> -->
+    <div class="wheat"></div>
+    <div class="wheat2"></div>
+    <div class="wheat3"></div>
+
+    <nav>
+      <ul>
+        <li
+          id="dashboard_page"
+          class="icon-nav icon_dashboard"
+          data-label="Tableau de bord"
+        ></li>
+        <li
+          id="production_page"
+          class="icon-nav icon_production"
+          data-label="Production"
+        ></li>
+        <li
+          id="vegetable101_page"
+          class="icon-nav icon_vegetable101"
+          data-label="Guide"
+        ></li>
+        <li
+          id="settings_page"
+          class="icon-nav icon_settings"
+          data-label="Préférences"
+        ></li>
+      </ul>
+    </nav>
+
+    <div class="main-container">
+      <header>
+        <div class="header__title">
+          <!-- <div class="header__title__profile" id="profile"></div> -->
+          <div class="header__title__log-out" id="log-out"></div>
+          <!-- <div class="header__title__dark-mode" id="dark-mode"></div> -->
+          <h1>Garden Companion</h1>
+          <p>Beta</p>
+        </div>
+        <p id="date"></p>
+      </header>
+
+      <main class="dashboard" id="container_dashboard">
+        <div class="dashbord__module dashbord__module--plant-manager">
+          <h2 class="dashbord__module__title" id="plant_manager_title">
+            Gestion du Potager
+          </h2>
+          <div
+            class="dashbord__module__content dashbord__module__content--plant-manager"
+            id="managerContent"
+          >
+            <div class="notification" id="managerNotification"></div>
+            <div class="manager">
+              <h3>Semis et Plants</h3>
+              <div class="manager__icons manager__icons--vegetable">
+                <div
+                  label="Semi en place"
+                  class="manager__icons__icon manager__icon-direct-sowing"
+                  id="directSowVegetable"
+                ></div>
+                <div
+                  label="Semi en pot"
+                  class="manager__icons__icon manager__icon-indirect-sowing"
+                  id="indirectSowVegetable"
+                ></div>
+                <div
+                  label="Planter"
+                  class="manager__icons__icon manager__icon-planting"
+                  id="plantVegetable"
+                ></div>
+                <div
+                  label="Récolter"
+                  class="manager__icons__icon manager__icon-harvest"
+                  id="harvestVegetable"
+                ></div>
+                <div
+                  label="Fin de culture"
+                  class="manager__icons__icon manager__icon-remove"
+                  id="removeVegetable"
+                ></div>
+                <div
+                  label="Supprimer"
+                  class="manager__icons__icon manager__icon-delete"
+                  id="updateSowVegetable"
+                ></div>
+              </div>
+            </div>
+            <div class="manager">
+              <h3>Zones de Culture</h3>
+              <div class="manager__icons">
+                <div
+                  label="Ajouter"
+                  class="manager__icons__icon manager__icon-add-area"
+                  id="createArea"
+                ></div>
+                <div
+                  label="Modifier"
+                  class="manager__icons__icon manager__icon-update-area"
+                  id="updateArea"
+                ></div>
+                <div
+                  label="Supprimer"
+                  class="manager__icons__icon manager__icon-delete-area"
+                  id="deleteArea"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <!-- Forms -->
+          <div id="directSowingVegetableForm" class="form-container"></div>
+          <div id="indirectSowingVegetableForm" class="form-container"></div>
+          <div id="plantingVegetableForm" class="form-container"></div>
+          <div id="harvestVegetableForm" class="form-container"></div>
+          <div id="removeVegetableForm" class="form-container"></div>
+          <div id="updateVegetableForm" class="form-container"></div>
+          <div id="createAreaForm" class="form-container"></div>
+          <div id="updateAreaForm" class="form-container"></div>
+          <div id="deleteAreaForm" class="form-container"></div>
+        </div>
+
+        <div class="dashbord__module dashbord__module--forecast">
+          <h2 class="dashbord__module__title">Prévisions Météo</h2>
+          <div
+            class="dashbord__module__content dashbord__module__content--forecast"
+            id="forecastModule"
+          ></div>
+        </div>
+
+        <div class="dashbord__module dashbord__module--recommandations">
+          <h2 class="dashbord__module__title">Semis du moment</h2>
+          <div class="legend">
+            <span class="legend-point"></span>
+            <p>en intérieur chauffé</p>
+          </div>
+          <div
+            id="recommandationModule"
+            class="dashbord__module__content dashbord__module__content--recommandations"
+          ></div>
+        </div>
+
+        <div class="dashbord__module dashbord__module--todolist">
+          <h2 class="dashbord__module__title">Liste des Tâches</h2>
+          <div class="add-todo-button" id="addTask" data-label="Ajouter"></div>
+          <div
+            class="dashbord__module__content dashbord__module__content--todolist"
+            id="toDoContainer"
+          ></div>
+        </div>
+
+        <div class="dashbord__module dashbord__module--assistant">
+          <div
+            class="dashbord__module__request-counter"
+            id="assistant_counter"
+          ></div>
+          <h2 class="dashbord__module__title" id="assistant_title">
+            Assistant
+          </h2>
+          <div
+            class="assistant__resize-button"
+            id="assistant_button"
+            data-label="Redimensionner"
+          ></div>
+
+          <div
+            class="dashbord__module__content dashbord__module__content--assistant"
+          >
+            <div class="assistant__conversation-container">
+              <div class="chat-output" id="chat-output">
+                <p
+                  class="assistant__placeholder-message"
+                  id="placeholder-message"
+                ></p>
+              </div>
+              <form class="assistant__input-container">
+                <input
+                  type="text"
+                  id="user-input"
+                  maxlength="100"
+                  minlength="10"
+                  placeholder="Posez votre question ici "
+                  required
+                />
+                <button type="submit" id="assistantSubmit"></button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <main id="container_production">
+        <div class="production-container">
+          <h2 class="production-container__title">Production</h2>
+          <form action="#" id="user-form">
+            <input type="text" id="user-selection" />
+            <button type="submit">Go</button>
+          </form>
+          <div
+            class="production-container__content"
+            id="productionContent"
+          ></div>
+        </div>
+      </main>
+
+      <main id="container_vegetable101">
+        <div id="container_allVegetables" class="all-vegetables-container">
+          <h2 class="all-vegetables-container__title">Légumes</h2>
+          <div
+            class="all-vegetables-container__content"
+            id="allVegetablesInfos"
+          ></div>
+        </div>
+        <div
+          id="container_vegetableInfos"
+          class="vegetable-characteristic"
+        ></div>
+      </main>
+
+      <main id="container_settings">
+        <section class="settings settings--user">
+          <h2 class="settings__title">Préférences utilisateur</h2>
+          <form action="#" class="settings__form" id="form-change-password">
+            <h3>Changer le mot de passe</h3>
+            <div
+              id="message-change-password"
+              class="settings__form__message"
+            ></div>
+            <div class="settings__form__field">
+              <label for="password-change-before">Mot de passe actuel</label>
+              <input
+                type="password"
+                id="password-change-before"
+                class="settings__form__field__input"
+                title="Le mot de passe doit comporter au moins 8 caractères et inclure une lettre majuscule, une lettre minuscule et un chiffre"
+                name="password"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="settings__form__field">
+              <label for="password-change-new">Nouveau mot de passe</label>
+              <input
+                type="password"
+                id="password-change-new"
+                class="settings__form__field__input"
+                title="Le mot de passe doit comporter au moins 8 caractères et inclure une lettre majuscule, une lettre minuscule et un chiffre"
+                name="password"
+                min
+                lenght="8"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="settings__form__field">
+              <label for="password-change-repeat"
+                >Confirmer le mot de passe</label
+              >
+              <input
+                type="password"
+                id="password-change-repeat"
+                class="settings__form__field__input"
+                title="Le mot de passe doit comporter au moins 8 caractères et inclure une lettre majuscule, une lettre minuscule et un chiffre"
+                name="password"
+                min
+                lenght="8"
+                maxlength="30"
+                required
+              />
+            </div>
+            <input
+              type="submit"
+              class="settings__form__button settings__form__button--login"
+              value="Confirmer"
+            />
+          </form>
+          <form action="#" class="settings__form" id="delete-account-form">
+            <h3>Supprimer le compte</h3>
+            <div
+              class="settings__form__field settings__form__field--delete-account"
+            >
+              <div class="settings__form__field__checkbox">
+                <input type="checkbox" id="delete-account" required />
+              </div>
+              <label class="delete-account"
+                >Attention, tous les espaces et toutes les plantes associés à
+                votre compte seront également supprimés</label
+              >
+            </div>
+            <input
+              type="submit"
+              class="settings__form__button settings__form__button--delete"
+              value="Confirmer"
+            />
+          </form>
+        </section>
+        <section class="settings settings--customization">
+          <h2 class="settings__title">Personalisation</h2>
+
+          <h3>Disponible prochainement...</h3>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2024 Garden Companion - Tous droits réservés</p>
+      </footer>
+    </div>
+
+    <!-- <aside>
+
+  </aside> -->
+
+    <script type="module" src="./scripts/admin/productionPage.js"></script>
+    <script type="module" src="./scripts/modules/forecast.js"></script>
+  </body>
+  <!-- simpleanalytics -->
+  <script
+    async
+    defer
+    src="https://scripts.simpleanalyticscdn.com/latest.js"
+  ></script>
+  <noscript
+    ><img
+      src="https://queue.simpleanalyticscdn.com/noscript.gif"
+      alt=""
+      referrerpolicy="no-referrer-when-downgrade"
+  /></noscript>
+</html>
