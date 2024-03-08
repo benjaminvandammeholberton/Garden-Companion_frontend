@@ -1,5 +1,5 @@
-import { BASE_URL } from './apiConfig.js';
-import { handleResponse, getHeaders } from './apiService.js';
+import { BASE_URL } from "./apiConfig.js";
+import { handleResponse, getHeaders } from "./apiService.js";
 
 /**
  * Fetches areas for the current user.
@@ -9,7 +9,7 @@ import { handleResponse, getHeaders } from './apiService.js';
 export async function getAreas() {
   // Make a GET request to fetch areas
   const response = await fetch(`${BASE_URL}/area/`, {
-    method: 'GET',
+    method: "GET",
     headers: getHeaders(),
   });
 
@@ -26,7 +26,7 @@ export async function getAreas() {
 export async function createAreaApi(data) {
   // Make a POST request to create a new area
   const response = await fetch(`${BASE_URL}/area/create`, {
-    method: 'POST',
+    method: "POST",
     headers: getHeaders(),
     body: JSON.stringify(data),
   });
@@ -44,7 +44,7 @@ export async function createAreaApi(data) {
 export async function getAreaById(areaId) {
   // Make a GET request to retrieve an area by its ID
   const response = await fetch(`${BASE_URL}/area/${areaId}`, {
-    method: 'GET',
+    method: "GET",
     headers: getHeaders(),
   });
 
@@ -62,7 +62,7 @@ export async function getAreaById(areaId) {
 export async function updateAreaById(areaId, data) {
   // Make a PUT request to update an area by its ID
   const response = await fetch(`${BASE_URL}/area/${areaId}`, {
-    method: 'PUT',
+    method: "PUT",
     headers: getHeaders(),
     body: JSON.stringify(data),
   });
@@ -80,7 +80,23 @@ export async function updateAreaById(areaId, data) {
 export async function deleteAreaById(areaId) {
   // Make a DELETE request to delete an area by its ID
   const response = await fetch(`${BASE_URL}/area/${areaId}`, {
-    method: 'DELETE',
+    method: "DELETE",
+    headers: getHeaders(),
+  });
+
+  // Handle the API response
+  return handleResponse(response);
+}
+
+/**
+ * Get all areas from a specific user.
+ * @param {username} username - The username of the user we want to get areas.
+ * @returns {Promise<{ok: boolean, data: Object|null}>} A promise that resolves to an object containing the success status and data.
+ * @throws {Error} Throws an error if there is an issue fetching the areas.
+ */
+export async function getAreasByUser(username) {
+  const response = await fetch(`${BASE_URL}/area/${username}`, {
+    method: "GET",
     headers: getHeaders(),
   });
 
