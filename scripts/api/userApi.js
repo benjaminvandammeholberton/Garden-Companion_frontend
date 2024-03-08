@@ -1,5 +1,5 @@
-import { BASE_URL } from './apiConfig.js';
-import { handleResponse, getHeaders } from './apiService.js';
+import { BASE_URL } from "./apiConfig.js";
+import { handleResponse, getHeaders } from "./apiService.js";
 
 /**
  * Fetches user information from the specified API endpoint.
@@ -10,7 +10,7 @@ import { handleResponse, getHeaders } from './apiService.js';
 export async function getUserInfo() {
   try {
     const response = await fetch(`${BASE_URL}/users/info`, {
-      method: 'GET',
+      method: "GET",
       headers: getHeaders(),
     });
     return handleResponse(response);
