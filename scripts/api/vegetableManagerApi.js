@@ -1,6 +1,6 @@
 // Import necessary dependencies
-import { BASE_URL } from './apiConfig.js';
-import { handleResponse, getHeaders } from './apiService.js';
+import { BASE_URL } from "./apiConfig.js";
+import { handleResponse, getHeaders } from "./apiService.js";
 
 /**
  * Fetches vegetable manager from the API.
@@ -10,7 +10,7 @@ import { handleResponse, getHeaders } from './apiService.js';
 export async function getVegetableManager() {
   // Make a GET request to fetch vegetable manager
   const response = await fetch(`${BASE_URL}/vegetable_manager/`, {
-    method: 'GET',
+    method: "GET",
     headers: getHeaders(),
   });
 
@@ -27,11 +27,11 @@ export async function getVegetableManager() {
 export async function createVegetableManager(data) {
   // Make a POST request to create a new vegetable manager
   const response = await fetch(`${BASE_URL}/vegetable_manager/create`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-      Accept: 'application/json',
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      Accept: "application/json",
     },
     body: JSON.stringify(data),
   });
@@ -51,7 +51,7 @@ export async function getVegetableManagerById(vegetableManagerId) {
   const response = await fetch(
     `${BASE_URL}/vegetable_manager/${vegetableManagerId}`,
     {
-      method: 'GET',
+      method: "GET",
       headers: getHeaders(),
     }
   );
@@ -72,11 +72,11 @@ export async function updateVegetableManagerById(vegetableManagerId, data) {
   const response = await fetch(
     `${BASE_URL}/vegetable_manager/${vegetableManagerId}`,
     {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify(data),
     }
@@ -97,13 +97,29 @@ export async function deleteVegetableManagerById(vegetableManagerId) {
   const response = await fetch(
     `${BASE_URL}/vegetable_manager/${vegetableManagerId}`,
     {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-        Accept: 'application/json',
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        Accept: "application/json",
       },
     }
   );
+
+  // Handle the API response
+  return handleResponse(response);
+}
+
+/**
+ * Get all vegetables from a specific user.
+ * @param {username} username - The username of the user we want to get vegetables.
+ * @returns {Promise<{ok: boolean, data: Object|null}>} A promise that resolves to an object containing the success status and data.
+ * @throws {Error} Throws an error if there is an issue fetching the vegetables.
+ */
+export async function getVegetableManagerByUser(username) {
+  const response = await fetch(`${BASE_URL}/vegetable_manager/${username}`, {
+    method: "GET",
+    headers: getHeaders(),
+  });
 
   // Handle the API response
   return handleResponse(response);
