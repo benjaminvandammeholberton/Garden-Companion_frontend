@@ -81,7 +81,7 @@ Currently, Garden Companion is deployed on Digital Ocean directly from GitHub. H
 
 This upgrade will not only deepen my understanding of DevOps practices but also ensure a more efficient and scalable deployment process for Garden Companion.
 
-### User Authentication
+### Security
 
 ![](./README-img/logos/jwt.png)
 
