@@ -8,6 +8,8 @@ Currently, the project is in beta testing phase, and we invite you to test it ou
 
 ### Dashboard
 
+![](./README-img/screenshots/dashboard.png)
+
 The dashboard serves as the central hub for accessing different modules and features of Garden Companion.
 
 #### Quick Add Module
@@ -27,9 +29,13 @@ Users can create and manage task lists to keep track of various activities and c
 
 ### Production Table
 
+![](./README-img/screenshots/productionTable.png)
+
 This feature presents users with a comprehensive table showcasing the different vegetables planted in various areas of the garden along with a timeline view. Users can modify data directly from the table for easy management.
 
 ### Vegetable Guide
+
+![](./README-img/screenshots/guide.jpg)
 
 A guide detailing information about different vegetables, including planting instructions, care tips, and harvesting guidelines.
 
@@ -43,18 +49,22 @@ In addition to its current functionalities, Garden Companion has exciting plans 
 
 #### Backend
 
-![](./README-img/python.png)
-![](./README-img/fastAPI.png)
-![](./README-img/beanie.png)
-![](./README-img/mongoDB.png)
+![](./README-img/logos/python.png)
+![](./README-img/logos/fastAPI.png)
+![](./README-img/logos/beanie.png)
+![](./README-img/logos/mongoDB.png)
 
 For the backend infrastructure, I've opted for the FastAPI framework alongside Python. FastAPI was chosen for its non-blocking I/O architecture, which excels at handling multiple simultaneous requests efficiently. Built with a REST API model in mind, FastAPI facilitates CRUD (Create, Read, Update, Delete) operations seamlessly.
 
 As for the database, MongoDB was selected due to its scalability features, making it well-suited for future growth and expansion of the platform.
 
-In managing data models and performing data validation, I've integrated Beanie as the ORM (Object-Relational Mapping) solution. Beanie stands out for its utilization of Pydantic, simplifying data validation processes significantly.
+In managing data models and performing data validation, I've integrated Beanie as the ODM solution. Beanie stands out for its utilization of Pydantic, simplifying data validation processes significantly.
 
 #### Frontend
+
+![](./README-img/logos/HTML.png)
+![](./README-img/logos/CSS.png)
+![](./README-img/logos/javaScript.png)
 
 For the frontend development, I've opted for a straightforward stack comprising HTML, CSS, and vanilla JavaScript. This choice allows me to focus on mastering the fundamentals of JavaScript before transitioning to more advanced frameworks like React.
 
@@ -64,11 +74,16 @@ Work on this integration is currently in progress.
 
 #### Deployement
 
+![](./README-img/logos/gitHub.png)
+![](./README-img/logos/digitalOcean.png)
+
 Currently, Garden Companion is deployed on Digital Ocean directly from GitHub. However, I'm eager to take the next step and enhance my DevOps skills by transitioning to a Docker-based deployment model on a server.
 
 This upgrade will not only deepen my understanding of DevOps practices but also ensure a more efficient and scalable deployment process for Garden Companion.
 
 ### User Authentication
+
+![](./README-img/logos/jwt.png)
 
 Leveraging JWT token-based login, Garden Companion implements a secure authentication flow that includes email verification, password recovery, and logout functionalities.
 
