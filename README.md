@@ -2,7 +2,7 @@
 
 Garden Companion is a SaaS platform designed to centralize all the needs of vegetable gardeners, aiming to optimize production and simplify the gardening process. Whether you're a novice or an experienced gardener, this platform offers various modules and features to assist you throughout the gardening journey. Garden Companion seeks to enhance your gardening experience and help you achieve successful harvests. 🌱🌻🍅
 
-Currently, the project is in beta testing phase, and we invite you to test it out at https://gardencompanion.io. Your feedback is invaluable as we continue to refine and improve the platform to better serve the gardening community.
+Currently, the project is in beta testing phase, and I invite you to test it out at https://gardencompanion.io. Your feedback is invaluable as we continue to refine and improve the platform to better serve the gardening community.
 
 ## Features
 
