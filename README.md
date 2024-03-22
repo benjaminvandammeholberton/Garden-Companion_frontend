@@ -43,6 +43,11 @@ In addition to its current functionalities, Garden Companion has exciting plans 
 
 #### Backend
 
+![](./README-img/python.png)
+![](./README-img/fastAPI.png)
+![](./README-img/beanie.png)
+![](./README-img/mongoDB.png)
+
 For the backend infrastructure, I've opted for the FastAPI framework alongside Python. FastAPI was chosen for its non-blocking I/O architecture, which excels at handling multiple simultaneous requests efficiently. Built with a REST API model in mind, FastAPI facilitates CRUD (Create, Read, Update, Delete) operations seamlessly.
 
 As for the database, MongoDB was selected due to its scalability features, making it well-suited for future growth and expansion of the platform.
